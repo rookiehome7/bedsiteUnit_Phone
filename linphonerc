@@ -56,8 +56,10 @@ use_info=0
 capture_dev_id=AU: Audio Unit Receiver
 eq_active=0
 playback_dev_id=AU: Audio Unit Receiver
+echocancellation=1
 
 [video]
+
 automatically_accept=0
 automatically_initiate=0
 capture=1

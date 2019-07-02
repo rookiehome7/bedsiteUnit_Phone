@@ -3,7 +3,6 @@
 //  linphone-trial
 //
 //  Created by Cody Liu on 6/7/16.
-//  Copyright © 2016 WiAdvance. All rights reserved.
 //
 
 import UIKit
@@ -14,13 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var linphoneManager: LinphoneManager?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         self.linphoneManager = LinphoneManager()
-        linphoneManager?.demo()
-
+        
         return true
     }
 

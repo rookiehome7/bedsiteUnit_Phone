@@ -79,9 +79,15 @@
 		A9FACB131D0A7B3700E3C8A5 /* oldphone-mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB051D0A7B3700E3C8A5 /* oldphone-mono.wav */; };
 		A9FACB141D0A7B3700E3C8A5 /* soft_as_snow.mkv in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB061D0A7B3700E3C8A5 /* soft_as_snow.mkv */; };
 		A9FACB151D0A7B3700E3C8A5 /* toy-mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB071D0A7B3700E3C8A5 /* toy-mono.wav */; };
+		F409219022C898A300F0477F /* OutgoingCallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F409218F22C898A300F0477F /* OutgoingCallController.swift */; };
+		F409219222C8FE3800F0477F /* LinphoneUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F409219122C8FE3800F0477F /* LinphoneUtil.swift */; };
+		F409219422C8FEB000F0477F /* ReceiveCallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F409219322C8FEB000F0477F /* ReceiveCallController.swift */; };
 		F42E3A6E22C4739800DAA1CC /* LinphoneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */; };
 		F42E3A7222C4746E00DAA1CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99663641D06F877003B5EEE /* AppDelegate.swift */; };
 		F42E3A7322C4747400DAA1CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99663661D06F877003B5EEE /* ViewController.swift */; };
+		F42E3A7822C47CB800DAA1CC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E3A7722C47CB800DAA1CC /* SettingViewController.swift */; };
+		F46A55B422C4A196002CD8A6 /* LocalUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46A55B322C4A196002CD8A6 /* LocalUserData.swift */; };
+		F4E1E14A22C7B1DF0044F1A2 /* ApplicaitonStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1E14922C7B1DF0044F1A2 /* ApplicaitonStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -184,7 +190,13 @@
 		A9FACB051D0A7B3700E3C8A5 /* oldphone-mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "oldphone-mono.wav"; sourceTree = "<group>"; };
 		A9FACB061D0A7B3700E3C8A5 /* soft_as_snow.mkv */ = {isa = PBXFileReference; lastKnownFileType = file; path = soft_as_snow.mkv; sourceTree = "<group>"; };
 		A9FACB071D0A7B3700E3C8A5 /* toy-mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "toy-mono.wav"; sourceTree = "<group>"; };
+		F409218F22C898A300F0477F /* OutgoingCallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OutgoingCallController.swift; path = bedsiteUnit_Phone/OutgoingCallController.swift; sourceTree = "<group>"; };
+		F409219122C8FE3800F0477F /* LinphoneUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinphoneUtil.swift; path = bedsiteUnit_Phone/LinphoneUtil.swift; sourceTree = "<group>"; };
+		F409219322C8FEB000F0477F /* ReceiveCallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReceiveCallController.swift; path = bedsiteUnit_Phone/ReceiveCallController.swift; sourceTree = "<group>"; };
 		F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinphoneManager.swift; sourceTree = "<group>"; };
+		F42E3A7722C47CB800DAA1CC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = bedsiteUnit_Phone/SettingViewController.swift; sourceTree = "<group>"; };
+		F46A55B322C4A196002CD8A6 /* LocalUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserData.swift; sourceTree = "<group>"; };
+		F4E1E14922C7B1DF0044F1A2 /* ApplicaitonStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicaitonStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +294,7 @@
 		A99663631D06F877003B5EEE /* bedsiteUnit_Phone */ = {
 			isa = PBXGroup;
 			children = (
+				F42E3A7922C4A0F700DAA1CC /* Model */,
 				A9FAC4671D07D6F200E3C8A5 /* View */,
 				A9FAC4661D07D6E200E3C8A5 /* Controller */,
 				A9FAC4691D07D71600E3C8A5 /* Resource */,
@@ -369,7 +382,11 @@
 			children = (
 				F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */,
 				A99663641D06F877003B5EEE /* AppDelegate.swift */,
+				F42E3A7722C47CB800DAA1CC /* SettingViewController.swift */,
 				A99663661D06F877003B5EEE /* ViewController.swift */,
+				F409218F22C898A300F0477F /* OutgoingCallController.swift */,
+				F409219322C8FEB000F0477F /* ReceiveCallController.swift */,
+				F409219122C8FE3800F0477F /* LinphoneUtil.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -462,6 +479,15 @@
 			path = rings;
 			sourceTree = "<group>";
 		};
+		F42E3A7922C4A0F700DAA1CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F46A55B322C4A196002CD8A6 /* LocalUserData.swift */,
+				F4E1E14922C7B1DF0044F1A2 /* ApplicaitonStatus.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -552,10 +578,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42E3A7822C47CB800DAA1CC /* SettingViewController.swift in Sources */,
+				F46A55B422C4A196002CD8A6 /* LocalUserData.swift in Sources */,
 				F42E3A7322C4747400DAA1CC /* ViewController.swift in Sources */,
+				F409219022C898A300F0477F /* OutgoingCallController.swift in Sources */,
 				F42E3A7222C4746E00DAA1CC /* AppDelegate.swift in Sources */,
 				F42E3A6E22C4739800DAA1CC /* LinphoneManager.swift in Sources */,
+				F4E1E14A22C7B1DF0044F1A2 /* ApplicaitonStatus.swift in Sources */,
+				F409219222C8FE3800F0477F /* LinphoneUtil.swift in Sources */,
 				A924DECF1D07D4EA0030A438 /* README.md in Sources */,
+				F409219422C8FEB000F0477F /* ReceiveCallController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
