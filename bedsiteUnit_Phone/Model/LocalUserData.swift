@@ -1,9 +1,11 @@
 //
-//  File.swift
+//  LocalUserData.swift
 //  bedsiteUnit_Phone
 //
-//  Created by Takdanai on 27/6/19.
+//  Created by Takdanai Jirawanichkul on 2/7/2562 BE.
+//  Copyright © 2562 WiAdvance. All rights reserved.
 //
+
 import Foundation
 
 // This class for get data from Secret.plist

@@ -2,8 +2,8 @@
 //  LinphoneUtil.swift
 //  bedsiteUnit_Phone
 //
-//  Created by Takdanai on 30/6/19.
-//  Copyright © 2019 WiAdvance. All rights reserved.
+//  Created by Takdanai Jirawanichkul on 2/7/2562 BE.
+//  Copyright © 2562 WiAdvance. All rights reserved.
 //
 
 import Foundation

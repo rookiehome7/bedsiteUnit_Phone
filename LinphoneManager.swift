@@ -1,6 +1,8 @@
 import Foundation
+import UIKit
 
-var answerCall: Bool = true
+
+var answerCall: Bool = false
 
 struct theLinphone {
     static var lc: OpaquePointer?
@@ -8,11 +10,13 @@ struct theLinphone {
     static var manager: LinphoneManager?
 }
 
-// Make SIP Registration Status from ApplicationStatus 
+// Make SIP Registration Status from ApplicationStatus
 var sipRegistrationStatus: SipRegistrationStatus = SipRegistrationStatus.unknown
+
 
 let registrationStateChanged: LinphoneCoreRegistrationStateChangedCb  = {
     (lc: Optional<OpaquePointer>, proxyConfig: Optional<OpaquePointer>, state: _LinphoneRegistrationState, message: Optional<UnsafePointer<Int8>>) in
+    
     switch state{
     case LinphoneRegistrationNone: /**<Initial state for registrations */
         NSLog("LinphoneRegistrationNone")
@@ -46,10 +50,25 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
     case LinphoneCallIncomingReceived: /**<This is a new incoming call */
         NSLog("callStateChanged: LinphoneCallIncomingReceived")
         
-        if answerCall{
-            ms_usleep(3 * 1000 * 1000); // Wait 3 seconds to pickup
-            linphone_core_accept_call(lc, call)
+        if var controller = UIApplication.shared.keyWindow?.rootViewController{
+            while let presentedViewController = controller.presentedViewController {
+                controller = presentedViewController
+            }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            
+            let vc = storyboard.instantiateViewController(withIdentifier: "ReceiveCallViewController")
+            
+            
+            
+            controller.present(vc, animated: true, completion: nil)
         }
+        
+        
+//        if answerCall{
+//            ms_usleep(3 * 1000 * 1000); // Wait 3 seconds to pickup
+//            linphone_core_accept_call(lc, call)
+//        }
         
     case LinphoneCallStreamsRunning: /**<The media streams are established and running*/
         NSLog("callStateChanged: LinphoneCallStreamsRunning")
@@ -62,12 +81,15 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
     }
 }
 
+
 class LinphoneManager {
+    
     static var iterateTimer: Timer?
+    
     init() {
         
         theLinphone.lct = LinphoneCoreVTable()
-        
+
         // Enable debug log to stdout
         linphone_core_set_log_file(nil)
         linphone_core_set_log_level(ORTP_DEBUG)
@@ -94,6 +116,7 @@ class LinphoneManager {
         linphone_core_set_ring(theLinphone.lc, localRing)
     }
     
+    
     fileprivate func bundleFile(_ file: NSString) -> NSString{
         return Bundle.main.path(forResource: file.deletingPathExtension, ofType: file.pathExtension)! as NSString
     }
@@ -107,24 +130,25 @@ class LinphoneManager {
     
     
     func setIdentify() -> OpaquePointer? {
+        
         // Reference: http://www.linphone.org/docs/liblinphone/group__registration__tutorials.html
         
         // Create LocalUser Data Class
         let accountData = LocalUserData()
-        // Get the User setting data
+            // Get the User setting data
         let account = accountData.getSipUsername()
         let password = accountData.getSipPassword()
         let domain = accountData.getSipDomain()
+
+        let identity = "sip:" + String(account!) + "@" + String(domain!);
         
-       let identity = "sip:" + String(account!) + "@" + String(domain!);
-        
-        // OLD Variable
-       // let path = Bundle.main.path(forResource: "Secret", ofType: "plist")
-       // let dict = NSDictionary(contentsOfFile: path!)
-       // let account = dict?.object(forKey: "account") as! String
-       // let password = dict?.object(forKey: "password") as! String
-       // let domain = dict?.object(forKey: "domain") as! String
-       // let identity = "sip:" + account + "@" + domain;
+        // Read Data from PLIST OLD
+//        let path = Bundle.main.path(forResource: "Secret", ofType: "plist")
+//        let dict = NSDictionary(contentsOfFile: path!)
+//        let account = dict?.object(forKey: "account") as! String
+//        let password = dict?.object(forKey: "password") as! String
+//        let domain = dict?.object(forKey: "domain") as! String
+//        let identity = "sip:" + account + "@" + domain;
         
         /*create proxy config*/
         let proxy_cfg = linphone_proxy_config_new();
@@ -136,7 +160,6 @@ class LinphoneManager {
             NSLog("\(identity) not a valid sip uri, must be like sip:toto@sip.linphone.org");
             return nil
         }
-        //MARK:
         
         let info=linphone_auth_info_new(linphone_address_get_username(from), nil, password, nil, nil, nil); /*create authentication structure from identity*/
         linphone_core_add_auth_info(theLinphone.lc, info); /*add authentication info to LinphoneCore*/
@@ -145,12 +168,13 @@ class LinphoneManager {
         linphone_proxy_config_set_identity(proxy_cfg, identity); /*set identity with user name and domain*/
         let server_addr = String(cString: linphone_address_get_domain(from)); /*extract domain address from identity*/
         
-        linphone_address_destroy(from); /* release resource */
+        linphone_address_destroy(from); /*release resource*/
         
         linphone_proxy_config_set_server_addr(proxy_cfg, server_addr); /* we assume domain = proxy server address*/
         linphone_proxy_config_enable_register(proxy_cfg, 0); /* activate registration for this proxy config*/
         linphone_core_add_proxy_config(theLinphone.lc, proxy_cfg); /*add proxy config to linphone core*/
         linphone_core_set_default_proxy_config(theLinphone.lc, proxy_cfg); /*set to default proxy*/
+        
         return proxy_cfg!
     }
     
@@ -160,6 +184,7 @@ class LinphoneManager {
     
     func shutdown(){
         NSLog("Shutdown..")
+        
         let proxy_cfg = linphone_core_get_default_proxy_config(theLinphone.lc); /* get default proxy config*/
         linphone_proxy_config_edit(proxy_cfg); /*start editing proxy configuration*/
         linphone_proxy_config_enable_register(proxy_cfg, 0); /*de-activate registration for this proxy config*/
@@ -168,6 +193,7 @@ class LinphoneManager {
             linphone_core_iterate(theLinphone.lc); /*to make sure we receive call backs before shutting down*/
             ms_usleep(50000);
         }
+        
         linphone_core_destroy(theLinphone.lc);
     }
     
@@ -181,18 +207,19 @@ class LinphoneManager {
         LinphoneManager.iterateTimer = Timer.scheduledTimer(
             timeInterval: 0.02, target: self, selector: #selector(iterate), userInfo: nil, repeats: true)
     }
-
+    
+    
     //
     // This is the start point to know how linphone library works.
     //
     func demo() {
-//        makeCall()
-//        autoPickIncomingCall()
+        //        makeCall()
+        //        autoPickImcomingCall()
         idle()
     }
     
-    func makeCall(phoneNumber : String){
-        let calleeAccount = phoneNumber
+    func makeCall(){
+        let calleeAccount = "0702552520"
         
         guard let _ = setIdentify() else {
             print("no identity")
@@ -200,7 +227,7 @@ class LinphoneManager {
         }
         linphone_core_invite(theLinphone.lc, calleeAccount)
         setTimer()
-//        shutdown()
+        //        shutdown()
     }
     
     func receiveCall(){
@@ -210,19 +237,7 @@ class LinphoneManager {
         }
         register(proxyConfig)
         setTimer()
-//        shutdown()
-    }
-    
-    func endCall(){
-        guard let proxyConfig = setIdentify() else {
-            print("no identity")
-            return;
-        }
-        linphone_core_terminate_all_calls(theLinphone.lc)
-        register(proxyConfig)
-        setTimer()
         //        shutdown()
-        
     }
     
     func idle(){
@@ -232,9 +247,7 @@ class LinphoneManager {
         }
         register(proxyConfig)
         setTimer()
-//        shutdown()
+        //        shutdown()
     }
     
-    
-
 }
