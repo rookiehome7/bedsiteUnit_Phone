@@ -79,6 +79,7 @@
 		A9FACB131D0A7B3700E3C8A5 /* oldphone-mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB051D0A7B3700E3C8A5 /* oldphone-mono.wav */; };
 		A9FACB141D0A7B3700E3C8A5 /* soft_as_snow.mkv in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB061D0A7B3700E3C8A5 /* soft_as_snow.mkv */; };
 		A9FACB151D0A7B3700E3C8A5 /* toy-mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB071D0A7B3700E3C8A5 /* toy-mono.wav */; };
+		E040017222CB21390090D12A /* OutgoingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E040017122CB21390090D12A /* OutgoingCallViewController.swift */; };
 		E08F917922CB05A1007506F3 /* ApplicationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F917822CB05A1007506F3 /* ApplicationStatus.swift */; };
 		E08F917B22CB07DD007506F3 /* LocalUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F917A22CB07DD007506F3 /* LocalUserData.swift */; };
 		E08F917D22CB08BA007506F3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F917C22CB08BA007506F3 /* SettingViewController.swift */; };
@@ -189,6 +190,7 @@
 		A9FACB051D0A7B3700E3C8A5 /* oldphone-mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "oldphone-mono.wav"; sourceTree = "<group>"; };
 		A9FACB061D0A7B3700E3C8A5 /* soft_as_snow.mkv */ = {isa = PBXFileReference; lastKnownFileType = file; path = soft_as_snow.mkv; sourceTree = "<group>"; };
 		A9FACB071D0A7B3700E3C8A5 /* toy-mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "toy-mono.wav"; sourceTree = "<group>"; };
+		E040017122CB21390090D12A /* OutgoingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OutgoingCallViewController.swift; path = bedsiteUnit_Phone/OutgoingCallViewController.swift; sourceTree = "<group>"; };
 		E08F917822CB05A1007506F3 /* ApplicationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStatus.swift; sourceTree = "<group>"; };
 		E08F917A22CB07DD007506F3 /* LocalUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserData.swift; sourceTree = "<group>"; };
 		E08F917C22CB08BA007506F3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = bedsiteUnit_Phone/SettingViewController.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				E08F917C22CB08BA007506F3 /* SettingViewController.swift */,
 				A99663661D06F877003B5EEE /* ViewController.swift */,
 				E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */,
+				E040017122CB21390090D12A /* OutgoingCallViewController.swift */,
 				E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */,
 			);
 			name = Controller;
@@ -517,7 +520,6 @@
 				TargetAttributes = {
 					A99663601D06F877003B5EEE = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 7G36ZYUT6V;
 						LastSwiftMigration = 0820;
 					};
 				};
@@ -577,6 +579,7 @@
 			files = (
 				E08F917F22CB0B72007506F3 /* LinphoneUtil.swift in Sources */,
 				F42E3A7322C4747400DAA1CC /* ViewController.swift in Sources */,
+				E040017222CB21390090D12A /* OutgoingCallViewController.swift in Sources */,
 				F42E3A7222C4746E00DAA1CC /* AppDelegate.swift in Sources */,
 				E08F918122CB0CA2007506F3 /* ReceiveCallViewController.swift in Sources */,
 				E08F917B22CB07DD007506F3 /* LocalUserData.swift in Sources */,
@@ -721,7 +724,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 7G36ZYUT6V;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/bedsiteUnit_Phone/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -744,7 +747,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 7G36ZYUT6V;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/bedsiteUnit_Phone/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

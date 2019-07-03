@@ -56,15 +56,11 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
             }
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
-            
             let vc = storyboard.instantiateViewController(withIdentifier: "ReceiveCallViewController")
-            
-            
             
             controller.present(vc, animated: true, completion: nil)
         }
-        
-        
+    
 //        if answerCall{
 //            ms_usleep(3 * 1000 * 1000); // Wait 3 seconds to pickup
 //            linphone_core_accept_call(lc, call)
@@ -80,7 +76,6 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
         NSLog("Default call state")
     }
 }
-
 
 class LinphoneManager {
     
@@ -135,7 +130,7 @@ class LinphoneManager {
         
         // Create LocalUser Data Class
         let accountData = LocalUserData()
-            // Get the User setting data
+        // Get the User setting data
         let account = accountData.getSipUsername()
         let password = accountData.getSipPassword()
         let domain = accountData.getSipDomain()
@@ -208,16 +203,8 @@ class LinphoneManager {
             timeInterval: 0.02, target: self, selector: #selector(iterate), userInfo: nil, repeats: true)
     }
     
-    
-    //
-    // This is the start point to know how linphone library works.
-    //
-    func demo() {
-        //        makeCall()
-        //        autoPickImcomingCall()
-        idle()
-    }
-    
+/*
+    // Example 
     func makeCall(){
         let calleeAccount = "0702552520"
         
@@ -239,7 +226,7 @@ class LinphoneManager {
         setTimer()
         //        shutdown()
     }
-    
+*/
     func idle(){
         guard let proxyConfig = setIdentify() else {
             print("no identity")

@@ -66,6 +66,8 @@ class ReceiveCallViewController: UIViewController {
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -73,6 +75,7 @@ class ReceiveCallViewController: UIViewController {
         endButton.isHidden = true
         ReceiveCallViewData.controller = self
         ReceiveCallViewData.callTime = Date()
+        
         
         self.navigationItem.hidesBackButton = true
         
@@ -83,13 +86,9 @@ class ReceiveCallViewController: UIViewController {
         nameLabel.text = account
     }
     
-
-  
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        NSLog("ReceiveCallController.prepareForSegue()")
-    }
+    
     
     // MARK: - Action
     @IBAction func answerCall(_ sender: Any) {
@@ -110,8 +109,6 @@ class ReceiveCallViewController: UIViewController {
             //            }
         }
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         NSLog("viewWillAppear: ")

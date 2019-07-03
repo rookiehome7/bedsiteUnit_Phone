@@ -21,6 +21,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let VC : OutgoingCallViewController = segue.destination as! OutgoingCallViewController
+        VC.phoneNumber = "103"
+    }
+    
 }
 
