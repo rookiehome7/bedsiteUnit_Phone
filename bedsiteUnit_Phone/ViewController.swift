@@ -22,8 +22,16 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let VC : OutgoingCallViewController = segue.destination as! OutgoingCallViewController
-        VC.phoneNumber = "103"
+//        let VC : OutgoingCallViewController = segue.destination as! OutgoingCallViewController
+//        VC.phoneNumber = "100"
+        if segue.identifier == "makeCall"
+        {
+            if let destinationVC = segue.destination as? OutgoingCallViewController {
+                destinationVC.phoneNumber = "100"
+            }
+        }
+        
+
     }
     
 }

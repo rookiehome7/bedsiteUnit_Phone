@@ -22,11 +22,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbj-i2-IeF">
-                                <rect key="frame" x="112.5" y="305" width="150" height="57"/>
+                                <rect key="frame" x="142.5" y="305" width="90" height="57"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                <state key="normal" title="CALL103"/>
+                                <state key="normal" title="CALL"/>
                                 <connections>
-                                    <segue destination="IXk-Is-KQL" kind="presentation" id="G0c-ij-4ZZ"/>
+                                    <segue destination="IXk-Is-KQL" kind="presentation" identifier="makeCall" id="G0c-ij-4ZZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -40,7 +40,7 @@
                     <navigationItem key="navigationItem" title="BedsitePhone" id="C6H-g4-jTQ">
                         <barButtonItem key="rightBarButtonItem" title="Setting" id="OYL-np-Xsp">
                             <connections>
-                                <segue destination="VHd-ld-iV3" kind="presentation" id="qjE-ER-5Df"/>
+                                <segue destination="VHd-ld-iV3" kind="presentation" identifier="setting" id="5gR-di-R6G"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
