@@ -111,12 +111,10 @@ class OutgoingCallViewController: UIViewController {
         OutgoingCallViewData.phoneType = phoneType
         
         // Set namelabel with phone number
-        nameLabel.text = OutgoingCallViewData.calleeName
+        nameLabel.text = "Call: " + OutgoingCallViewData.calleeName!
         
-//        OutgoingCallViewData.calleeName = calleeName
-//        nameLabel.text = calleeName
         makeCall()
-        // Do any additional setup after loading the view.
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,4 +141,6 @@ class OutgoingCallViewController: UIViewController {
         OutgoingCallViewData.controller?.dismiss(animated: false, completion: nil)
     }
     
+    
+
 }

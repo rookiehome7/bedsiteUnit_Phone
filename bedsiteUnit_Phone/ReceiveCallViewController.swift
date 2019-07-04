@@ -78,7 +78,6 @@ class ReceiveCallViewController: UIViewController {
         let call = linphone_core_get_current_call(theLinphone.lc!)
         let address = linphone_call_get_remote_address_as_string(call)!
         let account = getUsernameFromAddress(String(cString: address))
-        
         nameLabel.text = account
     }
     

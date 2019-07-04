@@ -26,7 +26,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                 <state key="normal" image="phone_green_96dp"/>
                                 <connections>
-                                    <segue destination="IXk-Is-KQL" kind="presentation" identifier="makeCall" id="G0c-ij-4ZZ"/>
+                                    <segue destination="IXk-Is-KQL" kind="presentation" identifier="makeCall" modalTransitionStyle="crossDissolve" id="G0c-ij-4ZZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -168,7 +168,7 @@
         <!--Receive Call View Controller-->
         <scene sceneID="ahz-vg-rug">
             <objects>
-                <viewController storyboardIdentifier="ReceiveCallViewController" id="wxF-Of-nXX" customClass="ReceiveCallViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReceiveCallViewController" modalTransitionStyle="crossDissolve" id="wxF-Of-nXX" customClass="ReceiveCallViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k64-LB-9NA"/>
                         <viewControllerLayoutGuide type="bottom" id="HEn-xO-OtA"/>
@@ -211,7 +211,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.41176471110000001" green="0.77254903320000001" blue="0.85882353779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="EYE-fc-D7F" firstAttribute="centerY" secondItem="9F4-8E-18y" secondAttribute="centerY" id="4rS-0y-zjl"/>
                             <constraint firstItem="EYE-fc-D7F" firstAttribute="top" secondItem="N0H-d0-7Qv" secondAttribute="bottom" constant="20" id="D59-QY-flJ"/>
@@ -287,7 +287,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.41176471110000001" green="0.77254903320000001" blue="0.85882353779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="zTA-0L-cov" firstAttribute="centerY" secondItem="0xk-iZ-FEo" secondAttribute="centerY" id="019-iS-W7Q"/>
                             <constraint firstItem="zTA-0L-cov" firstAttribute="top" secondItem="jtB-bg-j6e" secondAttribute="bottom" constant="20" id="KRp-8b-0RW"/>
