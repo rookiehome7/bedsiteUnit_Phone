@@ -3,12 +3,13 @@
 //  bedsiteUnit_Phone
 //
 //  Created by Takdanai Jirawanichkul on 2/7/2562 BE.
-//  Copyright © 2562 WiAdvance. All rights reserved.
 //
-
 import Foundation
 
-// This class for get data from Secret.plist
+// This class made create function to get the data from setting file
+// and it will return the data
+// In this version using NSDictionary to read "Secret.plist" database file
+
 class LocalUserData {
     func getSipUsername() -> String?{
         let path = Bundle.main.path(forResource: "Secret", ofType: "plist")

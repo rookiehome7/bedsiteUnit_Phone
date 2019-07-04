@@ -381,12 +381,12 @@
 			isa = PBXGroup;
 			children = (
 				F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */,
-				A99663641D06F877003B5EEE /* AppDelegate.swift */,
-				E08F917C22CB08BA007506F3 /* SettingViewController.swift */,
-				A99663661D06F877003B5EEE /* ViewController.swift */,
 				E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */,
+				A99663641D06F877003B5EEE /* AppDelegate.swift */,
+				A99663661D06F877003B5EEE /* ViewController.swift */,
 				E040017122CB21390090D12A /* OutgoingCallViewController.swift */,
 				E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */,
+				E08F917C22CB08BA007506F3 /* SettingViewController.swift */,
 			);
 			name = Controller;
 			path = ..;

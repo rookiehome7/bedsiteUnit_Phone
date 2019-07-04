@@ -1,9 +1,6 @@
 import Foundation
 import UIKit
 
-
-var answerCall: Bool = false
-
 struct theLinphone {
     static var lc: OpaquePointer?
     static var lct: LinphoneCoreVTable?
@@ -13,10 +10,9 @@ struct theLinphone {
 // Make SIP Registration Status from ApplicationStatus
 var sipRegistrationStatus: SipRegistrationStatus = SipRegistrationStatus.unknown
 
-
+// Registration Callback function
 let registrationStateChanged: LinphoneCoreRegistrationStateChangedCb  = {
     (lc: Optional<OpaquePointer>, proxyConfig: Optional<OpaquePointer>, state: _LinphoneRegistrationState, message: Optional<UnsafePointer<Int8>>) in
-    
     switch state{
     case LinphoneRegistrationNone: /**<Initial state for registrations */
         NSLog("LinphoneRegistrationNone")
@@ -43,13 +39,15 @@ let registrationStateChanged: LinphoneCoreRegistrationStateChangedCb  = {
     }
 } as LinphoneCoreRegistrationStateChangedCb
 
+// CallState Callback function
 let callStateChanged: LinphoneCoreCallStateChangedCb = {
     (lc: Optional<OpaquePointer>, call: Optional<OpaquePointer>, callSate: LinphoneCallState,  message: Optional<UnsafePointer<Int8>>) in
-    
     switch callSate{
+    
     case LinphoneCallIncomingReceived: /**<This is a new incoming call */
         NSLog("callStateChanged: LinphoneCallIncomingReceived")
         
+        // Run ReceiveCallViewController to handle Incoming call
         if var controller = UIApplication.shared.keyWindow?.rootViewController{
             while let presentedViewController = controller.presentedViewController {
                 controller = presentedViewController
@@ -60,12 +58,7 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
             
             controller.present(vc, animated: true, completion: nil)
         }
-    
-//        if answerCall{
-//            ms_usleep(3 * 1000 * 1000); // Wait 3 seconds to pickup
-//            linphone_core_accept_call(lc, call)
-//        }
-        
+
     case LinphoneCallStreamsRunning: /**<The media streams are established and running*/
         NSLog("callStateChanged: LinphoneCallStreamsRunning")
         
@@ -82,7 +75,6 @@ class LinphoneManager {
     static var iterateTimer: Timer?
     
     init() {
-        
         theLinphone.lct = LinphoneCoreVTable()
 
         // Enable debug log to stdout
@@ -97,7 +89,7 @@ class LinphoneManager {
         let factoryConfigFilenamePtr: UnsafePointer<Int8> = factoryConfigFilename.cString(using: String.Encoding.utf8.rawValue)!
         let lpConfig = lp_config_new_with_factory(configFilenamePtr, factoryConfigFilenamePtr)
         
-        // Set Callback
+        // Set Callback Function
         theLinphone.lct?.registration_state_changed = registrationStateChanged
         theLinphone.lct?.call_state_changed = callStateChanged
         
@@ -137,18 +129,10 @@ class LinphoneManager {
 
         let identity = "sip:" + String(account!) + "@" + String(domain!);
         
-        // Read Data from PLIST OLD
-//        let path = Bundle.main.path(forResource: "Secret", ofType: "plist")
-//        let dict = NSDictionary(contentsOfFile: path!)
-//        let account = dict?.object(forKey: "account") as! String
-//        let password = dict?.object(forKey: "password") as! String
-//        let domain = dict?.object(forKey: "domain") as! String
-//        let identity = "sip:" + account + "@" + domain;
-        
-        /*create proxy config*/
+        // create proxy config
         let proxy_cfg = linphone_proxy_config_new();
         
-        /*parse identity*/
+        // parse identity
         let from = linphone_address_new(identity);
         
         if (from == nil){
@@ -156,7 +140,8 @@ class LinphoneManager {
             return nil
         }
         
-        let info=linphone_auth_info_new(linphone_address_get_username(from), nil, password, nil, nil, nil); /*create authentication structure from identity*/
+        let info = linphone_auth_info_new(linphone_address_get_username(from), nil, password, nil, nil, nil);
+        /*create authentication structure from identity*/
         linphone_core_add_auth_info(theLinphone.lc, info); /*add authentication info to LinphoneCore*/
         
         // configure proxy entries
@@ -179,7 +164,6 @@ class LinphoneManager {
     
     func shutdown(){
         NSLog("Shutdown..")
-        
         let proxy_cfg = linphone_core_get_default_proxy_config(theLinphone.lc); /* get default proxy config*/
         linphone_proxy_config_edit(proxy_cfg); /*start editing proxy configuration*/
         linphone_proxy_config_enable_register(proxy_cfg, 0); /*de-activate registration for this proxy config*/
@@ -203,30 +187,6 @@ class LinphoneManager {
             timeInterval: 0.02, target: self, selector: #selector(iterate), userInfo: nil, repeats: true)
     }
     
-/*
-    // Example 
-    func makeCall(){
-        let calleeAccount = "0702552520"
-        
-        guard let _ = setIdentify() else {
-            print("no identity")
-            return;
-        }
-        linphone_core_invite(theLinphone.lc, calleeAccount)
-        setTimer()
-        //        shutdown()
-    }
-    
-    func receiveCall(){
-        guard let proxyConfig = setIdentify() else {
-            print("no identity")
-            return;
-        }
-        register(proxyConfig)
-        setTimer()
-        //        shutdown()
-    }
-*/
     func idle(){
         guard let proxyConfig = setIdentify() else {
             print("no identity")
@@ -234,7 +194,7 @@ class LinphoneManager {
         }
         register(proxyConfig)
         setTimer()
-        //        shutdown()
+        //shutdown()
     }
     
 }

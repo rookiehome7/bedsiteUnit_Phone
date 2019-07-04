@@ -3,9 +3,7 @@
 //  bedsiteUnit_Phone
 //
 //  Created by Takdanai Jirawanichkul on 2/7/2562 BE.
-//  Copyright © 2562 WiAdvance. All rights reserved.
 //
-
 import UIKit
 
 struct OutgoingCallViewData{
@@ -19,6 +17,7 @@ struct OutgoingCallViewData{
     static var callConnected: Bool?
     static var retry: Bool = false
 }
+
 enum CallPhoneType {
     case sip
     case call_END
@@ -52,6 +51,7 @@ var outgoingCallStateChanged: LinphoneCoreCallStateChangedCb = {
         
     case LinphoneCallEnd:
         NSLog("outgoingCallStateChanged: LinphoneCallEnd")
+        OutgoingCallViewData.controller?.statusLabel.text = "EndCall"
         if OutgoingCallViewData.retry == false {
             close()
         }
@@ -72,9 +72,6 @@ func close(){
     OutgoingCallViewData.controller?.dismiss(animated: true, completion: nil)
 }
 
-
-
-
 func makeCall(){
     switch OutgoingCallViewData.phoneType! {
     case CallPhoneType.sip:
@@ -83,15 +80,10 @@ func makeCall(){
     case CallPhoneType.call_END:
         OutgoingCallViewData.statusLabel!.text = "Call end"
     }
-    //if let phone = OutgoingCallViewData.phoneNumber {
+
     if let lc = theLinphone.lc {
         linphone_core_invite(lc, OutgoingCallViewData.phoneNumber)
-    //    }
-        
-//        if OutgoingCallViewData.phoneType == CallPhoneType.sip {
-//            // Fire a timer to auto call mobile if not connect
-//            OutgoingCallViewData.addEndSipCallTimer()
-//        }
+
     }
 }
 
@@ -104,7 +96,6 @@ class OutgoingCallViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var sipImage: UIImageView!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,13 +112,10 @@ class OutgoingCallViewController: UIViewController {
         
         // Set namelabel with phone number
         nameLabel.text = OutgoingCallViewData.calleeName
-       
         
 //        OutgoingCallViewData.calleeName = calleeName
 //        nameLabel.text = calleeName
-//
         makeCall()
-        //nameLabel.text = OutgoingCallViewData.phoneNumber
         // Do any additional setup after loading the view.
     }
     
@@ -155,15 +143,4 @@ class OutgoingCallViewController: UIViewController {
         OutgoingCallViewData.controller?.dismiss(animated: false, completion: nil)
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

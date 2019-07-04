@@ -3,7 +3,6 @@
 //  bedsiteUnit_Phone
 //
 //  Created by Takdanai Jirawanichkul on 2/7/2562 BE.
-//  Copyright © 2562 WiAdvance. All rights reserved.
 //
 
 import Foundation
@@ -30,7 +29,6 @@ class SettingViewController: UIViewController {
         passwordField.text = password
         serverAddressField.text = domain
         
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func cancelButton(_ sender: Any) {

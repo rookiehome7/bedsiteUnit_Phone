@@ -3,7 +3,6 @@
 //  bedsiteUnit_Phone
 //
 //  Created by Takdanai Jirawanichkul on 2/7/2562 BE.
-//  Copyright © 2562 WiAdvance. All rights reserved.
 //
 
 import UIKit
@@ -65,9 +64,7 @@ class ReceiveCallViewController: UIViewController {
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
-    
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -75,7 +72,6 @@ class ReceiveCallViewController: UIViewController {
         endButton.isHidden = true
         ReceiveCallViewData.controller = self
         ReceiveCallViewData.callTime = Date()
-        
         
         self.navigationItem.hidesBackButton = true
         
@@ -89,7 +85,6 @@ class ReceiveCallViewController: UIViewController {
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
-    
     // MARK: - Action
     @IBAction func answerCall(_ sender: Any) {
         let call = linphone_core_get_current_call(theLinphone.lc!)
@@ -102,25 +97,25 @@ class ReceiveCallViewController: UIViewController {
         let call = linphone_core_get_current_call(theLinphone.lc!)
         if call != nil {
             linphone_core_terminate_call(theLinphone.lc!, call)
-            //            if ReceiveCallData.callType == .incoming_CALL_NO_ANSWER{
-            //                linphone_core_decline_call(theLinphone.lc!, call, LinphoneReasonDeclined)
-            //            }else{
-            //                linphone_core_terminate_call(theLinphone.lc!, call)
-            //            }
+//            if ReceiveCallData.callType == .incoming_CALL_NO_ANSWER{
+//                linphone_core_decline_call(theLinphone.lc!, call, LinphoneReasonDeclined)
+//            }else{
+//                linphone_core_terminate_call(theLinphone.lc!, call)
+//            }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         NSLog("viewWillAppear: ")
+        // Add CallStateChange function 
         ReceiveCallVT.lct.call_state_changed = receiveCallStateChanged
-        linphone_core_add_listener(theLinphone.lc!,  &ReceiveCallVT.lct)
+        linphone_core_add_listener(theLinphone.lc!, &ReceiveCallVT.lct)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         NSLog("viewDidDisappear: ")
         linphone_core_remove_listener(theLinphone.lc!, &ReceiveCallVT.lct)
     }
-    
     
     func showEndButton(){
         acceptButton.isHidden = true
