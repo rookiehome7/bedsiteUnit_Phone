@@ -22,7 +22,6 @@ func finish(){
         let result = linphone_core_terminate_call(theLinphone.lc!, call)
         NSLog("Terminated call result(receive): \(result)")
     }
-    
     resetReceiveCallData()
     ReceiveCallViewData.controller?.dismiss(animated: false, completion: nil)
 }

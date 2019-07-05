@@ -27,4 +27,16 @@ class LocalUserData {
         return dict?.object(forKey: "domain") as? String
     }
     
+    func getMQTTServerIP() -> String?{
+        let path = Bundle.main.path(forResource: "Secret", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!)
+        return dict?.object(forKey: "mqttbrokerip") as? String
+    }
+    
+    func getMQTTTopic() -> String?{
+        let path = Bundle.main.path(forResource: "Secret", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!)
+        return dict?.object(forKey: "subscribetopic") as? String
+    }
+    
 }

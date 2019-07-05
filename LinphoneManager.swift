@@ -46,16 +46,13 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
     
     case LinphoneCallIncomingReceived: /**<This is a new incoming call */
         NSLog("callStateChanged: LinphoneCallIncomingReceived")
-        
         // Run ReceiveCallViewController to handle Incoming call
         if var controller = UIApplication.shared.keyWindow?.rootViewController{
             while let presentedViewController = controller.presentedViewController {
                 controller = presentedViewController
             }
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
             let vc = storyboard.instantiateViewController(withIdentifier: "ReceiveCallViewController")
-            
             controller.present(vc, animated: true, completion: nil)
         }
 
@@ -117,37 +114,28 @@ class LinphoneManager {
     
     
     func setIdentify() -> OpaquePointer? {
-        
         // Reference: http://www.linphone.org/docs/liblinphone/group__registration__tutorials.html
-        
         // Create LocalUser Data Class
         let accountData = LocalUserData()
         // Get the User setting data
         let account = accountData.getSipUsername()
         let password = accountData.getSipPassword()
         let domain = accountData.getSipDomain()
-
         let identity = "sip:" + String(account!) + "@" + String(domain!);
-        
         // create proxy config
         let proxy_cfg = linphone_proxy_config_new();
-        
         // parse identity
         let from = linphone_address_new(identity);
-        
         if (from == nil){
-            NSLog("\(identity) not a valid sip uri, must be like sip:toto@sip.linphone.org");
+            //NSLog("\(identity) not a valid sip uri, must be like sip:toto@sip.linphone.org");
             return nil
         }
-        
         let info = linphone_auth_info_new(linphone_address_get_username(from), nil, password, nil, nil, nil);
         /*create authentication structure from identity*/
         linphone_core_add_auth_info(theLinphone.lc, info); /*add authentication info to LinphoneCore*/
-        
         // configure proxy entries
         linphone_proxy_config_set_identity(proxy_cfg, identity); /*set identity with user name and domain*/
         let server_addr = String(cString: linphone_address_get_domain(from)); /*extract domain address from identity*/
-        
         linphone_address_destroy(from); /*release resource*/
         
         linphone_proxy_config_set_server_addr(proxy_cfg, server_addr); /* we assume domain = proxy server address*/

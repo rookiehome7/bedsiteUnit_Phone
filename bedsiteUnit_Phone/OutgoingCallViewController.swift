@@ -80,7 +80,7 @@ func makeCall(){
     case CallPhoneType.call_END:
         OutgoingCallViewData.statusLabel!.text = "Call end"
     }
-
+    
     if let lc = theLinphone.lc {
         linphone_core_invite(lc, OutgoingCallViewData.phoneNumber)
 

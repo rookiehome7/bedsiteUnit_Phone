@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F5A54D9BD99B9541C2879C6 /* Pods_bedsiteUnit_Phone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1754C8E11DB660D95F1B164 /* Pods_bedsiteUnit_Phone.framework */; };
 		A924DEC21D07A5F80030A438 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A99663E91D070507003B5EEE /* libz.tbd */; };
 		A924DEC81D07AC620030A438 /* linphonerc in Resources */ = {isa = PBXBuildFile; fileRef = A924DEC41D07AC620030A438 /* linphonerc */; };
 		A924DEC91D07AC620030A438 /* linphonerc-factory in Resources */ = {isa = PBXBuildFile; fileRef = A924DEC51D07AC620030A438 /* linphonerc-factory */; };
@@ -91,6 +92,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A988B9D7B894085842DE48C /* Pods-bedsiteUnit_Phone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bedsiteUnit_Phone.debug.xcconfig"; path = "Target Support Files/Pods-bedsiteUnit_Phone/Pods-bedsiteUnit_Phone.debug.xcconfig"; sourceTree = "<group>"; };
+		8C23505557F0C2D9F1D60C0B /* Pods-bedsiteUnit_Phone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bedsiteUnit_Phone.release.xcconfig"; path = "Target Support Files/Pods-bedsiteUnit_Phone/Pods-bedsiteUnit_Phone.release.xcconfig"; sourceTree = "<group>"; };
 		A924DEC41D07AC620030A438 /* linphonerc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = linphonerc; sourceTree = "<group>"; };
 		A924DEC51D07AC620030A438 /* linphonerc-factory */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "linphonerc-factory"; sourceTree = "<group>"; };
 		A924DECC1D07D2620030A438 /* Secret.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
@@ -190,6 +193,7 @@
 		A9FACB051D0A7B3700E3C8A5 /* oldphone-mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "oldphone-mono.wav"; sourceTree = "<group>"; };
 		A9FACB061D0A7B3700E3C8A5 /* soft_as_snow.mkv */ = {isa = PBXFileReference; lastKnownFileType = file; path = soft_as_snow.mkv; sourceTree = "<group>"; };
 		A9FACB071D0A7B3700E3C8A5 /* toy-mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "toy-mono.wav"; sourceTree = "<group>"; };
+		B1754C8E11DB660D95F1B164 /* Pods_bedsiteUnit_Phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bedsiteUnit_Phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E040017122CB21390090D12A /* OutgoingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OutgoingCallViewController.swift; path = bedsiteUnit_Phone/OutgoingCallViewController.swift; sourceTree = "<group>"; };
 		E08F917822CB05A1007506F3 /* ApplicationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStatus.swift; sourceTree = "<group>"; };
 		E08F917A22CB07DD007506F3 /* LocalUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserData.swift; sourceTree = "<group>"; };
@@ -255,12 +259,22 @@
 				A99663BE1D0700A5003B5EEE /* libvo-amrwbenc.a in Frameworks */,
 				A99663BF1D0700A5003B5EEE /* libvpx.a in Frameworks */,
 				A99663C01D0700A5003B5EEE /* libx264.a in Frameworks */,
+				4F5A54D9BD99B9541C2879C6 /* Pods_bedsiteUnit_Phone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80905BBF633D7A2666C2A339 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A988B9D7B894085842DE48C /* Pods-bedsiteUnit_Phone.debug.xcconfig */,
+				8C23505557F0C2D9F1D60C0B /* Pods-bedsiteUnit_Phone.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A924DEC31D07AC520030A438 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +294,8 @@
 				A99663631D06F877003B5EEE /* bedsiteUnit_Phone */,
 				A99663621D06F877003B5EEE /* Products */,
 				A99663761D06F942003B5EEE /* linphone-swift-demo-Bridging-Header.h */,
+				80905BBF633D7A2666C2A339 /* Pods */,
+				CE55B58D091E4ABE46ED1DBD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -479,6 +495,14 @@
 			path = rings;
 			sourceTree = "<group>";
 		};
+		CE55B58D091E4ABE46ED1DBD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1754C8E11DB660D95F1B164 /* Pods_bedsiteUnit_Phone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E08F917622CB056E007506F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,9 +519,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A99663731D06F877003B5EEE /* Build configuration list for PBXNativeTarget "bedsiteUnit_Phone" */;
 			buildPhases = (
+				595B63C939C4015D4325EF81 /* [CP] Check Pods Manifest.lock */,
 				A996635D1D06F877003B5EEE /* Sources */,
 				A996635E1D06F877003B5EEE /* Frameworks */,
 				A996635F1D06F877003B5EEE /* Resources */,
+				736F05796D7A73A91210B1AD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -573,6 +599,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		595B63C939C4015D4325EF81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bedsiteUnit_Phone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		736F05796D7A73A91210B1AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bedsiteUnit_Phone/Pods-bedsiteUnit_Phone-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bedsiteUnit_Phone/Pods-bedsiteUnit_Phone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A996635D1D06F877003B5EEE /* Sources */ = {
@@ -722,6 +793,7 @@
 		};
 		A99663741D06F877003B5EEE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A988B9D7B894085842DE48C /* Pods-bedsiteUnit_Phone.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -749,6 +821,7 @@
 		};
 		A99663751D06F877003B5EEE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C23505557F0C2D9F1D60C0B /* Pods-bedsiteUnit_Phone.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
