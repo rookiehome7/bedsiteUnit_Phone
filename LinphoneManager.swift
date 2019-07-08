@@ -39,11 +39,15 @@ let registrationStateChanged: LinphoneCoreRegistrationStateChangedCb  = {
     }
 } as LinphoneCoreRegistrationStateChangedCb
 
+
+
 // CallState Callback function
+
+// Call state library
+// https://www.linphone.org/docs/liblinphone-javadoc/org/linphone/core/LinphoneCall.State.html
 let callStateChanged: LinphoneCoreCallStateChangedCb = {
     (lc: Optional<OpaquePointer>, call: Optional<OpaquePointer>, callSate: LinphoneCallState,  message: Optional<UnsafePointer<Int8>>) in
     switch callSate{
-    
     case LinphoneCallIncomingReceived: /**<This is a new incoming call */
         NSLog("callStateChanged: LinphoneCallIncomingReceived")
         // Run ReceiveCallViewController to handle Incoming call
@@ -66,6 +70,8 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
         NSLog("Default call state")
     }
 }
+
+// outgoingCallStateChanged: Default call state _LinphoneCallState(rawValue: 5)
 
 class LinphoneManager {
     

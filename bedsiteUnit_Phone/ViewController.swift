@@ -8,41 +8,42 @@ import UIKit
 import CocoaMQTT
 
 class ViewController: UIViewController {
-    let defaultHost = "localhost"
-    var mqtt: CocoaMQTT?
-    let accountData = LocalUserData()
-    
+    // User Label
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var mqttStatus: UILabel!
     @IBOutlet weak var sipStatus: UILabel!
     
+    // User Button name
+    @IBOutlet weak var mqttReconnectButton: UIButton!
+    
+    // Variable decrelation
+    var mqtt: CocoaMQTT?
+    let accountData = LocalUserData() // Get function read file from PLIST
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      
+        // UI Setting
+        mqttReconnectButton.isHidden = false
         mqttStatus.text = "Disconnect"
-        sipStatus.text = "Unknown"
-        // Setting MQTT
-        
+       
         // How to run MQTT broker in MACOS
         // /usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
-        mqttSetting()
+        mqttSetting()       // Setting MQTT
+        _ = mqtt!.connect() // MQTT Connect
         
-        // MQTT Connect
-        _ = mqtt!.connect()
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     // MARK : Action
     @IBAction func mqttReconnectButton(_ sender: Any) {
         _ = mqtt!.connect()
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "makeCall"
@@ -51,6 +52,32 @@ class ViewController: UIViewController {
                 destinationVC.phoneNumber = "100"
             }
         }
+    }
+
+}
+
+// MQTT Handle Code
+extension ViewController: CocoaMQTTDelegate {
+    
+    // MARK : SETTING Environment
+    func mqttSetting() {
+        // Get MQTT Broker IP from PLIST File
+        let brokerIP = accountData.getMQTTServerIP()
+        let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
+        mqtt = CocoaMQTT(clientID: clientID, host: brokerIP!, port: 1883)
+        mqtt!.username = ""
+        mqtt!.password = ""
+        mqtt!.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
+        mqtt!.keepAlive = 60
+        mqtt!.delegate = self
+    }
+    
+    // MQTT Command handle
+    func makeCall(phoneNumber : String){
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "OutgoingCallViewController") as? OutgoingCallViewController
+        vc!.phoneNumber = phoneNumber
+        //self.navigationController?.pushViewController(vc!, animated: true)
+        self.present(vc!, animated: true, completion: nil)
     }
     
     func terminateCall(){
@@ -62,23 +89,6 @@ class ViewController: UIViewController {
         OutgoingCallViewData.controller?.dismiss(animated: false, completion: nil)
     }
     
-    // MARK : SETTING Environment
-    func mqttSetting() {
-        
-        // Get MQTT Broker IP from PLIST File
-        let defaultHost = accountData.getMQTTServerIP()
-        let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
-        
-        mqtt = CocoaMQTT(clientID: clientID, host: defaultHost!, port: 1883)
-        mqtt!.username = ""
-        mqtt!.password = ""
-        mqtt!.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
-        mqtt!.keepAlive = 60
-        mqtt!.delegate = self
-    }
-}
-
-extension ViewController: CocoaMQTTDelegate {
     // Optional ssl CocoaMQTTDelegate
     func mqtt(_ mqtt: CocoaMQTT, didReceive trust: SecTrust, completionHandler: @escaping (Bool) -> Void) {
         TRACE("trust: \(trust)")
@@ -87,11 +97,13 @@ extension ViewController: CocoaMQTTDelegate {
     
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         TRACE("ack: \(ack)")
+        
         if ack == .accept {
+            mqttReconnectButton.isHidden = true
             // Get MQTT Broker Topic from PLIST File
-            let mqttTopic = accountData.getMQTTTopic()!
+            let mqttTopic = accountData.getMQTTTopic()! + "/" + accountData.getSipUsername()!
             mqtt.subscribe(mqttTopic, qos: CocoaMQTTQOS.qos2)
-            mqttStatus.text = "Connected to: " + defaultHost
+            mqttStatus.text = "Connected to: " + accountData.getMQTTServerIP()!
         }
     }
     
@@ -99,15 +111,9 @@ extension ViewController: CocoaMQTTDelegate {
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
         TRACE("message: \(message.string.description), id: \(id)")
         textLabel.text = message.string?.description
-        
         let command = message.string!.components(separatedBy: " ")
-        
-        
         if command[0] == "call" {
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "OutgoingCallViewController") as? OutgoingCallViewController
-            vc!.phoneNumber = command[1]
-            //self.navigationController?.pushViewController(vc!, animated: true)
-            self.present(vc!, animated: true, completion: nil)
+            makeCall(phoneNumber: command[1])
         }
         else if command[0] == "end" {
             terminateCall()
@@ -144,9 +150,14 @@ extension ViewController: CocoaMQTTDelegate {
     
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
         TRACE("\(err.debugDescription)")
+        mqttReconnectButton.isHidden = false
         mqttStatus.text = "Disconnect"
-        //_ = mqtt.connect()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+            _ = mqtt.connect()
+        }
+        //
     }
+    
 }
 
 extension ViewController {

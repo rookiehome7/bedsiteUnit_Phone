@@ -31,9 +31,13 @@ var outgoingCallStateChanged: LinphoneCoreCallStateChangedCb = {
     (lc: Optional<OpaquePointer>, call: Optional<OpaquePointer>, callSate: LinphoneCallState,  message: Optional<UnsafePointer<Int8>>) in
     switch callSate{
     case LinphoneCallOutgoingProgress:
+        NSLog("outgoingCallStateChanged: LinphoneCallReleased")
         if OutgoingCallViewData.retry == true{
             OutgoingCallViewData.retry = false
         }
+    
+    case LinphoneCallReleased:
+        NSLog("outgoingCallStateChanged: LinphoneCallReleased")
         
     case LinphoneCallConnected:
         NSLog("outgoingCallStateChanged: LinphoneCallConnected")
@@ -83,7 +87,6 @@ func makeCall(){
     
     if let lc = theLinphone.lc {
         linphone_core_invite(lc, OutgoingCallViewData.phoneNumber)
-
     }
 }
 
