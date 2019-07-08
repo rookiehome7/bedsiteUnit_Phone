@@ -14,23 +14,44 @@ class SettingViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var serverAddressField: UITextField!
+    @IBOutlet weak var sipServerIpField: UITextField!
+    @IBOutlet weak var sipServerPort: UITextField!
+    
+    @IBOutlet weak var mqttServerIpField: UITextField!
+    @IBOutlet weak var mqttServerPort: UITextField!
+    @IBOutlet weak var mqttTopicField: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Create LocalUser Data Class
+        // Create Local User Data Class
         let accountData = LocalUserData()
         // Get the User setting data
-        let account = accountData.getSipUsername()
-        let password = accountData.getSipPassword()
-        let domain = accountData.getSipDomain()
-        usernameField.text = account
-        passwordField.text = password
-        serverAddressField.text = domain
+        usernameField.text = accountData.getSipUsername()
+        passwordField.text = accountData.getSipPassword()
+        sipServerIpField.text = accountData.getSipServerIp()
+        sipServerPort.text = accountData.getSipServerPort()
         
+        mqttServerIpField.text = accountData.getMQTTServerIp()
+        mqttServerPort.text = accountData.getMQTTServerPort()
+        mqttTopicField.text = accountData.getMQTTTopic()
     }
-
+    
+    
+    //MARK: Navigation
+    @IBAction func saveButton(_ sender: Any) {
+        UserDefaults.standard.set(usernameField.text, forKey: "sipaccount")
+        UserDefaults.standard.set(passwordField.text, forKey: "sippassword")
+        UserDefaults.standard.set(sipServerIpField.text, forKey: "sipserverip")
+        UserDefaults.standard.set(sipServerPort.text, forKey: "sipserverport")
+        //MQTT
+        UserDefaults.standard.set(mqttServerIpField.text, forKey: "mqttserverip")
+        UserDefaults.standard.set(mqttServerPort.text, forKey: "mqttserverport")
+        UserDefaults.standard.set(mqttTopicField.text, forKey: "mqttsubscribetopic")
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

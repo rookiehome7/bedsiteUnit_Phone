@@ -396,9 +396,9 @@
 		A9FAC4661D07D6E200E3C8A5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A99663641D06F877003B5EEE /* AppDelegate.swift */,
 				F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */,
 				E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */,
-				A99663641D06F877003B5EEE /* AppDelegate.swift */,
 				A99663661D06F877003B5EEE /* ViewController.swift */,
 				E040017122CB21390090D12A /* OutgoingCallViewController.swift */,
 				E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */,
@@ -803,6 +803,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7G36ZYUT6V;
 				INFOPLIST_FILE = "$(SRCROOT)/bedsiteUnit_Phone/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -831,6 +832,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7G36ZYUT6V;
 				INFOPLIST_FILE = "$(SRCROOT)/bedsiteUnit_Phone/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

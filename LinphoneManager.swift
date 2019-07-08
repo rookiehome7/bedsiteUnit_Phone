@@ -5,6 +5,7 @@ struct theLinphone {
     static var lc: OpaquePointer?
     static var lct: LinphoneCoreVTable?
     static var manager: LinphoneManager?
+    
 }
 
 // Make SIP Registration Status from ApplicationStatus
@@ -40,9 +41,7 @@ let registrationStateChanged: LinphoneCoreRegistrationStateChangedCb  = {
 } as LinphoneCoreRegistrationStateChangedCb
 
 
-
 // CallState Callback function
-
 // Call state library
 // https://www.linphone.org/docs/liblinphone-javadoc/org/linphone/core/LinphoneCall.State.html
 let callStateChanged: LinphoneCoreCallStateChangedCb = {
@@ -58,6 +57,7 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ReceiveCallViewController")
             controller.present(vc, animated: true, completion: nil)
+            
         }
 
     case LinphoneCallStreamsRunning: /**<The media streams are established and running*/
@@ -74,7 +74,6 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
 // outgoingCallStateChanged: Default call state _LinphoneCallState(rawValue: 5)
 
 class LinphoneManager {
-    
     static var iterateTimer: Timer?
     
     init() {
@@ -104,6 +103,7 @@ class LinphoneManager {
 
         let localRing = URL(fileURLWithPath: Bundle.main.bundlePath).appendingPathComponent("/toy-mono.wav").absoluteString
         linphone_core_set_ring(theLinphone.lc, localRing)
+        
     }
     
     
@@ -121,13 +121,19 @@ class LinphoneManager {
     
     func setIdentify() -> OpaquePointer? {
         // Reference: http://www.linphone.org/docs/liblinphone/group__registration__tutorials.html
-        // Create LocalUser Data Class
+        
+        // Create Local User Data Class
         let accountData = LocalUserData()
+        
+        // IF you want to load data from Plist file use this function
+        //accountData.loadSettingPlist()
+        
         // Get the User setting data
-        let account = accountData.getSipUsername()
-        let password = accountData.getSipPassword()
-        let domain = accountData.getSipDomain()
-        let identity = "sip:" + String(account!) + "@" + String(domain!);
+        let account = accountData.getSipUsername()!
+        let password = accountData.getSipPassword()!
+        let domain = accountData.getSipServerIp()! + ":" + accountData.getSipServerPort()!
+        let identity = "sip:" + String(account) + "@" + String(domain);
+        
         // create proxy config
         let proxy_cfg = linphone_proxy_config_new();
         // parse identity
@@ -166,7 +172,6 @@ class LinphoneManager {
             linphone_core_iterate(theLinphone.lc); /*to make sure we receive call backs before shutting down*/
             ms_usleep(50000);
         }
-        
         linphone_core_destroy(theLinphone.lc);
     }
     
@@ -189,6 +194,10 @@ class LinphoneManager {
         register(proxyConfig)
         setTimer()
         //shutdown()
+    }
+    
+    func reset(){
+
     }
     
 }

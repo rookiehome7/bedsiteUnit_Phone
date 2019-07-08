@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var linphoneManager: LinphoneManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
         // Set Navigation bar color
         let navigationBarAppearace = UINavigationBar.appearance()
         // Label Color

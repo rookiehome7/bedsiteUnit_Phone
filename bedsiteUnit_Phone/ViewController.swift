@@ -7,12 +7,19 @@
 import UIKit
 import CocoaMQTT
 
+struct ViewVT{
+        static var lct: LinphoneCoreVTable = LinphoneCoreVTable()
+}
+
+
 class ViewController: UIViewController {
     // User Label
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var mqttTopic: UILabel!
     @IBOutlet weak var mqttStatus: UILabel!
+    @IBOutlet weak var mqttMessage: UILabel!
     @IBOutlet weak var sipStatus: UILabel!
     
+    @IBOutlet weak var phoneNumberField: UITextField!
     // User Button name
     @IBOutlet weak var mqttReconnectButton: UIButton!
     
@@ -24,17 +31,37 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // UI Setting
         mqttReconnectButton.isHidden = false
-        mqttStatus.text = "Disconnect"
-       
-        // How to run MQTT broker in MACOS
-        // /usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
+        mqttMessage.isHidden = true
+    
+        updateUIStatus()
+        // Run MQTT on mac : /usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
         mqttSetting()       // Setting MQTT
-        _ = mqtt!.connect() // MQTT Connect
+        _ = mqtt!.connect() // MQTT Connect'
         
+    
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.updateUIStatus()
+        }
+    }
+    // Function to update UI
+    func updateUIStatus(){
+        if sipRegistrationStatus == .fail {
+            sipStatus.text = "FAIL"
+        }
+        else if sipRegistrationStatus == .unknown {
+            sipStatus.text = "Unknown"
+        }
+        else if sipRegistrationStatus ==  .ok {
+            sipStatus.text = "OK"
+        }
+        mqttTopic.text = accountData.getMQTTTopic()! + "/" + accountData.getSipUsername()!
     }
     
+    func test(){
+        mqttTopic.text = "test"
+    }
     
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,11 +72,22 @@ class ViewController: UIViewController {
         _ = mqtt!.connect()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //ViewVT.lct.registration_state_changed = viewRegistrationStateChanged
+        
+        //linphone_core_add_listener(theLinphone.lc!, &ViewVT.lct)
+
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        //linphone_core_remove_listener(theLinphone.lc!, &ViewVT.lct)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "makeCall"
         {
             if let destinationVC = segue.destination as? OutgoingCallViewController {
-                destinationVC.phoneNumber = "100"
+                destinationVC.phoneNumber = phoneNumberField.text
             }
         }
     }
@@ -62,9 +100,9 @@ extension ViewController: CocoaMQTTDelegate {
     // MARK : SETTING Environment
     func mqttSetting() {
         // Get MQTT Broker IP from PLIST File
-        let brokerIP = accountData.getMQTTServerIP()
+        let brokerIP = accountData.getMQTTServerIp()!
         let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
-        mqtt = CocoaMQTT(clientID: clientID, host: brokerIP!, port: 1883)
+        mqtt = CocoaMQTT(clientID: clientID, host: brokerIP, port: 1883)
         mqtt!.username = ""
         mqtt!.password = ""
         mqtt!.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
@@ -97,20 +135,20 @@ extension ViewController: CocoaMQTTDelegate {
     
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         TRACE("ack: \(ack)")
-        
         if ack == .accept {
             mqttReconnectButton.isHidden = true
             // Get MQTT Broker Topic from PLIST File
             let mqttTopic = accountData.getMQTTTopic()! + "/" + accountData.getSipUsername()!
             mqtt.subscribe(mqttTopic, qos: CocoaMQTTQOS.qos2)
-            mqttStatus.text = "Connected to: " + accountData.getMQTTServerIP()!
+            mqttStatus.text = "Connected " + accountData.getMQTTServerIp()!
         }
     }
     
     // When received message
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
         TRACE("message: \(message.string.description), id: \(id)")
-        textLabel.text = message.string?.description
+        mqttMessage.isHidden = false
+        mqttMessage.text = message.string?.description
         let command = message.string!.components(separatedBy: " ")
         if command[0] == "call" {
             makeCall(phoneNumber: command[1])

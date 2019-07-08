@@ -82,7 +82,6 @@ class ReceiveCallViewController: UIViewController {
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    
     // MARK: - Action
     @IBAction func answerCall(_ sender: Any) {
         let call = linphone_core_get_current_call(theLinphone.lc!)

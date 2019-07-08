@@ -11,6 +11,11 @@ Setting file
 You can edit the SIP server IP address / Username / Password 
 
 
+Userdefault Documentation:
+https://medium.com/@nimjea/userdefaults-in-swift-4-d1a278a0ec79
+
+
+
 
 
 
