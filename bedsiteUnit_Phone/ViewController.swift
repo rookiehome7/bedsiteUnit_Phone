@@ -11,7 +11,6 @@ struct ViewVT{
         static var lct: LinphoneCoreVTable = LinphoneCoreVTable()
 }
 
-
 class ViewController: UIViewController {
     // User Label
     @IBOutlet weak var mqttTopic: UILabel!
@@ -54,14 +53,12 @@ class ViewController: UIViewController {
         else if sipRegistrationStatus ==  .ok {
             sipStatus.text = "OK"
         }
+        else if sipRegistrationStatus == .unregister{
+            sipStatus.text = "Not Register"
+        }
         mqttTopic.text = accountData.getMQTTTopic()! + "/" + accountData.getSipUsername()!
     }
     
-    func test(){
-        mqttTopic.text = "test"
-    }
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -108,6 +105,11 @@ extension ViewController: CocoaMQTTDelegate {
         mqtt!.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
         mqtt!.keepAlive = 60
         mqtt!.delegate = self
+    }
+    
+    func mqttRestart() {
+        
+      //  mqtt?.disconnect()
     }
     
     // MQTT Command handle

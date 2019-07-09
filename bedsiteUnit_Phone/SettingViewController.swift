@@ -21,6 +21,8 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var mqttServerPort: UITextField!
     @IBOutlet weak var mqttTopicField: UITextField!
     
+    var linphoneManager: LinphoneManager?
+    var viewController : ViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,17 +39,27 @@ class SettingViewController: UIViewController {
         mqttTopicField.text = accountData.getMQTTTopic()
     }
     
-    
     //MARK: Navigation
     @IBAction func saveButton(_ sender: Any) {
+        // SIP Setting
         UserDefaults.standard.set(usernameField.text, forKey: "sipaccount")
         UserDefaults.standard.set(passwordField.text, forKey: "sippassword")
         UserDefaults.standard.set(sipServerIpField.text, forKey: "sipserverip")
         UserDefaults.standard.set(sipServerPort.text, forKey: "sipserverport")
-        //MQTT
+        //MQTT Setting
         UserDefaults.standard.set(mqttServerIpField.text, forKey: "mqttserverip")
         UserDefaults.standard.set(mqttServerPort.text, forKey: "mqttserverport")
         UserDefaults.standard.set(mqttTopicField.text, forKey: "mqttsubscribetopic")
+        
+        // Restart with new setting Linphone Service
+        self.linphoneManager = LinphoneManager()
+        linphoneManager?.restartService()
+
+        // Restart with new setting  MQTT Service
+//       self.viewController = ViewController()
+//       viewController?.mqtt?.disconnect()
+//        viewController?.mqttRestart()
+//        _ = viewController?.mqtt?.connect()
         
         dismiss(animated: true, completion: nil)
     }

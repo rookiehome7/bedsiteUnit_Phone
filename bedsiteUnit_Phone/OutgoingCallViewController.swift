@@ -44,20 +44,19 @@ var outgoingCallStateChanged: LinphoneCoreCallStateChangedCb = {
         //OutgoingCallViewData.callType = CallLogType.outgoing_CALL_ANSWERED
         OutgoingCallViewData.controller?.statusLabel.text = "Connected"
         OutgoingCallViewData.callConnected = true
-        
 
     case LinphoneCallError: /**<The call encountered an error, will not call LinphoneCallEnd*/
         NSLog("outgoingCallStateChanged: LinphoneCallError")
         OutgoingCallViewData.controller?.statusLabel.text = "Error"
         let message = String(cString: message!)
         NSLog(message)
-        close()
+        closeOutgoingCallView()
         
     case LinphoneCallEnd:
         NSLog("outgoingCallStateChanged: LinphoneCallEnd")
         OutgoingCallViewData.controller?.statusLabel.text = "EndCall"
         if OutgoingCallViewData.retry == false {
-            close()
+            closeOutgoingCallView()
         }
         
     default:
@@ -71,7 +70,7 @@ func resetOutgoingCallData(){
     OutgoingCallViewData.retry = false
 }
 
-func close(){
+func closeOutgoingCallView(){
     resetOutgoingCallData()
     OutgoingCallViewData.controller?.dismiss(animated: true, completion: nil)
 }

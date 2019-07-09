@@ -115,12 +115,8 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjy-GE-CNx">
-                                <rect key="frame" x="251" y="576" width="109" height="27"/>
+                                <rect key="frame" x="261" y="576" width="99" height="27"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="109" id="aAu-b7-Pgf"/>
-                                    <constraint firstAttribute="height" constant="27" id="ozm-63-r5Y"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="MQTT Reconnect">
                                     <color key="titleColor" red="1" green="0.18142545091097895" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -351,7 +347,7 @@
                                 <action selector="cancelButton:" destination="bgQ-xt-dWM" id="HiO-WX-Lem"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="qJe-rX-fJD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="qJe-rX-fJD">
                             <connections>
                                 <action selector="saveButton:" destination="bgQ-xt-dWM" id="6Pm-dX-Evx"/>
                             </connections>

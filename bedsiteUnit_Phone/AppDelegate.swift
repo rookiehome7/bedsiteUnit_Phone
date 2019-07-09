@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var linphoneManager: LinphoneManager?
+    //var linphoneManager: LinphoneManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Set Navigation bar color
@@ -24,9 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Change navigation item title color
         navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
 
-        self.linphoneManager = LinphoneManager()
-        linphoneManager?.idle()
+        //self.linphoneManager = LinphoneManager()
         
+        theLinphone.manager = LinphoneManager()
+        theLinphone.manager?.startLinphone()
+
         return true
     }
     
