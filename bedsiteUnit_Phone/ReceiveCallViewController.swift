@@ -51,10 +51,7 @@ var receiveCallStateChanged: LinphoneCoreCallStateChangedCb = {
     }
 }
 
-
-
 class ReceiveCallViewController: UIViewController {
-    
     // UI Lable
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -112,6 +109,17 @@ class ReceiveCallViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         NSLog("viewDidDisappear: ")
         linphone_core_remove_listener(theLinphone.lc!, &ReceiveCallVT.lct)
+        
+        //Check if have call still kill it
+        let call = linphone_core_get_current_call(theLinphone.lc!)
+        if call != nil {
+            linphone_core_terminate_call(theLinphone.lc!, call)
+//            if ReceiveCallData.callType == .incoming_CALL_NO_ANSWER{
+//                linphone_core_decline_call(theLinphone.lc!, call, LinphoneReasonDeclined)
+//            }else{
+//                linphone_core_terminate_call(theLinphone.lc!, call)
+//            }
+        }
     }
     
     func showEndButton(){

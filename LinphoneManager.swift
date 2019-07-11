@@ -21,7 +21,7 @@ let registrationStateChanged: LinphoneCoreRegistrationStateChangedCb  = {
         
     case LinphoneRegistrationProgress:
         NSLog("LinphoneRegistrationProgress")
-        sipRegistrationStatus = .unknown
+        sipRegistrationStatus = .progress
         
     case LinphoneRegistrationOk:
         NSLog("LinphoneRegistrationOk")
@@ -37,13 +37,12 @@ let registrationStateChanged: LinphoneCoreRegistrationStateChangedCb  = {
         
     default:
         NSLog("Unkown registration state")
+        sipRegistrationStatus = .unknown
     }
 } as LinphoneCoreRegistrationStateChangedCb
 
 
 // CallState Callback function
-// Call state library
-// https://www.linphone.org/docs/liblinphone-javadoc/org/linphone/core/LinphoneCall.State.html
 let callStateChanged: LinphoneCoreCallStateChangedCb = {
     (lc: Optional<OpaquePointer>, call: Optional<OpaquePointer>, callSate: LinphoneCallState,  message: Optional<UnsafePointer<Int8>>) in
     switch callSate{
@@ -57,9 +56,7 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ReceiveCallViewController")
             controller.present(vc, animated: true, completion: nil)
-            
         }
-
     case LinphoneCallStreamsRunning: /**<The media streams are established and running*/
         NSLog("callStateChanged: LinphoneCallStreamsRunning")
         
@@ -70,8 +67,9 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
         NSLog("Default call state")
     }
 }
+// Call state library
+// https://www.linphone.org/docs/liblinphone-javadoc/org/linphone/core/LinphoneCall.State.html
 
-// outgoingCallStateChanged: Default call state _LinphoneCallState(rawValue: 5)
 class LinphoneManager {
     static var iterateTimer: Timer?
     static var isInit: Bool = false
@@ -83,14 +81,32 @@ class LinphoneManager {
         else{
             NSLog("Linphone init")
             initLinphone()
-            let proxyConfig = setIdentify()
-            register(proxyConfig!)
+
+            // If first run not have userdefault data need to read data from plist file
+            // In Case have data already not need to read data from PLIST file agian
+            // This case not read Plist file
+            if let proxyConfig = setIdentify() {
+                register(proxyConfig)
+            }
+            // Read data from plist file when start up
+            else {
+                let account = LocalUserData()
+                account.loadSettingPlist()
+                let proxyConfig = setIdentify()
+                register(proxyConfig!)
+                
+            }
             setTimer()
         }
     }
     
+    
+    // Function: initLinphone
+    // Description: This function need to run before your start linphone service
+    // Read the Linphone configure file
+    // Set callback function for Register & Call State Change
+    // Set Ringtone Sound
      func initLinphone(){
-        theLinphone.lct = LinphoneCoreVTable()
         // Enable debug log to stdout
         linphone_core_set_log_file(nil)
         linphone_core_set_log_level(ORTP_DEBUG)
@@ -103,6 +119,7 @@ class LinphoneManager {
         let lpConfig = lp_config_new_with_factory(configFilenamePtr, factoryConfigFilenamePtr)
         
         // Set Callback Function
+        theLinphone.lct = LinphoneCoreVTable()
         theLinphone.lct!.registration_state_changed = registrationStateChanged
         theLinphone.lct!.call_state_changed = callStateChanged
         
@@ -135,38 +152,42 @@ class LinphoneManager {
     }
     
     
+    // Function: setIdentify
+    // Description: This function to set the identity for the linphone service
     func setIdentify() -> OpaquePointer? {
         // Reference: http://www.linphone.org/docs/liblinphone/group__registration__tutorials.html
         
         // Create Local User Data Class
         let accountData = LocalUserData()
-    
-        // IF you want to load data from Plist file use this function
-        //accountData.loadSettingPlist()
         
         // Get the User setting data
         let account = accountData.getSipUsername()!
         let password = accountData.getSipPassword()!
         let domain = accountData.getSipServerIp()! + ":" + accountData.getSipServerPort()!
-        let identity = "sip:" + String(account) + "@" + String(domain);
+        let identity = "sip:" + account + "@" + domain
+        NSLog("Identity: " + identity)
 
         // create proxy config
         let proxy_cfg = linphone_proxy_config_new();
         // parse identity
         let from = linphone_address_new(identity);
+        
         if (from == nil){
-            //NSLog("\(identity) not a valid sip uri, must be like sip:toto@sip.linphone.org");
+            NSLog("\(identity) not a valid sip uri, must be like sip:toto@sip.linphone.org");
             return nil
         }
+        
         let info = linphone_auth_info_new(linphone_address_get_username(from), nil, password, nil, nil, nil);
         /*create authentication structure from identity*/
         linphone_core_add_auth_info(theLinphone.lc!, info); /*add authentication info to LinphoneCore*/
         // configure proxy entries
         linphone_proxy_config_set_identity(proxy_cfg, identity); /*set identity with user name and domain*/
         let server_addr = String(cString: linphone_address_get_domain(from)); /*extract domain address from identity*/
+       
         linphone_address_destroy(from); /*release resource*/
         
         linphone_proxy_config_set_server_addr(proxy_cfg, server_addr); /* we assume domain = proxy server address*/
+        
         //linphone_proxy_config_enable_register(proxy_cfg, 0); /* activate registration for this proxy config*/
         linphone_proxy_config_set_expires(proxy_cfg, 60)
         linphone_core_add_proxy_config(theLinphone.lc!, proxy_cfg); /*add proxy config to linphone core*/
@@ -174,7 +195,7 @@ class LinphoneManager {
         return proxy_cfg!
     }
     
-    func register(_ proxy_cfg: OpaquePointer){
+    fileprivate func register(_ proxy_cfg: OpaquePointer){
         linphone_proxy_config_enable_register(proxy_cfg, 1); /* activate registration for this proxy config*/
     }
     
@@ -184,33 +205,39 @@ class LinphoneManager {
             timeInterval: 0.02, target: self, selector: #selector(iterate), userInfo: nil, repeats: true)
     }
     
-    
-    // Restart Linphone service
+    // Function: restartService
+    // Description: Unregister Linphone service and run Linphone service agian
     func restartService(){
+        unregister()
         NSLog("Re-Register Linphone service")
-        // Un-Register Linphone Service
+        startLinphone()
+    }
+    
+    // Function: UnRegister
+    // Description: This Function will un-register your linphone service
+    func unregister(){
+        NSLog("Linphone unregister()..")
+        
         if let timer = LinphoneManager.iterateTimer{
             timer.invalidate()
         }
+        
         let proxy_cfg = linphone_core_get_default_proxy_config(theLinphone.lc!); /* get default proxy config*/
-
+        
         if linphone_proxy_config_get_state(proxy_cfg) !=  LinphoneRegistrationFailed {
             linphone_proxy_config_edit(proxy_cfg); /*start editing proxy configuration*/
             linphone_proxy_config_enable_register(proxy_cfg, 0); /*de-activate registration for this proxy config*/
             linphone_proxy_config_done(proxy_cfg); /*initiate REGISTER with expire = 0*/
+            
             while(linphone_proxy_config_get_state(proxy_cfg) !=  LinphoneRegistrationCleared){
                 linphone_core_iterate(theLinphone.lc!); /*to make sure we receive call backs before shutting down*/
                 ms_usleep(50000);
             }
         }
-        
         linphone_core_remove_listener(theLinphone.lc!, &theLinphone.lct!)
         linphone_core_destroy(theLinphone.lc!);
         LinphoneManager.isInit = false
-        
-        // Run function to restart service
-        startLinphone()
-
     }
+    
     
 }

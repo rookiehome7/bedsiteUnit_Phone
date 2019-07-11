@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import UIKit
 import os.log
 
@@ -54,12 +53,6 @@ class SettingViewController: UIViewController {
         // Restart with new setting Linphone Service
         self.linphoneManager = LinphoneManager()
         linphoneManager?.restartService()
-
-        // Restart with new setting  MQTT Service
-//       self.viewController = ViewController()
-//       viewController?.mqtt?.disconnect()
-//        viewController?.mqttRestart()
-//        _ = viewController?.mqtt?.connect()
         
         dismiss(animated: true, completion: nil)
     }

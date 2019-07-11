@@ -125,7 +125,7 @@
                                     <action selector="mqttReconnectButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0a9-TV-25t"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vlR-fs-PP8" userLabel="phonenumber">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="200" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vlR-fs-PP8" userLabel="phonenumber">
                                 <rect key="frame" x="116" y="205.5" width="143" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -398,34 +398,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCK-ju-xII" userLabel="acceptButton">
-                                <rect key="frame" x="43.5" y="285.5" width="96" height="96"/>
+                                <rect key="frame" x="163.5" y="322.5" width="16" height="22"/>
                                 <state key="normal" image="phone_green_96dp"/>
                                 <connections>
                                     <action selector="answerCall:" destination="wxF-Of-nXX" eventType="touchUpInside" id="sLf-1G-EFW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYE-fc-D7F" userLabel="endButton">
-                                <rect key="frame" x="139.5" y="285.5" width="96" height="96"/>
+                                <rect key="frame" x="179.5" y="322.5" width="16" height="22"/>
                                 <state key="normal" image="call_end_red_96dp"/>
                                 <connections>
                                     <action selector="endCall:" destination="wxF-Of-nXX" eventType="touchUpInside" id="bwq-qC-M3r"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NK-0c-O1P" userLabel="declineButton">
-                                <rect key="frame" x="235.5" y="285.5" width="96" height="96"/>
+                                <rect key="frame" x="195.5" y="322.5" width="16" height="22"/>
                                 <state key="normal" image="call_end_red_96dp"/>
                                 <connections>
                                     <action selector="endCall:" destination="wxF-Of-nXX" eventType="touchUpInside" id="Xfo-J6-V6z"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN1-8U-nFR">
-                                <rect key="frame" x="153" y="191.5" width="69" height="28"/>
+                                <rect key="frame" x="153" y="228.5" width="69" height="28"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incoming Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0H-d0-7Qv">
-                                <rect key="frame" x="125.5" y="239.5" width="124" height="26"/>
+                                <rect key="frame" x="125.5" y="276.5" width="124" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>

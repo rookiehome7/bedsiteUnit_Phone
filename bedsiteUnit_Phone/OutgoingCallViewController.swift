@@ -8,7 +8,6 @@ import UIKit
 
 struct OutgoingCallViewData{
     static var controller: OutgoingCallViewController?
-    static var callTime: Date?
     static var phoneType: CallPhoneType?
     static var phoneNumber: String?
     static var statusLabel: UILabel?
@@ -56,7 +55,7 @@ var outgoingCallStateChanged: LinphoneCoreCallStateChangedCb = {
         NSLog("outgoingCallStateChanged: LinphoneCallEnd")
         OutgoingCallViewData.controller?.statusLabel.text = "EndCall"
         if OutgoingCallViewData.retry == false {
-            closeOutgoingCallView()
+        closeOutgoingCallView()
         }
         
     default:
@@ -65,7 +64,6 @@ var outgoingCallStateChanged: LinphoneCoreCallStateChangedCb = {
 }
 
 func resetOutgoingCallData(){
-    OutgoingCallViewData.callTime = nil
     OutgoingCallViewData.callConnected = false
     OutgoingCallViewData.retry = false
 }
@@ -75,7 +73,7 @@ func closeOutgoingCallView(){
     OutgoingCallViewData.controller?.dismiss(animated: true, completion: nil)
 }
 
-func makeCall(){
+func makeCallOutgoingCallView(){
     switch OutgoingCallViewData.phoneType! {
     case CallPhoneType.sip:
         OutgoingCallViewData.statusLabel!.text = "SIP Dialing..."
@@ -83,10 +81,11 @@ func makeCall(){
     case CallPhoneType.call_END:
         OutgoingCallViewData.statusLabel!.text = "Call end"
     }
-    
-    if let lc = theLinphone.lc {
-        linphone_core_invite(lc, OutgoingCallViewData.phoneNumber)
-    }
+    let lc = theLinphone.lc
+    linphone_core_invite(lc, OutgoingCallViewData.phoneNumber)
+//    if let lc = theLinphone.lc {
+//        linphone_core_invite(lc, OutgoingCallViewData.phoneNumber)
+//    }
 }
 
 class OutgoingCallViewController: UIViewController {
@@ -109,14 +108,12 @@ class OutgoingCallViewController: UIViewController {
         OutgoingCallViewData.phoneNumber = phoneNumber
         OutgoingCallViewData.calleeName = phoneNumber // Try to set phone number
         OutgoingCallViewData.statusLabel = statusLabel
-        OutgoingCallViewData.callTime = Date()
         OutgoingCallViewData.phoneType = phoneType
         
         // Set namelabel with phone number
         nameLabel.text = "Call: " + OutgoingCallViewData.calleeName!
-        
-        makeCall()
-
+    
+        makeCallOutgoingCallView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -126,14 +123,16 @@ class OutgoingCallViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         linphone_core_remove_listener(theLinphone.lc!, &OutgoingCallVT.lct)
-    }
-    
-    @IBAction func hangupButton(_ sender: Any) {
-        OutgoingCallViewData.phoneType = CallPhoneType.call_END
-        NSLog("OutgoingCallController.hangUp()")
         terminateCall()
     }
     
+    @IBAction func hangupButton(_ sender: Any) {
+        NSLog("OutgoingCallController.hangUp()")
+        OutgoingCallViewData.phoneType = CallPhoneType.call_END
+        terminateCall()
+    }
+    
+    // TerminateCall and closed OutgingCallViewData
     func terminateCall(){
         let call = linphone_core_get_current_call(theLinphone.lc!)
         if call != nil {
@@ -142,7 +141,5 @@ class OutgoingCallViewController: UIViewController {
         }
         OutgoingCallViewData.controller?.dismiss(animated: false, completion: nil)
     }
-    
-    
 
 }
