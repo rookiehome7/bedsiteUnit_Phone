@@ -7,13 +7,13 @@ Setting file
 Installation 
 
 ## View Controller
---->ViewController.swift  ( Main View )
-     --> OutgoingCallViewController.swift
-            - When call to another device this view controller will appear and disappear when call end.
-     --> ReceiveCallViewController.swift
-           - When another device call to this device this view controller will appear and disappear when call end.
-     --> SettingViewController.swift
-           - SIP Phone / MQTT Server Setting  and save data by using userdefault
+->ViewController.swift  ( Main View )
+---> OutgoingCallViewController.swift
+    - When call to another device this view controller will appear and disappear when call end.
+---> ReceiveCallViewController.swift
+    - When another device call to this device this view controller will appear and disappear when call end.
+---> SettingViewController.swift
+    - SIP Phone / MQTT Server Setting  and save data by using userdefault
            
 ## Swift Program
 -> LinphoneManager.swift
