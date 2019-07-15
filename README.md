@@ -8,11 +8,11 @@ Installation
 
 ## View Controller
 ->ViewController.swift  ( Main View )
----> OutgoingCallViewController.swift
+-> OutgoingCallViewController.swift
     - When call to another device this view controller will appear and disappear when call end.
----> ReceiveCallViewController.swift
+-> ReceiveCallViewController.swift
     - When another device call to this device this view controller will appear and disappear when call end.
----> SettingViewController.swift
+-> SettingViewController.swift
     - SIP Phone / MQTT Server Setting  and save data by using userdefault
            
 ## Swift Program
