@@ -49,13 +49,13 @@ var outgoingCallStateChanged: LinphoneCoreCallStateChangedCb = {
         OutgoingCallViewData.controller?.statusLabel.text = "Error"
         let message = String(cString: message!)
         NSLog(message)
-        closeOutgoingCallView()
+        finishOutgoingCallView()
         
     case LinphoneCallEnd:
         NSLog("outgoingCallStateChanged: LinphoneCallEnd")
         OutgoingCallViewData.controller?.statusLabel.text = "EndCall"
         if OutgoingCallViewData.retry == false {
-        closeOutgoingCallView()
+        finishOutgoingCallView()
         }
         
     default:
@@ -63,29 +63,26 @@ var outgoingCallStateChanged: LinphoneCoreCallStateChangedCb = {
     }
 }
 
-func resetOutgoingCallData(){
-    OutgoingCallViewData.callConnected = false
-    OutgoingCallViewData.retry = false
-}
-
-func closeOutgoingCallView(){
-    resetOutgoingCallData()
-    OutgoingCallViewData.controller?.dismiss(animated: true, completion: nil)
-}
-
 func makeCallOutgoingCallView(){
     switch OutgoingCallViewData.phoneType! {
     case CallPhoneType.sip:
         OutgoingCallViewData.statusLabel!.text = "SIP Dialing..."
-    
+        
     case CallPhoneType.call_END:
         OutgoingCallViewData.statusLabel!.text = "Call end"
     }
     let lc = theLinphone.lc
     linphone_core_invite(lc, OutgoingCallViewData.phoneNumber)
-//    if let lc = theLinphone.lc {
-//        linphone_core_invite(lc, OutgoingCallViewData.phoneNumber)
-//    }
+}
+
+func finishOutgoingCallView(){
+    resetOutgoingCallData()
+    OutgoingCallViewData.controller?.dismiss(animated: true, completion: nil)
+}
+
+func resetOutgoingCallData(){
+    OutgoingCallViewData.callConnected = false
+    OutgoingCallViewData.retry = false
 }
 
 class OutgoingCallViewController: UIViewController {
@@ -97,7 +94,7 @@ class OutgoingCallViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var sipImage: UIImageView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("OutgoingCallController.viewDidLoad()")

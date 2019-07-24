@@ -86,6 +86,8 @@
 		E08F917D22CB08BA007506F3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F917C22CB08BA007506F3 /* SettingViewController.swift */; };
 		E08F917F22CB0B72007506F3 /* LinphoneUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */; };
 		E08F918122CB0CA2007506F3 /* ReceiveCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */; };
+		E09BDC4E22E6C30D0046C428 /* VolumeControlClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */; };
+		E0DEE52622E812F5006E441E /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEE52522E812F5006E441E /* BeaconManager.swift */; };
 		F42E3A6E22C4739800DAA1CC /* LinphoneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */; };
 		F42E3A7222C4746E00DAA1CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99663641D06F877003B5EEE /* AppDelegate.swift */; };
 		F42E3A7322C4747400DAA1CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99663661D06F877003B5EEE /* ViewController.swift */; };
@@ -198,8 +200,10 @@
 		E08F917822CB05A1007506F3 /* ApplicationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStatus.swift; sourceTree = "<group>"; };
 		E08F917A22CB07DD007506F3 /* LocalUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserData.swift; sourceTree = "<group>"; };
 		E08F917C22CB08BA007506F3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = bedsiteUnit_Phone/SettingViewController.swift; sourceTree = "<group>"; };
-		E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinphoneUtil.swift; path = bedsiteUnit_Phone/LinphoneUtil.swift; sourceTree = "<group>"; };
+		E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinphoneUtil.swift; sourceTree = "<group>"; };
 		E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReceiveCallViewController.swift; path = bedsiteUnit_Phone/ReceiveCallViewController.swift; sourceTree = "<group>"; };
+		E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeControlClass.swift; sourceTree = "<group>"; };
+		E0DEE52522E812F5006E441E /* BeaconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconManager.swift; sourceTree = "<group>"; };
 		F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinphoneManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -397,8 +401,6 @@
 			isa = PBXGroup;
 			children = (
 				A99663641D06F877003B5EEE /* AppDelegate.swift */,
-				F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */,
-				E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */,
 				A99663661D06F877003B5EEE /* ViewController.swift */,
 				E040017122CB21390090D12A /* OutgoingCallViewController.swift */,
 				E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */,
@@ -508,6 +510,10 @@
 			children = (
 				E08F917822CB05A1007506F3 /* ApplicationStatus.swift */,
 				E08F917A22CB07DD007506F3 /* LocalUserData.swift */,
+				E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */,
+				E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */,
+				F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */,
+				E0DEE52522E812F5006E441E /* BeaconManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -655,9 +661,11 @@
 				E040017222CB21390090D12A /* OutgoingCallViewController.swift in Sources */,
 				F42E3A7222C4746E00DAA1CC /* AppDelegate.swift in Sources */,
 				E08F918122CB0CA2007506F3 /* ReceiveCallViewController.swift in Sources */,
+				E09BDC4E22E6C30D0046C428 /* VolumeControlClass.swift in Sources */,
 				E08F917B22CB07DD007506F3 /* LocalUserData.swift in Sources */,
 				F42E3A6E22C4739800DAA1CC /* LinphoneManager.swift in Sources */,
 				E08F917922CB05A1007506F3 /* ApplicationStatus.swift in Sources */,
+				E0DEE52622E812F5006E441E /* BeaconManager.swift in Sources */,
 				E08F917D22CB08BA007506F3 /* SettingViewController.swift in Sources */,
 				A924DECF1D07D4EA0030A438 /* README.md in Sources */,
 			);
@@ -810,7 +818,7 @@
 					"$(PROJECT_DIR)/liblinphone-sdk/apple-darwin/lib",
 					"$(PROJECT_DIR)/liblinphone-sdk/apple-darwin/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wiadvance.linphone-swift-demo.home";
+				PRODUCT_BUNDLE_IDENTIFIER = com.home.home.test;
 				PRODUCT_NAME = bedsiteUnit_Phone;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "linphone-swift-demo-Bridging-Header.h";
@@ -839,7 +847,7 @@
 					"$(PROJECT_DIR)/liblinphone-sdk/apple-darwin/lib",
 					"$(PROJECT_DIR)/liblinphone-sdk/apple-darwin/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wiadvance.linphone-swift-demo.home";
+				PRODUCT_BUNDLE_IDENTIFIER = com.home.home.test;
 				PRODUCT_NAME = bedsiteUnit_Phone;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "linphone-swift-demo-Bridging-Header.h";

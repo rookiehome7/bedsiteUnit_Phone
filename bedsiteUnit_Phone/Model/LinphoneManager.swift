@@ -48,6 +48,7 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
     switch callSate{
     case LinphoneCallIncomingReceived: /**<This is a new incoming call */
         NSLog("callStateChanged: LinphoneCallIncomingReceived")
+        
         // Run ReceiveCallViewController to handle Incoming call
         if var controller = UIApplication.shared.keyWindow?.rootViewController{
             while let presentedViewController = controller.presentedViewController {
@@ -56,6 +57,7 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ReceiveCallViewController")
             controller.present(vc, animated: true, completion: nil)
+            
         }
     case LinphoneCallStreamsRunning: /**<The media streams are established and running*/
         NSLog("callStateChanged: LinphoneCallStreamsRunning")
@@ -177,7 +179,8 @@ class LinphoneManager {
             return nil
         }
         
-        let info = linphone_auth_info_new(linphone_address_get_username(from), nil, password, nil, nil, nil);
+//        let info = linphone_auth_info_new(linphone_address_get_username(from), nil, password, nil, nil, nil);
+        let info = linphone_auth_info_new(linphone_address_get_username(from), account, password, nil, nil, identity);
         /*create authentication structure from identity*/
         linphone_core_add_auth_info(theLinphone.lc!, info); /*add authentication info to LinphoneCore*/
         // configure proxy entries

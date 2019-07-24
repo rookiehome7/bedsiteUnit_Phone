@@ -4,7 +4,6 @@
 //
 //  Created by Takdanai Jirawanichkul on 2/7/2562 BE.
 //
-
 import UIKit
 
 struct ReceiveCallViewData{
@@ -16,7 +15,7 @@ struct ReceiveCallVT {
     static var lct: LinphoneCoreVTable = LinphoneCoreVTable()
 }
 
-func finish(){
+func finishReceiveCallView(){
     let call = linphone_core_get_current_call(theLinphone.lc!)
     if call != nil {
         let result = linphone_core_terminate_call(theLinphone.lc!, call)
@@ -40,11 +39,11 @@ var receiveCallStateChanged: LinphoneCoreCallStateChangedCb = {
         
     case LinphoneCallError: /**<The call encountered an error*/
         NSLog("receiveCallStateChanged: LinphoneCallError")
-        finish()
+        finishReceiveCallView()
         
     case LinphoneCallEnd:
         NSLog("receiveCallStateChanged: LinphoneCallEnd")
-        finish()
+        finishReceiveCallView()
         
     default:
         NSLog("receiveCallStateChanged: Default call state")
@@ -55,12 +54,11 @@ class ReceiveCallViewController: UIViewController {
     // UI Lable
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-    
     // UI Button
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -75,10 +73,11 @@ class ReceiveCallViewController: UIViewController {
         let address = linphone_call_get_remote_address_as_string(call)!
         let account = getUsernameFromAddress(String(cString: address))
         nameLabel.text = account
-    }
     
+    }
+
     // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     // MARK: - Action
     @IBAction func answerCall(_ sender: Any) {
         let call = linphone_core_get_current_call(theLinphone.lc!)
@@ -91,11 +90,6 @@ class ReceiveCallViewController: UIViewController {
         let call = linphone_core_get_current_call(theLinphone.lc!)
         if call != nil {
             linphone_core_terminate_call(theLinphone.lc!, call)
-//            if ReceiveCallData.callType == .incoming_CALL_NO_ANSWER{
-//                linphone_core_decline_call(theLinphone.lc!, call, LinphoneReasonDeclined)
-//            }else{
-//                linphone_core_terminate_call(theLinphone.lc!, call)
-//            }
         }
     }
     
@@ -110,7 +104,6 @@ class ReceiveCallViewController: UIViewController {
         NSLog("viewDidDisappear: ")
         linphone_core_remove_listener(theLinphone.lc!, &ReceiveCallVT.lct)
         
-        //Check if have call still kill it
         let call = linphone_core_get_current_call(theLinphone.lc!)
         if call != nil {
             linphone_core_terminate_call(theLinphone.lc!, call)

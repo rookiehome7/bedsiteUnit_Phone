@@ -30,7 +30,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="6bT-BY-xMg">
-                                <rect key="frame" x="26" y="503" width="137" height="100"/>
+                                <rect key="frame" x="26" y="467" width="142.5" height="136"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MQTT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ry6-ET-FDQ">
                                         <rect key="frame" x="0.0" y="0.0" width="37.5" height="16"/>
@@ -39,16 +39,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bc9-u0-EtH">
-                                        <rect key="frame" x="0.0" y="18" width="96.5" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="18" width="122" height="14.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBM-KB-yi6">
-                                                <rect key="frame" x="0.0" y="0.0" width="34.5" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="14.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="CIB-gi-Ar4"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mqttTopic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSA-Eu-x9U">
-                                                <rect key="frame" x="39.5" y="0.0" width="57" height="14.5"/>
+                                                <rect key="frame" x="65" y="0.0" width="57" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -56,16 +59,19 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yRw-dc-Gq5">
-                                        <rect key="frame" x="0.0" y="34.5" width="108" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="34.5" width="128" height="14.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6y-Cg-rVg">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="14.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="nXK-89-t9i"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mqttStatus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6j-Hq-YOE">
-                                                <rect key="frame" x="45" y="0.0" width="63" height="14.5"/>
+                                                <rect key="frame" x="65" y="0.0" width="63" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -73,16 +79,19 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZX9-2V-tXC">
-                                        <rect key="frame" x="0.0" y="51" width="137" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="51" width="142.5" height="14.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YW-7j-5Mh" userLabel="Message: ">
-                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="14.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="vao-1t-gPN"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mqttMessage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1K-ap-zHE" userLabel="MQTT Message">
-                                                <rect key="frame" x="59.5" y="0.0" width="77.5" height="14.5"/>
+                                                <rect key="frame" x="65" y="0.0" width="77.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -96,17 +105,46 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="opV-HI-Yah">
-                                        <rect key="frame" x="0.0" y="85.5" width="101.5" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="85.5" width="118" height="14.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNK-9f-Lfi">
-                                                <rect key="frame" x="0.0" y="0.0" width="43.5" height="14.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNK-9f-Lfi" userLabel="Status:">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="14.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="zxg-cB-u6I"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sipStatus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfr-JB-0lw">
-                                                <rect key="frame" x="48.5" y="0.0" width="53" height="14.5"/>
+                                                <rect key="frame" x="65" y="0.0" width="53" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beacon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fr-55-zcu">
+                                        <rect key="frame" x="0.0" y="102" width="45.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qUb-kQ-wrf">
+                                        <rect key="frame" x="0.0" y="120" width="102.5" height="16"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proximity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNh-4d-ENe">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="Wiy-sG-SSa"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icL-f1-RWS">
+                                                <rect key="frame" x="65" y="0.0" width="37.5" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -160,6 +198,7 @@
                         <outlet property="mqttStatus" destination="Y6j-Hq-YOE" id="X7A-gM-kWy"/>
                         <outlet property="mqttTopic" destination="tSA-Eu-x9U" id="YNS-a2-agw"/>
                         <outlet property="phoneNumberField" destination="vlR-fs-PP8" id="7Pc-t8-bOL"/>
+                        <outlet property="proximityLabel" destination="icL-f1-RWS" id="w9C-lS-7eh"/>
                         <outlet property="sipStatus" destination="Qfr-JB-0lw" id="d9D-j8-xNZ"/>
                     </connections>
                 </viewController>
@@ -398,34 +437,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCK-ju-xII" userLabel="acceptButton">
-                                <rect key="frame" x="163.5" y="322.5" width="16" height="22"/>
+                                <rect key="frame" x="43.5" y="285.5" width="96" height="96"/>
                                 <state key="normal" image="phone_green_96dp"/>
                                 <connections>
                                     <action selector="answerCall:" destination="wxF-Of-nXX" eventType="touchUpInside" id="sLf-1G-EFW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYE-fc-D7F" userLabel="endButton">
-                                <rect key="frame" x="179.5" y="322.5" width="16" height="22"/>
+                                <rect key="frame" x="139.5" y="285.5" width="96" height="96"/>
                                 <state key="normal" image="call_end_red_96dp"/>
                                 <connections>
                                     <action selector="endCall:" destination="wxF-Of-nXX" eventType="touchUpInside" id="bwq-qC-M3r"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NK-0c-O1P" userLabel="declineButton">
-                                <rect key="frame" x="195.5" y="322.5" width="16" height="22"/>
+                                <rect key="frame" x="235.5" y="285.5" width="96" height="96"/>
                                 <state key="normal" image="call_end_red_96dp"/>
                                 <connections>
                                     <action selector="endCall:" destination="wxF-Of-nXX" eventType="touchUpInside" id="Xfo-J6-V6z"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN1-8U-nFR">
-                                <rect key="frame" x="153" y="228.5" width="69" height="28"/>
+                                <rect key="frame" x="153" y="191.5" width="69" height="28"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incoming Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0H-d0-7Qv">
-                                <rect key="frame" x="125.5" y="276.5" width="124" height="26"/>
+                                <rect key="frame" x="125.5" y="239.5" width="124" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -455,7 +494,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLM-du-TIq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2020" y="809"/>
+            <point key="canvasLocation" x="2020" y="808.24587706146929"/>
         </scene>
         <!--Outgoing-->
         <scene sceneID="CSL-Fs-RWN">
