@@ -14,12 +14,19 @@ import FilesProvider
 
 class RecordPageViewController : UIViewController {
     
-    @IBOutlet var recordButton: UIButton!
-    @IBOutlet var playButton: UIButton!
+    @IBOutlet weak var btnRecord: UIButton!
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnRerecord: UIButton!
+    @IBOutlet weak var btnConfirm: UIButton!
+    @IBOutlet weak var lblHold: UILabel!
+    @IBOutlet weak var lblRerecord: UILabel!
+    @IBOutlet weak var lblConfirm: UILabel!
 
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
+    
+    var timer: Timer?
     
     let soundManager = SoundManager() // Get function for manage sound file
     
@@ -27,7 +34,11 @@ class RecordPageViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        recordLayout()
+        btnFitShape(button: btnRecord)
+        btnRecord.addTarget(self, action: #selector(recordButtonDown), for: .touchDown)
+        btnRecord.addTarget(self, action: #selector(recordButtonUp), for: [.touchUpInside, .touchUpOutside])
+        
         //navigationController?.navigationBar.shadowImage = UIImage()
         recordingSession = AVAudioSession.sharedInstance()
         do {
@@ -36,7 +47,7 @@ class RecordPageViewController : UIViewController {
             recordingSession.requestRecordPermission { [unowned self] allowed in
                 DispatchQueue.main.async {
                     if allowed {
-                        self.loadRecordingUI()
+                        self.recordLayout()
                     } else {
                         // failed to record
                     }
@@ -46,25 +57,51 @@ class RecordPageViewController : UIViewController {
             // failed to record!
         }
     }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.barStyle = .black
+    // MARK: User Interface
+    func btnFitShape(button: UIButton){
+        button.layer.cornerRadius = button.frame.size.width/2
     }
-
+    
+    func recordLayout(){
+        btnRecord.isHidden = false
+        btnPlay.isHidden = true
+        btnRerecord.isHidden = true
+        btnConfirm.isHidden = true
+        lblHold.isHidden = false
+        lblConfirm.isHidden = true
+        lblRerecord.isHidden = true
+    }
+    
+    func playbackLayout(){
+        btnRecord.isHidden = true
+        btnPlay.isHidden = false
+        btnRerecord.isHidden = false
+        btnConfirm.isHidden = false
+        lblHold.isHidden = true
+        lblConfirm.isHidden = false
+        lblRerecord.isHidden = false
+    }
+    
+    @objc func addPulse(){
+        let pulse = Pulsing(numberOfPulses: 1, radius: 250, position: btnRecord.center)
+        pulse.animationDuration = 0.8
+        pulse.backgroundColor = UIColor.init(red: 9/255, green: 201/255, blue: 194/255, alpha: 1).cgColor
+        self.view.layer.insertSublayer(pulse, below: btnRecord.layer)
+    }
+    
     func loadRecordingUI() {
-        recordButton.isHidden = false
-        recordButton.setTitle("Tap to Record", for: .normal)
+//        recordButton.isHidden = false
+//        recordButton.setTitle("Tap to Record", for: .normal)
     }
     
-    // MARK: Action Button
-    @IBAction func recordButtonPressed(_ sender: UIButton) {
-        if audioRecorder == nil {
-            startRecording()
-        } else {
-            finishRecording(success: true)
-        }
-    }
+//    // MARK: Action Button
+//    @IBAction func recordButtonPressed(_ sender: UIButton) {
+//        if audioRecorder == nil {
+//            startRecording()
+//        } else {
+//            finishRecording(success: true)
+//        }
+//    }
     
     @IBAction func playButtonPressed(_ sender: UIButton) {
         if audioPlayer == nil {
@@ -74,11 +111,28 @@ class RecordPageViewController : UIViewController {
         }
     }
     
+    @objc func recordButtonDown(_ sender: UIButton) {
+        startRecording()
+        addPulse()
+        timer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(addPulse), userInfo: nil, repeats: true)
+    }
+    
+    @objc func recordButtonUp(_ sender: UIButton) {
+        finishRecording(success: true)
+        timer?.invalidate()
+        // bplaybackLayout()
+    }
+    
+    @IBAction func reRecordButton(_ sender: Any) {
+        recordLayout()
+    }
+    
     @IBAction func confirmButton(_ sender: Any) {
         // Save sound file from record into waiting sound
         soundManager.copySound_Record_to_Waiting()
         // Go to next page
     }
+    
     
     // MARK: - Recording
     func startRecording() {
@@ -93,8 +147,6 @@ class RecordPageViewController : UIViewController {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
-            
-            recordButton.setTitle("Tap to Stop", for: .normal)
         } catch {
             finishRecording(success: false)
         }
@@ -104,13 +156,15 @@ class RecordPageViewController : UIViewController {
         audioRecorder.stop()
         audioRecorder = nil
         if success {
-            recordButton.setTitle("Tap to Re-record", for: .normal)
-            playButton.setTitle("Play Your Recording", for: .normal)
-            playButton.isHidden = false
+            playbackLayout()
+//            recordButton.setTitle("Tap to Re-record", for: .normal)
+//            playButton.setTitle("Play Your Recording", for: .normal)
+//            playButton.isHidden = false
         }
         else {
-            recordButton.setTitle("Tap to Record", for: .normal)
-            playButton.isHidden = true
+            recordLayout()
+//            recordButton.setTitle("Tap to Record", for: .normal)
+//            playButton.isHidden = true
             // recording failed :(
         }
     }
@@ -121,15 +175,15 @@ class RecordPageViewController : UIViewController {
             audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)
             audioPlayer.delegate = self
             audioPlayer.play()
-            playButton.setTitle("Stop Playback", for: .normal)
+            btnPlay.setImage( UIImage.init(named: "pause"), for: .normal)
         } catch {
-            playButton.isHidden = true
+            btnPlay.isHidden = true
             // unable to play recording!
         }
     }
     func finishPlayback() {
         audioPlayer = nil
-        playButton.setTitle("Play Your Recording", for: .normal)
+        btnPlay.setImage( UIImage.init(named: "play"), for: .normal)
     }
     
 }

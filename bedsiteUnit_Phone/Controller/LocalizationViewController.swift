@@ -17,19 +17,19 @@ class LocalizationViewController: UIViewController {
     }
     
     @IBAction func btnEnglish(_ sender: UIButton) {
-    LocalizationSystem.sharedInstance.setLanguage(languageCode: "en")
+    //LocalizationSystem.sharedInstance.setLanguage(languageCode: "en")
     }
     
     @IBAction func btnChinese(_ sender: UIButton) {
-    LocalizationSystem.sharedInstance.setLanguage(languageCode: "zh-Hans")
+    //LocalizationSystem.sharedInstance.setLanguage(languageCode: "zh-Hans")
     }
     
     @IBAction func btnMalay(_ sender: UIButton) {
-    LocalizationSystem.sharedInstance.setLanguage(languageCode: "ms")
+    //LocalizationSystem.sharedInstance.setLanguage(languageCode: "ms")
     }
     
     @IBAction func btnTamil(_ sender: UIButton) {
-    LocalizationSystem.sharedInstance.setLanguage(languageCode: "ta-SG")
+    //LocalizationSystem.sharedInstance.setLanguage(languageCode: "ta-SG")
     }
     
 

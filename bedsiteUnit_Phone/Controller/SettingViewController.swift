@@ -41,7 +41,7 @@ class SettingViewController: UIViewController {
     //MARK: Navigation
     @IBAction func saveButton(_ sender: Any) {
         // SIP Setting
-        UserDefaults.standard.set(usernameField.text, forKey: "sipaccount")
+        UserDefaults.standard.set(usernameField.text, forKey: "sipusername")
         UserDefaults.standard.set(passwordField.text, forKey: "sippassword")
         UserDefaults.standard.set(sipServerIpField.text, forKey: "sipserverip")
         UserDefaults.standard.set(sipServerPort.text, forKey: "sipserverport")
