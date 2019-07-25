@@ -13,6 +13,8 @@ import MediaPlayer
 import CoreLocation
 import CoreBluetooth
 
+import AVFoundation
+
 struct ViewVT{
         static var lct: LinphoneCoreVTable = LinphoneCoreVTable()
 }
@@ -32,7 +34,6 @@ var viewCallStateChanged: LinphoneCoreCallStateChangedCb = {
     case LinphoneCallError:
         NSLog("outgoingCallStateChanged: LinphoneCallError")
 
-        
     case LinphoneCallEnd:
         NSLog("outgoingCallStateChanged: LinphoneCallEnd")
         
@@ -56,7 +57,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, CBPeripheralM
     
     // User Button name
     @IBOutlet weak var mqttReconnectButton: UIButton!
-
+    @IBOutlet weak var playbutton: UIButton!
+    
     // User Data
     let accountData = LocalUserData() // Get function read file from PLIST
     
@@ -79,6 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, CBPeripheralM
     let localBeaconMinor: CLBeaconMinorValue = 789
     let identifier = "Put your identifier here"
     
+    var audioPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,6 +118,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, CBPeripheralM
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.updateUIStatus()
         }
+    }
+    
+    @IBAction func playbutton(_ sender: Any) {
+        if audioPlayer == nil {
+            startPlayback()
+        }
+        else {
+            finishPlayback()
+        }
+        
+    }
+    // MARK: - Playback
+    func startPlayback() {
+        let audioFilename = getDocumentsDirectory().appendingPathComponent("waitingsound.m4a")
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)
+            audioPlayer.delegate = self
+            audioPlayer.play()
+            playbutton.setTitle("Stop Playback", for: .normal)
+        } catch {
+            playbutton.isHidden = true
+            // unable to play recording!
+        }
+    }
+    
+    func finishPlayback() {
+        audioPlayer = nil
+        playbutton.setTitle("Play Your Recording", for: .normal)
     }
     
     // Function to update UI
@@ -434,3 +465,8 @@ extension Optional {
 
 
 
+extension ViewController: AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        finishPlayback()
+    }
+}

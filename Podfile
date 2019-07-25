@@ -7,5 +7,7 @@ target 'bedsiteUnit_Phone' do
 
   # Pods for bedsiteUnit_Phone
 pod 'CocoaMQTT'
+pod 'lottie-ios'
+pod "FilesProvider"
 
 end

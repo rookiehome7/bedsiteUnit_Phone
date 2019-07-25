@@ -2,19 +2,27 @@ PODS:
   - CocoaAsyncSocket (7.6.3)
   - CocoaMQTT (1.2.4):
     - CocoaAsyncSocket (~> 7.6.3)
+  - FilesProvider (0.26.0)
+  - lottie-ios (3.1.1)
 
 DEPENDENCIES:
   - CocoaMQTT
+  - FilesProvider
+  - lottie-ios
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CocoaAsyncSocket
     - CocoaMQTT
+    - FilesProvider
+    - lottie-ios
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CocoaMQTT: 56f7a757a65c65bbb4df17c6f06aeea79fb2969c
+  FilesProvider: 2a8ae17d8b9c23a6feadb1308ee638fa31d21065
+  lottie-ios: 43a472d22b2dd2bed292cc4010c0b4d2e66d3ba8
 
-PODFILE CHECKSUM: ae055413449ff4e50efa1d1f2be18585797d75f9
+PODFILE CHECKSUM: 8f022abbb10b1352b0316f33467d95bd604d51c8
 
 COCOAPODS: 1.7.3

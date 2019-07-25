@@ -87,10 +87,23 @@
 		E08F917F22CB0B72007506F3 /* LinphoneUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */; };
 		E08F918122CB0CA2007506F3 /* ReceiveCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */; };
 		E09BDC4E22E6C30D0046C428 /* VolumeControlClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */; };
+		E0D5241E22E87EE7001E8270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5241D22E87EE7001E8270 /* ViewController.swift */; };
+		E0D5242122E880BE001E8270 /* LocalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5241F22E880BE001E8270 /* LocalizationViewController.swift */; };
+		E0D5242222E880BE001E8270 /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5242022E880BE001E8270 /* LocalizationSystem.swift */; };
+		E0D5242422E880D6001E8270 /* FirstSettingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5242322E880D6001E8270 /* FirstSettingPage.swift */; };
+		E0D5242622E880E9001E8270 /* RecordIntentionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5242522E880E8001E8270 /* RecordIntentionViewController.swift */; };
+		E0D5242822E88101001E8270 /* RecordPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5242722E88101001E8270 /* RecordPageViewController.swift */; };
+		E0D5242E22E88141001E8270 /* DefaultMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5242D22E88141001E8270 /* DefaultMessageViewController.swift */; };
+		E0D5243022E88157001E8270 /* CompletePromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5242F22E88157001E8270 /* CompletePromptViewController.swift */; };
+		E0D5243422E881F6001E8270 /* micAnimate.json in Resources */ = {isa = PBXBuildFile; fileRef = E0D5243222E881F6001E8270 /* micAnimate.json */; };
+		E0D5243522E881F6001E8270 /* working.json in Resources */ = {isa = PBXBuildFile; fileRef = E0D5243322E881F6001E8270 /* working.json */; };
+		E0D5244022E8823C001E8270 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = E0D5243722E8823C001E8270 /* Main.strings */; };
+		E0D5244122E8823C001E8270 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E0D5243922E8823C001E8270 /* Localizable.strings */; };
+		E0D5244922E89BCC001E8270 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5244822E89BCC001E8270 /* SoundManager.swift */; };
+		E0D5245022E95A1C001E8270 /* defaultSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E0D5244F22E95A1C001E8270 /* defaultSound.m4a */; };
 		E0DEE52622E812F5006E441E /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DEE52522E812F5006E441E /* BeaconManager.swift */; };
 		F42E3A6E22C4739800DAA1CC /* LinphoneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */; };
 		F42E3A7222C4746E00DAA1CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99663641D06F877003B5EEE /* AppDelegate.swift */; };
-		F42E3A7322C4747400DAA1CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99663661D06F877003B5EEE /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,7 +115,6 @@
 		A924DECE1D07D4EA0030A438 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A99663611D06F877003B5EEE /* bedsiteUnit_Phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bedsiteUnit_Phone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A99663641D06F877003B5EEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = bedsiteUnit_Phone/AppDelegate.swift; sourceTree = "<group>"; };
-		A99663661D06F877003B5EEE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = bedsiteUnit_Phone/ViewController.swift; sourceTree = "<group>"; };
 		A99663691D06F877003B5EEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A996636B1D06F877003B5EEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A996636E1D06F877003B5EEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -196,13 +208,35 @@
 		A9FACB061D0A7B3700E3C8A5 /* soft_as_snow.mkv */ = {isa = PBXFileReference; lastKnownFileType = file; path = soft_as_snow.mkv; sourceTree = "<group>"; };
 		A9FACB071D0A7B3700E3C8A5 /* toy-mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "toy-mono.wav"; sourceTree = "<group>"; };
 		B1754C8E11DB660D95F1B164 /* Pods_bedsiteUnit_Phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bedsiteUnit_Phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E040017122CB21390090D12A /* OutgoingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OutgoingCallViewController.swift; path = bedsiteUnit_Phone/OutgoingCallViewController.swift; sourceTree = "<group>"; };
+		E040017122CB21390090D12A /* OutgoingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OutgoingCallViewController.swift; path = bedsiteUnit_Phone/Controller/OutgoingCallViewController.swift; sourceTree = "<group>"; };
 		E08F917822CB05A1007506F3 /* ApplicationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStatus.swift; sourceTree = "<group>"; };
 		E08F917A22CB07DD007506F3 /* LocalUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserData.swift; sourceTree = "<group>"; };
-		E08F917C22CB08BA007506F3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = bedsiteUnit_Phone/SettingViewController.swift; sourceTree = "<group>"; };
+		E08F917C22CB08BA007506F3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = bedsiteUnit_Phone/Controller/SettingViewController.swift; sourceTree = "<group>"; };
 		E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinphoneUtil.swift; sourceTree = "<group>"; };
-		E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReceiveCallViewController.swift; path = bedsiteUnit_Phone/ReceiveCallViewController.swift; sourceTree = "<group>"; };
+		E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReceiveCallViewController.swift; path = bedsiteUnit_Phone/Controller/ReceiveCallViewController.swift; sourceTree = "<group>"; };
 		E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeControlClass.swift; sourceTree = "<group>"; };
+		E0D5241D22E87EE7001E8270 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = bedsiteUnit_Phone/Controller/ViewController.swift; sourceTree = "<group>"; };
+		E0D5241F22E880BE001E8270 /* LocalizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalizationViewController.swift; path = bedsiteUnit_Phone/Controller/LocalizationViewController.swift; sourceTree = "<group>"; };
+		E0D5242022E880BE001E8270 /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalizationSystem.swift; path = bedsiteUnit_Phone/Controller/LocalizationSystem.swift; sourceTree = "<group>"; };
+		E0D5242322E880D6001E8270 /* FirstSettingPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirstSettingPage.swift; path = bedsiteUnit_Phone/Controller/FirstSettingPage.swift; sourceTree = "<group>"; };
+		E0D5242522E880E8001E8270 /* RecordIntentionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordIntentionViewController.swift; path = bedsiteUnit_Phone/Controller/RecordIntentionViewController.swift; sourceTree = "<group>"; };
+		E0D5242722E88101001E8270 /* RecordPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordPageViewController.swift; path = bedsiteUnit_Phone/Controller/RecordPageViewController.swift; sourceTree = "<group>"; };
+		E0D5242D22E88141001E8270 /* DefaultMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultMessageViewController.swift; path = bedsiteUnit_Phone/Controller/DefaultMessageViewController.swift; sourceTree = "<group>"; };
+		E0D5242F22E88157001E8270 /* CompletePromptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompletePromptViewController.swift; path = bedsiteUnit_Phone/Controller/CompletePromptViewController.swift; sourceTree = "<group>"; };
+		E0D5243222E881F6001E8270 /* micAnimate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = micAnimate.json; sourceTree = "<group>"; };
+		E0D5243322E881F6001E8270 /* working.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = working.json; sourceTree = "<group>"; };
+		E0D5243822E8823C001E8270 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		E0D5243A22E8823C001E8270 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E0D5243B22E8823C001E8270 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E0D5243C22E8823C001E8270 /* ta-SG */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ta-SG"; path = "ta-SG.lproj/Main.strings"; sourceTree = "<group>"; };
+		E0D5243D22E8823C001E8270 /* ta-SG */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ta-SG"; path = "ta-SG.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E0D5243E22E8823C001E8270 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Main.strings; sourceTree = "<group>"; };
+		E0D5243F22E8823C001E8270 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E0D5244322E8835A001E8270 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		E0D5244522E8835D001E8270 /* ta-SG */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ta-SG"; path = "ta-SG.lproj/Main.strings"; sourceTree = "<group>"; };
+		E0D5244722E8835D001E8270 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Main.strings; sourceTree = "<group>"; };
+		E0D5244822E89BCC001E8270 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		E0D5244F22E95A1C001E8270 /* defaultSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = defaultSound.m4a; sourceTree = "<group>"; };
 		E0DEE52522E812F5006E441E /* BeaconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconManager.swift; sourceTree = "<group>"; };
 		F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinphoneManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -294,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				A924DECE1D07D4EA0030A438 /* README.md */,
+				E0D5244E22E95A1C001E8270 /* sound */,
 				A9FAC4681D07D6FF00E3C8A5 /* Linphone */,
 				A99663631D06F877003B5EEE /* bedsiteUnit_Phone */,
 				A99663621D06F877003B5EEE /* Products */,
@@ -401,10 +436,17 @@
 			isa = PBXGroup;
 			children = (
 				A99663641D06F877003B5EEE /* AppDelegate.swift */,
-				A99663661D06F877003B5EEE /* ViewController.swift */,
+				E0D5241D22E87EE7001E8270 /* ViewController.swift */,
 				E040017122CB21390090D12A /* OutgoingCallViewController.swift */,
 				E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */,
 				E08F917C22CB08BA007506F3 /* SettingViewController.swift */,
+				E0D5241F22E880BE001E8270 /* LocalizationViewController.swift */,
+				E0D5242022E880BE001E8270 /* LocalizationSystem.swift */,
+				E0D5242322E880D6001E8270 /* FirstSettingPage.swift */,
+				E0D5242522E880E8001E8270 /* RecordIntentionViewController.swift */,
+				E0D5242722E88101001E8270 /* RecordPageViewController.swift */,
+				E0D5242D22E88141001E8270 /* DefaultMessageViewController.swift */,
+				E0D5242F22E88157001E8270 /* CompletePromptViewController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -434,6 +476,8 @@
 			children = (
 				A996636B1D06F877003B5EEE /* Assets.xcassets */,
 				A99663701D06F877003B5EEE /* Info.plist */,
+				E0D5243622E8823C001E8270 /* languageString */,
+				E0D5243122E881F6001E8270 /* JSON */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -510,12 +554,39 @@
 			children = (
 				E08F917822CB05A1007506F3 /* ApplicationStatus.swift */,
 				E08F917A22CB07DD007506F3 /* LocalUserData.swift */,
-				E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */,
 				E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */,
 				F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */,
+				E0D5244822E89BCC001E8270 /* SoundManager.swift */,
 				E0DEE52522E812F5006E441E /* BeaconManager.swift */,
+				E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E0D5243122E881F6001E8270 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				E0D5243222E881F6001E8270 /* micAnimate.json */,
+				E0D5243322E881F6001E8270 /* working.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		E0D5243622E8823C001E8270 /* languageString */ = {
+			isa = PBXGroup;
+			children = (
+				E0D5243722E8823C001E8270 /* Main.strings */,
+				E0D5243922E8823C001E8270 /* Localizable.strings */,
+			);
+			path = languageString;
+			sourceTree = "<group>";
+		};
+		E0D5244E22E95A1C001E8270 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				E0D5244F22E95A1C001E8270 /* defaultSound.m4a */,
+			);
+			path = sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -565,6 +636,9 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"ta-SG",
+				ms,
 			);
 			mainGroup = A99663581D06F877003B5EEE;
 			productRefGroup = A99663621D06F877003B5EEE /* Products */;
@@ -581,6 +655,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0D5245022E95A1C001E8270 /* defaultSound.m4a in Resources */,
 				A9FACB091D0A7B3700E3C8A5 /* hello16000.wav in Resources */,
 				A9FACB0D1D0A7B3700E3C8A5 /* four_hands_together.mkv in Resources */,
 				A924DEC81D07AC620030A438 /* linphonerc in Resources */,
@@ -588,19 +663,23 @@
 				A9FACB141D0A7B3700E3C8A5 /* soft_as_snow.mkv in Resources */,
 				A996636F1D06F877003B5EEE /* LaunchScreen.storyboard in Resources */,
 				A9FACB0B1D0A7B3700E3C8A5 /* incoming_chat.wav in Resources */,
+				E0D5243422E881F6001E8270 /* micAnimate.json in Resources */,
 				A9FACB081D0A7B3700E3C8A5 /* dont_wait_too_long.mkv in Resources */,
 				A9FACB151D0A7B3700E3C8A5 /* toy-mono.wav in Resources */,
 				A924DECD1D07D2620030A438 /* Secret.plist in Resources */,
 				A9FACB121D0A7B3700E3C8A5 /* oldphone-mono-30s.caf in Resources */,
 				A996636C1D06F877003B5EEE /* Assets.xcassets in Resources */,
+				E0D5244122E8823C001E8270 /* Localizable.strings in Resources */,
 				A9FACB0C1D0A7B3700E3C8A5 /* ringback.wav in Resources */,
 				A9FACB0E1D0A7B3700E3C8A5 /* house_keeping.mkv in Resources */,
 				A924DEC91D07AC620030A438 /* linphonerc-factory in Resources */,
 				A9FACB111D0A7B3700E3C8A5 /* notes_of_the_optimistic.mkv in Resources */,
 				A9FACB131D0A7B3700E3C8A5 /* oldphone-mono.wav in Resources */,
 				A996636A1D06F877003B5EEE /* Main.storyboard in Resources */,
+				E0D5244022E8823C001E8270 /* Main.strings in Resources */,
 				A9FACB0F1D0A7B3700E3C8A5 /* its_a_game.mkv in Resources */,
 				A9FACB101D0A7B3700E3C8A5 /* leaving_dreams.mkv in Resources */,
+				E0D5243522E881F6001E8270 /* working.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,11 +717,13 @@
 				"${PODS_ROOT}/Target Support Files/Pods-bedsiteUnit_Phone/Pods-bedsiteUnit_Phone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -657,17 +738,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				E08F917F22CB0B72007506F3 /* LinphoneUtil.swift in Sources */,
-				F42E3A7322C4747400DAA1CC /* ViewController.swift in Sources */,
+				E0D5242422E880D6001E8270 /* FirstSettingPage.swift in Sources */,
 				E040017222CB21390090D12A /* OutgoingCallViewController.swift in Sources */,
 				F42E3A7222C4746E00DAA1CC /* AppDelegate.swift in Sources */,
 				E08F918122CB0CA2007506F3 /* ReceiveCallViewController.swift in Sources */,
 				E09BDC4E22E6C30D0046C428 /* VolumeControlClass.swift in Sources */,
+				E0D5242122E880BE001E8270 /* LocalizationViewController.swift in Sources */,
+				E0D5242622E880E9001E8270 /* RecordIntentionViewController.swift in Sources */,
 				E08F917B22CB07DD007506F3 /* LocalUserData.swift in Sources */,
+				E0D5244922E89BCC001E8270 /* SoundManager.swift in Sources */,
+				E0D5242E22E88141001E8270 /* DefaultMessageViewController.swift in Sources */,
+				E0D5242822E88101001E8270 /* RecordPageViewController.swift in Sources */,
+				E0D5241E22E87EE7001E8270 /* ViewController.swift in Sources */,
 				F42E3A6E22C4739800DAA1CC /* LinphoneManager.swift in Sources */,
+				E0D5243022E88157001E8270 /* CompletePromptViewController.swift in Sources */,
 				E08F917922CB05A1007506F3 /* ApplicationStatus.swift in Sources */,
 				E0DEE52622E812F5006E441E /* BeaconManager.swift in Sources */,
 				E08F917D22CB08BA007506F3 /* SettingViewController.swift in Sources */,
 				A924DECF1D07D4EA0030A438 /* README.md in Sources */,
+				E0D5242222E880BE001E8270 /* LocalizationSystem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,6 +767,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				A99663691D06F877003B5EEE /* Base */,
+				E0D5244322E8835A001E8270 /* zh-Hans */,
+				E0D5244522E8835D001E8270 /* ta-SG */,
+				E0D5244722E8835D001E8270 /* ms */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -688,6 +780,27 @@
 				A996636E1D06F877003B5EEE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E0D5243722E8823C001E8270 /* Main.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E0D5243822E8823C001E8270 /* zh-Hans */,
+				E0D5243C22E8823C001E8270 /* ta-SG */,
+				E0D5243E22E8823C001E8270 /* ms */,
+			);
+			name = Main.strings;
+			sourceTree = "<group>";
+		};
+		E0D5243922E8823C001E8270 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E0D5243A22E8823C001E8270 /* zh-Hans */,
+				E0D5243B22E8823C001E8270 /* en */,
+				E0D5243D22E8823C001E8270 /* ta-SG */,
+				E0D5243F22E8823C001E8270 /* ms */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -811,7 +924,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7G36ZYUT6V;
 				INFOPLIST_FILE = "$(SRCROOT)/bedsiteUnit_Phone/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -840,7 +953,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7G36ZYUT6V;
 				INFOPLIST_FILE = "$(SRCROOT)/bedsiteUnit_Phone/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

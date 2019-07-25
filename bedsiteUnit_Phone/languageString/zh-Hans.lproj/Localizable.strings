@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  bedside
+
+  Created by 邱天鈜 on 7/21/19.
+  Copyright © 2019 Tony_Qiu. All rights reserved.
+*/
+"btn_back"="返回";
+"label_language_header" = "请选择语言";
+"btn_selected_language" = "中文";
+"label_record_prompt1" = "录制";
+"label_record_prompt2" = "语音信息";
+"btn_yes" = "是的";
+"btn_use_default" = "使用默认语音提醒";
+"label_tap_to_record" = "轻按以录制";
+"btn_finish" = "结束";
+"label_recording" = "正在录制……";
+"label_confirm" = "确认";
+"label_rerecord" = "重新录制";
+"btn_use_record" = "录制自定义提醒";
+"label_complete" = "设置完成";
+"label_thx" = "感谢您的耐心";

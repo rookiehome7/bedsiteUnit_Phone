@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  bedside
+
+  Created by 邱天鈜 on 7/21/19.
+  Copyright © 2019 Tony_Qiu. All rights reserved.
+*/
+"btn_back"="Balik";
+"label_language_header" = "Sila Pilih Bahasa";
+"btn_selected_language" = "Malayu";
+"label_record_prompt1" = "Rekod";
+"label_record_prompt2" = "Peringatan Suara";
+"btn_yes" = "Ya";
+"btn_use_default" = "Gunakan peringatan lalai";
+"label_tap_to_record" = "Ketik untuk Merakam";
+"btn_finish" = "selesai";
+"label_recording" = "Merakam...";
+"label_confirm" = "Sahkan";
+"label_rerecord" = "Rekod semula";
+"btn_use_record" = "rekod peringatan khusus";
+"label_complete" = "penetapan lengkap";
+"label_thx" = "Terima kasih atas kesabaran anda";

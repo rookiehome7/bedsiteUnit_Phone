@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  bedside
+
+  Created by 邱天鈜 on 7/21/19.
+  Copyright © 2019 Tony_Qiu. All rights reserved.
+*/
+"btn_back"="Back";
+"label_language_header" = "Please Select Language";
+"btn_selected_language" = "English";
+"label_record_prompt1" = "Record";
+"label_record_prompt2" = "Voice Reminder";
+"btn_yes" = "Yes";
+"btn_use_default" = "Use Default Reminder Instead";
+"label_tap_to_record" = "Tap to Record";
+"btn_finish" = "Finish";
+"label_recording" = "Recording...";
+"label_confirm" = "Confirm";
+"label_rerecord" = "Re-record";
+"btn_use_record" = "Record Custom Reminder";
+"label_complete" = "Setting Complete";
+"label_thx" = "Thank You For Your Patience";
+
+

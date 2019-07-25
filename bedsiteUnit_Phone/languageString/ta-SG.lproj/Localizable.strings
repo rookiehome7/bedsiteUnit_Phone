@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  bedside
+
+  Created by 邱天鈜 on 7/21/19.
+  Copyright © 2019 Tony_Qiu. All rights reserved.
+*/
+"btn_back" = "மீண்டும்";
+"label_language_header" = "மொழியைத் தேர்ந்தெடுக்கவும்";
+"btn_selected_language" = "தமிழ்";
+"label_record_prompt1" = "சாதனை";
+"label_record_prompt2" = "குரல் நினைவூட்டல்";
+"btn_yes" = "ஆம்";
+"btn_use_default" = "இயல்புநிலை நினைவூட்டலைப் பயன்படுத்தவும்";
+"btn_finish" = "பூச்சு";
+"label_tap_to_record" = "பதிவு செய்ய தட்டவும்";
+"label_recording" = "பதிவு செய்யப்படுகிறது ...";
+"label_confirm" = "உறுதிப்படுத்தவும்";
+"label_rerecord" = "மீண்டும் பதிவு செய்";
+"btn_use_record" = "பதிவு நினைவூட்டல்";
+"label_complete" = "அமைத்தல் முடிந்தது";
+"label_thx" = "பொறுமை காத்தமைக்கு நன்றி";

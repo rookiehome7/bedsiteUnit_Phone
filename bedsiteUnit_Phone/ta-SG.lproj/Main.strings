@@ -1,0 +1,120 @@
+
+/* Class = "UILabel"; text = "Message:"; ObjectID = "1YW-7j-5Mh"; */
+"1YW-7j-5Mh.text" = "Message:";
+
+/* Class = "UITextField"; placeholder = "MQTT Server Port"; ObjectID = "1ny-9q-TN8"; */
+"1ny-9q-TN8.placeholder" = "MQTT Server Port";
+
+/* Class = "UILabel"; text = "Beacon"; ObjectID = "2Fr-55-zcu"; */
+"2Fr-55-zcu.text" = "Beacon";
+
+/* Class = "UILabel"; text = "Topic"; ObjectID = "2r8-3Y-1rK"; */
+"2r8-3Y-1rK.text" = "Topic";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "4ss-QW-arj"; */
+"4ss-QW-arj.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Call Status"; ObjectID = "Bfo-S1-SYM"; */
+"Bfo-S1-SYM.text" = "Call Status";
+
+/* Class = "UINavigationItem"; title = "BedsiteUnitPhone"; ObjectID = "C6H-g4-jTQ"; */
+"C6H-g4-jTQ.title" = "BedsiteUnitPhone";
+
+/* Class = "UILabel"; text = "SIP Setting"; ObjectID = "Ecb-ku-IM4"; */
+"Ecb-ku-IM4.text" = "SIP Setting";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "H62-zL-gBo"; */
+"H62-zL-gBo.text" = "Username";
+
+/* Class = "UILabel"; text = "MQTT Setting"; ObjectID = "I1T-fn-Bzy"; */
+"I1T-fn-Bzy.text" = "MQTT Setting";
+
+/* Class = "UIViewController"; title = "Outgoing"; ObjectID = "IXk-Is-KQL"; */
+"IXk-Is-KQL.title" = "Outgoing";
+
+/* Class = "UILabel"; text = "Incoming Call"; ObjectID = "N0H-d0-7Qv"; */
+"N0H-d0-7Qv.text" = "Incoming Call";
+
+/* Class = "UITextField"; placeholder = "IP address "; ObjectID = "Ny6-WR-pDp"; */
+"Ny6-WR-pDp.placeholder" = "IP address ";
+
+/* Class = "UIBarButtonItem"; title = "Setting"; ObjectID = "OYL-np-Xsp"; */
+"OYL-np-Xsp.title" = "Setting";
+
+/* Class = "UILabel"; text = "sipStatus"; ObjectID = "Qfr-JB-0lw"; */
+"Qfr-JB-0lw.text" = "sipStatus";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "R75-L8-CZc"; */
+"R75-L8-CZc.text" = "Password";
+
+/* Class = "UILabel"; text = "MQTT"; ObjectID = "Ry6-ET-FDQ"; */
+"Ry6-ET-FDQ.text" = "MQTT";
+
+/* Class = "UILabel"; text = "Topic:"; ObjectID = "SBM-KB-yi6"; */
+"SBM-KB-yi6.text" = "Topic:";
+
+/* Class = "UINavigationItem"; title = "Setup "; ObjectID = "Tvc-a5-b43"; */
+"Tvc-a5-b43.title" = "Setup ";
+
+/* Class = "UILabel"; text = "Proximity:"; ObjectID = "WNh-4d-ENe"; */
+"WNh-4d-ENe.text" = "Proximity:";
+
+/* Class = "UILabel"; text = "mqttStatus"; ObjectID = "Y6j-Hq-YOE"; */
+"Y6j-Hq-YOE.text" = "mqttStatus";
+
+/* Class = "UIButton"; normalTitle = "MQTT Reconnect"; ObjectID = "Yjy-GE-CNx"; */
+"Yjy-GE-CNx.normalTitle" = "MQTT Reconnect";
+
+/* Class = "UITextField"; placeholder = "Usename"; ObjectID = "a14-UJ-J8J"; */
+"a14-UJ-J8J.placeholder" = "Usename";
+
+/* Class = "UILabel"; text = "SIP"; ObjectID = "b2g-TR-mMt"; */
+"b2g-TR-mMt.text" = "SIP";
+
+/* Class = "UILabel"; text = "NAME"; ObjectID = "bh6-CL-1iL"; */
+"bh6-CL-1iL.text" = "NAME";
+
+/* Class = "UITextField"; placeholder = "MQTT Server IP"; ObjectID = "cOu-fD-Asf"; */
+"cOu-fD-Asf.placeholder" = "MQTT Server IP";
+
+/* Class = "UILabel"; text = "Port"; ObjectID = "fKw-EI-LaE"; */
+"fKw-EI-LaE.text" = "Port";
+
+/* Class = "UILabel"; text = "status"; ObjectID = "icL-f1-RWS"; */
+"icL-f1-RWS.text" = "status";
+
+/* Class = "UILabel"; text = "Port"; ObjectID = "k0b-Or-hdM"; */
+"k0b-Or-hdM.text" = "Port";
+
+/* Class = "UITextField"; placeholder = "MQTT Topic"; ObjectID = "kJ2-Uw-mU8"; */
+"kJ2-Uw-mU8.placeholder" = "MQTT Topic";
+
+/* Class = "UILabel"; text = "mqttMessage"; ObjectID = "l1K-ap-zHE"; */
+"l1K-ap-zHE.text" = "mqttMessage";
+
+/* Class = "UITextField"; placeholder = "Port"; ObjectID = "mzn-7A-6Ch"; */
+"mzn-7A-6Ch.placeholder" = "Port";
+
+/* Class = "UILabel"; text = "IP"; ObjectID = "nM5-hi-RwV"; */
+"nM5-hi-RwV.text" = "IP";
+
+/* Class = "UILabel"; text = "Status: "; ObjectID = "pNK-9f-Lfi"; */
+"pNK-9f-Lfi.text" = "Status: ";
+
+/* Class = "UILabel"; text = "IP"; ObjectID = "pwr-cg-Wbw"; */
+"pwr-cg-Wbw.text" = "IP";
+
+/* Class = "UILabel"; text = "mqttTopic"; ObjectID = "tSA-Eu-x9U"; */
+"tSA-Eu-x9U.text" = "mqttTopic";
+
+/* Class = "UITextField"; text = "200"; ObjectID = "vlR-fs-PP8"; */
+"vlR-fs-PP8.text" = "200";
+
+/* Class = "UILabel"; text = "NAME"; ObjectID = "yN1-8U-nFR"; */
+"yN1-8U-nFR.text" = "NAME";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "z1v-o1-up1"; */
+"z1v-o1-up1.title" = "Cancel";
+
+/* Class = "UILabel"; text = "Status:"; ObjectID = "z6y-Cg-rVg"; */
+"z6y-Cg-rVg.text" = "Status:";
