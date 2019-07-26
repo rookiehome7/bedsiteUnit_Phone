@@ -16,7 +16,8 @@ func getDocumentsDirectory() -> URL {
 class SoundManager: FileProviderDelegate
 {
     
-    var defaultSoundFilename = "defaultSound.m4a"
+    var defaultSoundFilename = "0452.m4a"
+    
     var recordingSoundFilename = "recording.m4a"
     var waitingSoundFilename = "waitingsound.m4a"
     
@@ -27,16 +28,17 @@ class SoundManager: FileProviderDelegate
     }
 
     func getDefaultSoundURL() -> URL {
+        let split = defaultSoundFilename.components(separatedBy: ".")
         //Another way
         //let audioURL = Bundle.main.url(forResource: "toy-mono", withExtension: "wav")
         // To get String
         //let stringPath = Bundle.main.path(forResource: "toy-mono", ofType: "wav")
-        let url = Bundle.main.url(forResource: "defaultSound", withExtension: "m4a")!
+        let url = Bundle.main.url(forResource: split[0], withExtension: split[1])!
         return url
     }
     
     func getDefaultSoundPath() -> String {
-        let path = URL(fileURLWithPath: Bundle.main.bundlePath).appendingPathComponent("defaultSound.m4a").absoluteString
+        let path = URL(fileURLWithPath: Bundle.main.bundlePath).appendingPathComponent(defaultSoundFilename).absoluteString
         return path
     }
     
@@ -46,21 +48,29 @@ class SoundManager: FileProviderDelegate
 //    }
     
     func getWaitngSoundName() -> String {
-        let name = "waitingSoundFilename"
-        return name
+        return waitingSoundFilename
+    }
+    
+    func getRecordSoundName() -> String {
+        return recordingSoundFilename
     }
     
     func copySound_Record_to_Waiting() {
         //documentsProvider.delegate = self as FileProviderDelegate
-        documentsProvider.removeItem(path: waitingSoundFilename, completionHandler: nil)
-        documentsProvider.copyItem(path: recordingSoundFilename ,to: waitingSoundFilename ,overwrite: true, completionHandler: nil)
+        documentsProvider.removeItem(path: waitingSoundFilename, completionHandler:
+            {(completionHandler) -> Void in
+            print("Start copy record to waiting sound.")
+            self.documentsProvider.copyItem(path: self.recordingSoundFilename ,to: self.waitingSoundFilename ,overwrite: false, completionHandler: nil)
+        })
     }
-    
+
     func copySound_Default_to_Waiting() {
-        //documentsProvider.delegate = self as FileProviderDelegate
         let defaultSoundPath = URL(fileURLWithPath: Bundle.main.bundlePath).appendingPathComponent(defaultSoundFilename).absoluteString
-        documentsProvider.removeItem(path: waitingSoundFilename, completionHandler: nil)
-        documentsProvider.copyItem(path: defaultSoundPath ,to: waitingSoundFilename ,overwrite: true, completionHandler: nil)
+        documentsProvider.removeItem(path: waitingSoundFilename, completionHandler: {(completionHandler) -> Void in
+            print("Start copy default to waiting sound.")
+            //print (completionHandler)
+            self.documentsProvider.copyItem(path: defaultSoundPath ,to: self.waitingSoundFilename ,overwrite: true, completionHandler: nil)
+        })
     }
     
     func fileproviderSucceed(_ fileProvider: FileProviderOperations, operation: FileOperationType) {
@@ -95,7 +105,5 @@ class SoundManager: FileProviderDelegate
             break
         }
     }
-    
-    
-    
+   
 }

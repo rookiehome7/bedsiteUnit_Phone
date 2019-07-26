@@ -5,21 +5,16 @@
 //  Created by Takdanai Jirawanichkul on 2/7/2562 BE.
 //
 import UIKit
+import CoreLocation
+import CoreBluetooth
 
 struct OutgoingCallViewData{
     static var controller: OutgoingCallViewController?
-    static var phoneType: CallPhoneType?
     static var phoneNumber: String?
     static var statusLabel: UILabel?
-    static var sipIcon: UIImageView?
     static var calleeName: String?
     static var callConnected: Bool?
     static var retry: Bool = false
-}
-
-enum CallPhoneType {
-    case sip
-    case call_END
 }
 
 struct OutgoingCallVT{
@@ -30,11 +25,10 @@ var outgoingCallStateChanged: LinphoneCoreCallStateChangedCb = {
     (lc: Optional<OpaquePointer>, call: Optional<OpaquePointer>, callSate: LinphoneCallState,  message: Optional<UnsafePointer<Int8>>) in
     switch callSate{
     case LinphoneCallOutgoingProgress:
-        NSLog("outgoingCallStateChanged: LinphoneCallReleased")
+        NSLog("outgoingCallStateChanged: LinphoneCallProgress")
         if OutgoingCallViewData.retry == true{
             OutgoingCallViewData.retry = false
         }
-    
     case LinphoneCallReleased:
         NSLog("outgoingCallStateChanged: LinphoneCallReleased")
         
@@ -63,18 +57,6 @@ var outgoingCallStateChanged: LinphoneCoreCallStateChangedCb = {
     }
 }
 
-func makeCallOutgoingCallView(){
-    switch OutgoingCallViewData.phoneType! {
-    case CallPhoneType.sip:
-        OutgoingCallViewData.statusLabel!.text = "SIP Dialing..."
-        
-    case CallPhoneType.call_END:
-        OutgoingCallViewData.statusLabel!.text = "Call end"
-    }
-    let lc = theLinphone.lc
-    linphone_core_invite(lc, OutgoingCallViewData.phoneNumber)
-}
-
 func finishOutgoingCallView(){
     resetOutgoingCallData()
     OutgoingCallViewData.controller?.dismiss(animated: true, completion: nil)
@@ -87,13 +69,11 @@ func resetOutgoingCallData(){
 
 class OutgoingCallViewController: UIViewController {
     
-    var phoneNumber: String?
-    var calleeName: String?
-    var phoneType: CallPhoneType = .sip
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var sipImage: UIImageView!
+    
+    var phoneNumber: String?
+    var calleeName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,27 +85,31 @@ class OutgoingCallViewController: UIViewController {
         OutgoingCallViewData.phoneNumber = phoneNumber
         OutgoingCallViewData.calleeName = phoneNumber // Try to set phone number
         OutgoingCallViewData.statusLabel = statusLabel
-        OutgoingCallViewData.phoneType = phoneType
         
         // Set namelabel with phone number
         nameLabel.text = "Call: " + OutgoingCallViewData.calleeName!
-    
-        makeCallOutgoingCallView()
+        
+        // MAKE Phone call
+        let lc = theLinphone.lc
+        linphone_core_invite(lc, OutgoingCallViewData.phoneNumber)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // Add CallStateChange listener
         OutgoingCallVT.lct.call_state_changed = outgoingCallStateChanged
         linphone_core_add_listener(theLinphone.lc!,  &OutgoingCallVT.lct)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        // Remove CallStateChange listener
         linphone_core_remove_listener(theLinphone.lc!, &OutgoingCallVT.lct)
+        // Terminate Call First If it still have call
         terminateCall()
     }
     
+    
+    // MARK: Action
     @IBAction func hangupButton(_ sender: Any) {
-        NSLog("OutgoingCallController.hangUp()")
-        OutgoingCallViewData.phoneType = CallPhoneType.call_END
         terminateCall()
     }
     
@@ -138,5 +122,5 @@ class OutgoingCallViewController: UIViewController {
         }
         OutgoingCallViewData.controller?.dismiss(animated: false, completion: nil)
     }
-
 }
+

@@ -80,13 +80,12 @@
 		A9FACB131D0A7B3700E3C8A5 /* oldphone-mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB051D0A7B3700E3C8A5 /* oldphone-mono.wav */; };
 		A9FACB141D0A7B3700E3C8A5 /* soft_as_snow.mkv in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB061D0A7B3700E3C8A5 /* soft_as_snow.mkv */; };
 		A9FACB151D0A7B3700E3C8A5 /* toy-mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB071D0A7B3700E3C8A5 /* toy-mono.wav */; };
-		E020945522E9D67000B69B9D /* NewRecordingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020945422E9D67000B69B9D /* NewRecordingPageViewController.swift */; };
+		E012AC1D22EAA127003B30C0 /* 0452.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E012AC1C22EAA0B2003B30C0 /* 0452.m4a */; };
 		E020945722E9D99D00B69B9D /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020945622E9D99D00B69B9D /* Pulsing.swift */; };
 		E020945922E9FB7F00B69B9D /* AdvancedSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020945822E9FB7F00B69B9D /* AdvancedSettingViewController.swift */; };
 		E040017222CB21390090D12A /* OutgoingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E040017122CB21390090D12A /* OutgoingCallViewController.swift */; };
 		E08F917922CB05A1007506F3 /* ApplicationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F917822CB05A1007506F3 /* ApplicationStatus.swift */; };
 		E08F917B22CB07DD007506F3 /* LocalUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F917A22CB07DD007506F3 /* LocalUserData.swift */; };
-		E08F917D22CB08BA007506F3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F917C22CB08BA007506F3 /* SettingViewController.swift */; };
 		E08F917F22CB0B72007506F3 /* LinphoneUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */; };
 		E08F918122CB0CA2007506F3 /* ReceiveCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */; };
 		E09BDC4E22E6C30D0046C428 /* VolumeControlClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */; };
@@ -210,19 +209,18 @@
 		A9FACB061D0A7B3700E3C8A5 /* soft_as_snow.mkv */ = {isa = PBXFileReference; lastKnownFileType = file; path = soft_as_snow.mkv; sourceTree = "<group>"; };
 		A9FACB071D0A7B3700E3C8A5 /* toy-mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "toy-mono.wav"; sourceTree = "<group>"; };
 		B1754C8E11DB660D95F1B164 /* Pods_bedsiteUnit_Phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bedsiteUnit_Phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E020945422E9D67000B69B9D /* NewRecordingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecordingPageViewController.swift; sourceTree = "<group>"; };
+		E012AC1C22EAA0B2003B30C0 /* 0452.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0452.m4a; sourceTree = "<group>"; };
 		E020945622E9D99D00B69B9D /* Pulsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
 		E020945822E9FB7F00B69B9D /* AdvancedSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingViewController.swift; sourceTree = "<group>"; };
 		E040017122CB21390090D12A /* OutgoingCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OutgoingCallViewController.swift; path = bedsiteUnit_Phone/Controller/OutgoingCallViewController.swift; sourceTree = "<group>"; };
 		E08F917822CB05A1007506F3 /* ApplicationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStatus.swift; sourceTree = "<group>"; };
 		E08F917A22CB07DD007506F3 /* LocalUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserData.swift; sourceTree = "<group>"; };
-		E08F917C22CB08BA007506F3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = bedsiteUnit_Phone/Controller/SettingViewController.swift; sourceTree = "<group>"; };
 		E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinphoneUtil.swift; sourceTree = "<group>"; };
 		E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReceiveCallViewController.swift; path = bedsiteUnit_Phone/Controller/ReceiveCallViewController.swift; sourceTree = "<group>"; };
 		E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeControlClass.swift; sourceTree = "<group>"; };
 		E0D5241D22E87EE7001E8270 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = bedsiteUnit_Phone/Controller/ViewController.swift; sourceTree = "<group>"; };
 		E0D5241F22E880BE001E8270 /* LocalizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalizationViewController.swift; path = bedsiteUnit_Phone/Controller/LocalizationViewController.swift; sourceTree = "<group>"; };
-		E0D5242022E880BE001E8270 /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalizationSystem.swift; path = bedsiteUnit_Phone/Controller/LocalizationSystem.swift; sourceTree = "<group>"; };
+		E0D5242022E880BE001E8270 /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
 		E0D5242522E880E8001E8270 /* RecordIntentionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordIntentionViewController.swift; path = bedsiteUnit_Phone/Controller/RecordIntentionViewController.swift; sourceTree = "<group>"; };
 		E0D5242722E88101001E8270 /* RecordPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordPageViewController.swift; path = bedsiteUnit_Phone/Controller/RecordPageViewController.swift; sourceTree = "<group>"; };
 		E0D5242D22E88141001E8270 /* DefaultMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultMessageViewController.swift; path = bedsiteUnit_Phone/Controller/DefaultMessageViewController.swift; sourceTree = "<group>"; };
@@ -443,15 +441,12 @@
 				E0D5241D22E87EE7001E8270 /* ViewController.swift */,
 				E040017122CB21390090D12A /* OutgoingCallViewController.swift */,
 				E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */,
-				E08F917C22CB08BA007506F3 /* SettingViewController.swift */,
 				E020945822E9FB7F00B69B9D /* AdvancedSettingViewController.swift */,
 				E0D5241F22E880BE001E8270 /* LocalizationViewController.swift */,
-				E0D5242022E880BE001E8270 /* LocalizationSystem.swift */,
 				E0D5242522E880E8001E8270 /* RecordIntentionViewController.swift */,
 				E0D5242722E88101001E8270 /* RecordPageViewController.swift */,
 				E0D5242D22E88141001E8270 /* DefaultMessageViewController.swift */,
 				E0D5242F22E88157001E8270 /* CompletePromptViewController.swift */,
-				E020945422E9D67000B69B9D /* NewRecordingPageViewController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -565,6 +560,7 @@
 				E0DEE52522E812F5006E441E /* BeaconManager.swift */,
 				E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */,
 				E020945622E9D99D00B69B9D /* Pulsing.swift */,
+				E0D5242022E880BE001E8270 /* LocalizationSystem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,6 +587,7 @@
 			isa = PBXGroup;
 			children = (
 				E0D5244F22E95A1C001E8270 /* defaultSound.m4a */,
+				E012AC1C22EAA0B2003B30C0 /* 0452.m4a */,
 			);
 			path = sound;
 			sourceTree = "<group>";
@@ -684,6 +681,7 @@
 				A996636A1D06F877003B5EEE /* Main.storyboard in Resources */,
 				E0D5244022E8823C001E8270 /* Main.strings in Resources */,
 				A9FACB0F1D0A7B3700E3C8A5 /* its_a_game.mkv in Resources */,
+				E012AC1D22EAA127003B30C0 /* 0452.m4a in Resources */,
 				A9FACB101D0A7B3700E3C8A5 /* leaving_dreams.mkv in Resources */,
 				E0D5243522E881F6001E8270 /* working.json in Resources */,
 			);
@@ -760,9 +758,7 @@
 				E0D5243022E88157001E8270 /* CompletePromptViewController.swift in Sources */,
 				E020945922E9FB7F00B69B9D /* AdvancedSettingViewController.swift in Sources */,
 				E08F917922CB05A1007506F3 /* ApplicationStatus.swift in Sources */,
-				E020945522E9D67000B69B9D /* NewRecordingPageViewController.swift in Sources */,
 				E0DEE52622E812F5006E441E /* BeaconManager.swift in Sources */,
-				E08F917D22CB08BA007506F3 /* SettingViewController.swift in Sources */,
 				A924DECF1D07D4EA0030A438 /* README.md in Sources */,
 				E0D5242222E880BE001E8270 /* LocalizationSystem.swift in Sources */,
 			);

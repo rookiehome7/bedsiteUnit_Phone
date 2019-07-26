@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  bedsiteUnit_Phone
 //
-//  Created by Takdanai Jirawanichkul on 2/7/2562 BE.
-//
+//  Created & Edit by Takdanai Jirawanichkul on 2/7/2019 - 26/7/2019
+
 import UIKit
 import CocoaMQTT
 import MediaPlayer
@@ -39,7 +39,6 @@ var viewCallStateChanged: LinphoneCoreCallStateChangedCb = {
 }
 
 class ViewController: UIViewController {
-    
     // UI Label
     @IBOutlet weak var mqttTopic: UILabel!
     @IBOutlet weak var mqttStatus: UILabel!
@@ -64,24 +63,14 @@ class ViewController: UIViewController {
     
     let soundManager = SoundManager()
     
-    // iBeacon Setting
-    let iBeacon_UUID = "7D0D9B66-0554-4CCF-A6E4-ADE12325C4F0"
-    let IBEACON_PROXIMITY_UUID = "7D0D9B66-0554-4CCF-A6E4-ADE12325C4F0"
-    let localBeaconUUID = "7D0D9B66-0554-4CCF-A6E4-ADE12325C4F0"
-    // iBeacon Searching
-    var locationManager: CLLocationManager!
-    // iBeacon Broadcast
-    var broadcastBeacon: CLBeaconRegion!
-    var beaconPeripheralData: NSDictionary!
-    var peripheralManager: CBPeripheralManager!
-    let localBeaconMajor: CLBeaconMajorValue = 123
-    let localBeaconMinor: CLBeaconMinorValue = 789
-    let identifier = "Put your identifier here"
-    
     var audioPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Start SIP Phone Service
+        theLinphone.manager = LinphoneManager()
+        theLinphone.manager?.startLinphone()
+        
         // UI Setting
         mqttReconnectButton.isHidden = false
         mqttMessage.isHidden = true
@@ -91,25 +80,6 @@ class ViewController: UIViewController {
         //Run MQTT on mac: /usr/local/sbin/mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
         mqttSetting()       // Setting MQTT
         _ = mqtt!.connect() // MQTT Connect'
-        
-        // iBeacon Searching Part
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        // Dont forgot to add in Info.plst file
-            // Privacy - Location When In Use Usage Description
-        locationManager.requestWhenInUseAuthorization()
-            // Privacy - Location Always Usage Description
-        locationManager.requestAlwaysAuthorization()
-        
-        // iBeacon Searching Start Service
-        if let uuid = NSUUID(uuidString: IBEACON_PROXIMITY_UUID) {
-            let beaconRegion = CLBeaconRegion(proximityUUID: uuid as UUID, identifier: "iBeacon")
-            startMonitoring(beaconRegion: beaconRegion)
-            startRanging(beaconRegion: beaconRegion)
-            print("Start Monitoring")
-        }
-        // iBeacon Broadcast Start Service
-        startBroadcastBeacon()
         
         // UPDATE UI every 2 second
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -126,11 +96,14 @@ class ViewController: UIViewController {
             finishPlayback()
         }
     }
+    
     func startPlayback() {
         let audioFilename = getDocumentsDirectory().appendingPathComponent("waitingsound.m4a")
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)
             audioPlayer.delegate = self
+            // NumberofLoops: -1 Forever loop
+            audioPlayer.numberOfLoops = -1
             audioPlayer.play()
             playbutton.setTitle("Stop Playback", for: .normal)
         } catch {
@@ -142,8 +115,6 @@ class ViewController: UIViewController {
         audioPlayer = nil
         playbutton.setTitle("Play Your Recording", for: .normal)
     }
-    
-
     
     // MARK: Button Action
     @IBAction func mqttReconnectButton(_ sender: Any) {
@@ -164,7 +135,8 @@ class ViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        
+        //STOP Playback sound
+        finishPlayback()
     }
     
     // Function to update UI
@@ -182,129 +154,13 @@ class ViewController: UIViewController {
         case .unregister:
             sipStatus.text = "Not Register"
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
 }
 
-// MARK: iBeacon - View Controller Extension Part
-extension ViewController: CLLocationManagerDelegate, CBPeripheralManagerDelegate {
-    // MARK: iBeacon Broadcast Signal
-    func startBroadcastBeacon() {
-        if broadcastBeacon != nil {
-            stopBroadcastBeacon()
-        }
-        let uuid = UUID(uuidString: iBeacon_UUID)!
-        broadcastBeacon = CLBeaconRegion(proximityUUID: uuid, major: localBeaconMajor, minor: localBeaconMinor, identifier: identifier)
-        beaconPeripheralData = broadcastBeacon.peripheralData(withMeasuredPower: nil)
-        peripheralManager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
-    }
-    func stopBroadcastBeacon() {
-        peripheralManager.stopAdvertising()
-        peripheralManager = nil
-        beaconPeripheralData = nil
-        broadcastBeacon = nil
-    }
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        if peripheral.state == .poweredOn {
-            peripheralManager.startAdvertising(beaconPeripheralData as? [String: Any])
-        }
-        else if peripheral.state == .poweredOff {
-            peripheralManager.stopAdvertising()
-        }
-    }
-    
-    // MARK: iBeacon Searching Signal
-    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if !(status == .authorizedAlways || status == .authorizedWhenInUse) {
-            print("Must allow location access for this application to work")
-        } else {
-            if let uuid = NSUUID(uuidString: IBEACON_PROXIMITY_UUID) {
-                let beaconRegion = CLBeaconRegion(proximityUUID: uuid as UUID, identifier: "iBeacon")
-                startMonitoring(beaconRegion: beaconRegion)
-                startRanging(beaconRegion: beaconRegion)
-            }
-        }
-    }
-    func startMonitoring(beaconRegion: CLBeaconRegion) {
-        beaconRegion.notifyOnEntry = true
-        beaconRegion.notifyOnExit = true
-        locationManager.startMonitoring(for: beaconRegion)
-    }
-    
-    func startRanging(beaconRegion: CLBeaconRegion) {
-        locationManager.startRangingBeacons(in: beaconRegion)
-    }
-    
-    func stopMonitoring(beaconRegion: CLBeaconRegion) {
-        beaconRegion.notifyOnEntry = false
-        beaconRegion.notifyOnExit = false
-        locationManager.stopMonitoring(for: beaconRegion)
-    }
-    
-    func stopRanging(beaconRegion: CLBeaconRegion) {
-        locationManager.stopRangingBeacons(in: beaconRegion)
-    }
-    
-    //  ======== CLLocationManagerDelegate methods ==========
-    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        for beacon in beacons {
-            var beaconProximity: String;
-            switch (beacon.proximity) {
-            case .unknown:    beaconProximity = "Unknown";
-            case .far:        beaconProximity = "Far";
-            case .near:       beaconProximity = "Near";
-            case .immediate:  beaconProximity = "Immediate";
-            default:          beaconProximity = "Error";
-                
-            }
-            print("BEACON RANGED: uuid: \(beacon.proximityUUID.uuidString) major: \(beacon.major)  minor: \(beacon.minor) proximity: \(beaconProximity)")
-            
-            proximityLabel.text = beaconProximity
-            if (beaconProximity == "Immediate"){
-                let vc = VolumeControl.sharedInstance
-                vc.setVolume(volume: 0.1)
-                //                let call = linphone_core_get_current_call(theLinphone.lc!)
-                //                if call != nil {
-                //                    linphone_core_terminate_call(theLinphone.lc!, call)
-                //                }
-            }
-            if (beaconProximity == "Near"){
-                let vc = VolumeControl.sharedInstance
-                vc.setVolume(volume: 0.50)
-            }
-            if (beaconProximity == "Far"){
-                let vc = VolumeControl.sharedInstance
-                vc.setVolume(volume: 1.0)
-            }
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        print("Monitoring started")
-    }
-    
-    
-    private func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
-        print("Monitoring failed")
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        if let beaconRegion = region as? CLBeaconRegion {
-            print("DID ENTER REGION: uuid: \(beaconRegion.proximityUUID.uuidString)")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        if let beaconRegion = region as? CLBeaconRegion {
-            print("DID EXIT REGION: uuid: \(beaconRegion.proximityUUID.uuidString)")
-        }
-    }
-}
 
 
 // MARK: Cocoa MQTT - View Controller Extension Part
@@ -357,6 +213,8 @@ extension ViewController: CocoaMQTTDelegate {
         TRACE("message: \(message.string.description), id: \(id)")
         mqttMessage.isHidden = false
         mqttMessage.text = message.string?.description
+        
+        // MQTT MESSAGE HANDLE PART
         let command = message.string!.components(separatedBy: " ")
         if command[0] == "call" {
             makeCall(phoneNumber: command[1])
@@ -364,7 +222,7 @@ extension ViewController: CocoaMQTTDelegate {
         else if command[0] == "end" {
             terminateCall()
         }
-        else if command[0] == "play" {
+        else if command[0] == "task" && command[1] == accountData.getSipUsername() {
             if audioPlayer == nil {
                 startPlayback()
             }

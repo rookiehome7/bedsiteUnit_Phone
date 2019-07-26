@@ -59,12 +59,10 @@ class defaultMessageViewController : UIViewController{
             // unable to play recording!
         }
     }
-    
     func finishPlayback() {
         btnPlay.setImage( UIImage.init(named: "play"), for: .normal)
         audioPlayer = nil
     }
-
 }
 
 extension defaultMessageViewController: AVAudioPlayerDelegate {

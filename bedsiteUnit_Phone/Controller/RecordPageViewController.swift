@@ -133,10 +133,9 @@ class RecordPageViewController : UIViewController {
         // Go to next page
     }
     
-    
     // MARK: - Recording
     func startRecording() {
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        let audioFilename = getDocumentsDirectory().appendingPathComponent(soundManager.getRecordSoundName())
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 12000,
@@ -157,20 +156,15 @@ class RecordPageViewController : UIViewController {
         audioRecorder = nil
         if success {
             playbackLayout()
-//            recordButton.setTitle("Tap to Re-record", for: .normal)
-//            playButton.setTitle("Play Your Recording", for: .normal)
-//            playButton.isHidden = false
         }
         else {
             recordLayout()
-//            recordButton.setTitle("Tap to Record", for: .normal)
-//            playButton.isHidden = true
-            // recording failed :(
         }
     }
+    
     // MARK: - Playback
     func startPlayback() {
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        let audioFilename = getDocumentsDirectory().appendingPathComponent(soundManager.getRecordSoundName())
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)
             audioPlayer.delegate = self
