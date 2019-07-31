@@ -17,11 +17,11 @@ class CompletePromptViewController : UIViewController {
         super.viewDidLoad()
         lblComplete.text = LocalizationSystem.sharedInstance.localizedStringForKey(key: "label_complete", comment: "")
         lblThx.text = LocalizationSystem.sharedInstance.localizedStringForKey(key: "label_thx", comment: "")
-        _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(showVC), userInfo: nil, repeats: false)
+        _ = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(showVC), userInfo: nil, repeats: false)
     }
     
     @objc func showVC() {
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ViewNavigationController")
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainViewNavigationController")
         self.present(nextViewController, animated:true, completion:nil)
     }
 }

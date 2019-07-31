@@ -3,7 +3,6 @@
 //  bedsiteUnit_Phone
 //
 //  Created by Takdanai Jirawanichkul on 25/7/2562 BE.
-//  Copyright © 2562 WiAdvance. All rights reserved.
 //
 
 import UIKit
@@ -68,7 +67,6 @@ class AdvancedSettingViewController: UIViewController {
         // Restart with new setting Linphone Service
         self.linphoneManager = LinphoneManager()
         linphoneManager?.restartService()
-        
         dismiss(animated: true, completion: nil)
     }
     

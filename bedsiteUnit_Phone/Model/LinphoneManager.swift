@@ -50,15 +50,15 @@ let callStateChanged: LinphoneCoreCallStateChangedCb = {
         NSLog("callStateChanged: LinphoneCallIncomingReceived")
         
         // Run ReceiveCallViewController to handle Incoming call
-        if var controller = UIApplication.shared.keyWindow?.rootViewController{
-            while let presentedViewController = controller.presentedViewController {
-                controller = presentedViewController
-            }
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ReceiveCallViewController")
-            controller.present(vc, animated: true, completion: nil)
-            
-        }
+//        if var controller = UIApplication.shared.keyWindow?.rootViewController{
+//            while let presentedViewController = controller.presentedViewController {
+//                controller = presentedViewController
+//            }
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "ReceiveCallViewController")
+//            controller.present(vc, animated: true, completion: nil)
+//        }
+        
     case LinphoneCallStreamsRunning: /**<The media streams are established and running*/
         NSLog("callStateChanged: LinphoneCallStreamsRunning")
         

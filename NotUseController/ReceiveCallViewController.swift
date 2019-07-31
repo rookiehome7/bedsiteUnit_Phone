@@ -50,6 +50,9 @@ class ReceiveCallViewController: UIViewController {
     // UI Lable
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    
+    @IBOutlet weak var proximityLabel: UILabel!
+    
     // UI Button
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var endButton: UIButton!
@@ -63,6 +66,9 @@ class ReceiveCallViewController: UIViewController {
     var broadcastBeacon: CLBeaconRegion!
     var beaconPeripheralData: NSDictionary!
     var peripheralManager: CBPeripheralManager!
+    
+    
+    var incomingPhoneNumber: String = ""
 
     
     override func viewDidLoad() {
@@ -81,19 +87,17 @@ class ReceiveCallViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         
         
-        // Get CALL - Auto Answer
-        let call = linphone_core_get_current_call(theLinphone.lc!)
-        if call != nil {
-            linphone_core_accept_call(theLinphone.lc!, call)
-            statusLabel.text = "Connected"
-            showEndButton()
-        }
-       
-        let address = linphone_call_get_remote_address_as_string(call)!
-        
-         let number = linphone_call_get_remote_address(call)!
-        let account = getUsernameFromAddress(String(cString: address))
-        nameLabel.text = account
+//        // Get CALL - Auto Answer
+//        let call = linphone_core_get_current_call(theLinphone.lc!)
+//        if call != nil {
+//            linphone_core_accept_call(theLinphone.lc!, call)
+//            statusLabel.text = "Connected"
+//            showEndButton()
+//        }
+//       
+//        let address = linphone_call_get_remote_address_as_string(call)!
+//        incomingPhoneNumber = getPhoneNumberFromAddress(String(cString: address))
+//        nameLabel.text = incomingPhoneNumber
     }
 
     // MARK: - Action
@@ -127,11 +131,15 @@ class ReceiveCallViewController: UIViewController {
         linphone_core_remove_listener(theLinphone.lc!, &ReceiveCallVT.lct)
         
         // Start Service : iBeacon Searching & Broadcast
-        startSearchingBeacon()
-        startBroadcastBeacon()
+        stopSearchingBeacon()
+        stopBroadcastBeacon()
         
         // Terminate Call First If it still have call
         finishReceiveCallView()
+        
+        // Set Volume to max before viewDidDisappear
+        //let vc = VolumeControl.sharedInstance
+        //vc.setVolume(volume: 1.0)
     }
     
     func showEndButton(){
@@ -235,22 +243,22 @@ extension ReceiveCallViewController: CLLocationManagerDelegate, CBPeripheralMana
             print("BEACON RANGED: uuid: \(beacon.proximityUUID.uuidString) major: \(beacon.major)  minor: \(beacon.minor) proximity: \(beaconProximity)")
             
             // Need to create part get the phone number to set the minor value
-            
-            //proximityLabel.text = beaconProximity
-            
-            // Example how to set the volume
-            if (beaconProximity == "Immediate"){
-                let vc = VolumeControl.sharedInstance
-                vc.setVolume(volume: 0.1)
-            }
-            if (beaconProximity == "Near"){
-                let vc = VolumeControl.sharedInstance
-                vc.setVolume(volume: 0.50)
-            }
-            if (beaconProximity == "Far"){
-                let vc = VolumeControl.sharedInstance
-                vc.setVolume(volume: 1.0)
-            }
+            proximityLabel.text = beaconProximity
+            //if ( incomingPhoneNumber == "\(beacon.minor)"){
+                // Example how to set the volume
+//                if (beaconProximity == "Immediate"){
+//                    let vc = VolumeControl.sharedInstance
+//                    vc.setVolume(volume: 0.1)
+//                }
+//                if (beaconProximity == "Near"){
+//                    let vc = VolumeControl.sharedInstance
+//                    vc.setVolume(volume: 0.50)
+//                }
+//                if (beaconProximity == "Far"){
+//                    let vc = VolumeControl.sharedInstance
+//                    vc.setVolume(volume: 1.0)
+//                }
+            //}
         }
     }
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {

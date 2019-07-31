@@ -56,6 +56,8 @@ class ViewController: UIViewController {
     // User Data
     let accountData = LocalUserData() // Get function read file from PLIST
     
+    let phoneNumberReceived: String = ""
+    
     //let volumeView = MPVolumeView()
     
     // MQTT
@@ -163,6 +165,8 @@ class ViewController: UIViewController {
 
 
 
+
+
 // MARK: Cocoa MQTT - View Controller Extension Part
 // This extension will handle all MQTT function
 extension ViewController: CocoaMQTTDelegate {
@@ -184,6 +188,8 @@ extension ViewController: CocoaMQTTDelegate {
         //self.navigationController?.pushViewController(vc!, animated: true)
         self.present(vc!, animated: true, completion: nil)
     }
+    
+    
     // Function to handle MQTT Command
     func terminateCall(){
         let call = linphone_core_get_current_call(theLinphone.lc!)
@@ -216,20 +222,48 @@ extension ViewController: CocoaMQTTDelegate {
         
         // MQTT MESSAGE HANDLE PART
         let command = message.string!.components(separatedBy: " ")
-        if command[0] == "call" {
-            makeCall(phoneNumber: command[1])
-        }
-        else if command[0] == "end" {
-            terminateCall()
-        }
-        else if command[0] == "task" && command[1] == accountData.getSipUsername() {
+//        if command[0] == "call" {
+//            makeCall(phoneNumber: command[1])
+//        }
+        
+        
+        // 3 Type of task
+        // low_risk_task bed_id
+        // mid_risk_task bed_id
+        // high_risk_task bed_id
+        
+        // Incoming Task
+        // We assume that have only 1 level of task first (30/07/2019)
+        // "task bed_id"
+        // Start Play sound
+        if command[0] == "task" && command[1] == accountData.getSipUsername() {
+            print("Task Incoming waiting for nurse reply")
             if audioPlayer == nil {
                 startPlayback()
             }
-            else {
-                finishPlayback()
+//            else {
+//                finishPlayback()
+//            }
+        }
+        
+        // Stop alert
+        // "task_alert_stop bed_id"
+        if command[0] == "task_alert_stop" && command[1] == accountData.getSipUsername() {
+            print("Task Stop Alert Message")
+            if audioPlayer != nil {
+              finishPlayback()
             }
         }
+        
+        // When Task Complete
+        // task_complete task_id bed_id wearable_id patient_intention
+        // Get task_Complete and check same bed id or not
+        if command[0] == "task_complete" && command[2] == accountData.getSipUsername() {
+            print("Task Complete" + command[1] + ". By Nurse:" + command[3] )
+            // Do some thing when task complete  like terminate call? but when nurse terminate phone call in this device will terminate immediately
+            
+        }
+        
     }
     
     // When MQTT Server Connect
@@ -238,7 +272,7 @@ extension ViewController: CocoaMQTTDelegate {
         if ack == .accept {
             mqttReconnectButton.isHidden = true
             // Get MQTT Broker Topic from PLIST File
-            let mqttTopic = accountData.getMQTTTopic()! + "/" + accountData.getSipUsername()!
+            let mqttTopic = accountData.getMQTTTopic()! // + "/" + accountData.getSipUsername()!
             mqtt.subscribe(mqttTopic, qos: CocoaMQTTQOS.qos2)
             
             mqttStatus.text = "Connected " + accountData.getMQTTServerIp()!
@@ -305,15 +339,15 @@ extension ViewController: CocoaMQTTDelegate {
     }
 }
 
-extension Optional {
-    // Unwarp optional value for printing log only
-    var description: String {
-        if let warped = self {
-            return "\(warped)"
-        }
-        return ""
-    }
-}
+//extension Optional {
+//    // Unwarp optional value for printing log only
+//    var description: String {
+//        if let warped = self {
+//            return "\(warped)"
+//        }
+//        return ""
+//    }
+//}
 
 extension ViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
