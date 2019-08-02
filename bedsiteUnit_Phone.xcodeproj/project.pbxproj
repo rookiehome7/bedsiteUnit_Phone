@@ -90,6 +90,8 @@
 		E08F918122CB0CA2007506F3 /* ReceiveCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */; };
 		E09BDC4E22E6C30D0046C428 /* VolumeControlClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */; };
 		E0A1C65D22F08B3D00F3AD63 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A1C65C22F08B3D00F3AD63 /* MainViewController.swift */; };
+		E0A1C66522F1E1FB00F3AD63 /* en_pleasestayonthebed.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E0A1C66422F1E17400F3AD63 /* en_pleasestayonthebed.m4a */; };
+		E0A1C66622F1E1FD00F3AD63 /* cn_pleasestayonthebed.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E0A1C66322F1E17300F3AD63 /* cn_pleasestayonthebed.m4a */; };
 		E0D5241E22E87EE7001E8270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5241D22E87EE7001E8270 /* ViewController.swift */; };
 		E0D5242122E880BE001E8270 /* LocalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5241F22E880BE001E8270 /* LocalizationViewController.swift */; };
 		E0D5242222E880BE001E8270 /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5242022E880BE001E8270 /* LocalizationSystem.swift */; };
@@ -219,6 +221,8 @@
 		E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCallViewController.swift; sourceTree = "<group>"; };
 		E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeControlClass.swift; sourceTree = "<group>"; };
 		E0A1C65C22F08B3D00F3AD63 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = bedsiteUnit_Phone/Controller/MainViewController.swift; sourceTree = "<group>"; };
+		E0A1C66322F1E17300F3AD63 /* cn_pleasestayonthebed.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = cn_pleasestayonthebed.m4a; sourceTree = "<group>"; };
+		E0A1C66422F1E17400F3AD63 /* en_pleasestayonthebed.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = en_pleasestayonthebed.m4a; sourceTree = "<group>"; };
 		E0D5241D22E87EE7001E8270 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E0D5241F22E880BE001E8270 /* LocalizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalizationViewController.swift; path = bedsiteUnit_Phone/Controller/LocalizationViewController.swift; sourceTree = "<group>"; };
 		E0D5242022E880BE001E8270 /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
@@ -455,7 +459,6 @@
 			isa = PBXGroup;
 			children = (
 				A996636D1D06F877003B5EEE /* LaunchScreen.storyboard */,
-				A99663681D06F877003B5EEE /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				E0D5241D22E87EE7001E8270 /* ViewController.swift */,
+				A99663681D06F877003B5EEE /* Main.storyboard */,
 				E040017122CB21390090D12A /* OutgoingCallViewController.swift */,
 				E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */,
 			);
@@ -595,6 +599,8 @@
 			isa = PBXGroup;
 			children = (
 				E0D5244F22E95A1C001E8270 /* defaultSound.m4a */,
+				E0A1C66322F1E17300F3AD63 /* cn_pleasestayonthebed.m4a */,
+				E0A1C66422F1E17400F3AD63 /* en_pleasestayonthebed.m4a */,
 				E012AC1C22EAA0B2003B30C0 /* 0452.m4a */,
 			);
 			path = sound;
@@ -671,6 +677,7 @@
 				A9FACB0D1D0A7B3700E3C8A5 /* four_hands_together.mkv in Resources */,
 				A924DEC81D07AC620030A438 /* linphonerc in Resources */,
 				A9FACB0A1D0A7B3700E3C8A5 /* hello8000.wav in Resources */,
+				E0A1C66622F1E1FD00F3AD63 /* cn_pleasestayonthebed.m4a in Resources */,
 				A9FACB141D0A7B3700E3C8A5 /* soft_as_snow.mkv in Resources */,
 				A996636F1D06F877003B5EEE /* LaunchScreen.storyboard in Resources */,
 				A9FACB0B1D0A7B3700E3C8A5 /* incoming_chat.wav in Resources */,
@@ -685,6 +692,7 @@
 				A9FACB0E1D0A7B3700E3C8A5 /* house_keeping.mkv in Resources */,
 				A924DEC91D07AC620030A438 /* linphonerc-factory in Resources */,
 				A9FACB111D0A7B3700E3C8A5 /* notes_of_the_optimistic.mkv in Resources */,
+				E0A1C66522F1E1FB00F3AD63 /* en_pleasestayonthebed.m4a in Resources */,
 				A9FACB131D0A7B3700E3C8A5 /* oldphone-mono.wav in Resources */,
 				A996636A1D06F877003B5EEE /* Main.storyboard in Resources */,
 				E0D5244022E8823C001E8270 /* Main.strings in Resources */,

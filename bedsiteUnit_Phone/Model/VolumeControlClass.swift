@@ -24,7 +24,7 @@ class VolumeControl
         controller!.view.addSubview(wrapper)
         
         volumeView = MPVolumeView(frame: wrapper.bounds)
-        volumeView.isHidden = true
+        volumeView.isHidden = false
         for subview in volumeView.subviews
         {
             if let slider = subview as? UISlider {

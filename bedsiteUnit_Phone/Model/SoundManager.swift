@@ -16,7 +16,7 @@ func getDocumentsDirectory() -> URL {
 class SoundManager: FileProviderDelegate
 {
     
-    var defaultSoundFilename = "0452.m4a"
+    var defaultSoundFilename = "en_pleasestayonthebed.m4a"
     
     var recordingSoundFilename = "recording.m4a"
     var waitingSoundFilename = "waitingsound.m4a"

@@ -113,7 +113,7 @@ class LinphoneManager {
         linphone_core_set_log_file(nil)
         linphone_core_set_log_level(ORTP_DEBUG)
         // Load config
-        let configFilename = documentFile("linphonerc222")
+        let configFilename = documentFile("linphonerc")
         let factoryConfigFilename = bundleFile("linphonerc-factory")
 
         let configFilenamePtr: UnsafePointer<Int8> = configFilename.cString(using: String.Encoding.utf8.rawValue)!

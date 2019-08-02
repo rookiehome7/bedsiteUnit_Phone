@@ -32,8 +32,8 @@ var mainViewCallStateChanged: LinphoneCoreCallStateChangedCb = {
         MainViewData.controller?.incomingCallLabel.text = incomingPhoneNumber
         MainViewData.controller?.callStatusLabel.text = "IncomingReceived"
         // Auto answer
-        //MainViewData.controller?.answerCall()
-        MainViewData.controller?.answerButton.isHidden = false
+        MainViewData.controller?.answerCall()
+        //MainViewData.controller?.answerButton.isHidden = false
         MainViewData.controller?.callMode_Active()
         
     case LinphoneCallOutgoingProgress:
@@ -47,6 +47,9 @@ var mainViewCallStateChanged: LinphoneCoreCallStateChangedCb = {
         MainViewData.controller?.callStatusLabel.text = "Connected"
         MainViewData.controller?.answerButton.isHidden = true
         MainViewData.controller?.callMode_Active()
+        if MainViewData.controller?.audioPlayer != nil {
+            MainViewData.controller?.finishPlayback()
+        }
         
         
         MainViewData.controller?.startSearchingBeacon()
@@ -132,6 +135,7 @@ class MainViewController: UIViewController {
     var beaconPeripheralData: NSDictionary!
     var peripheralManager: CBPeripheralManager!
     
+    let vc = VolumeControl.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,7 +152,6 @@ class MainViewController: UIViewController {
 //        linphone_core_add_listener(theLinphone.lc!,  &MainViewVT.lct)
         mqttSetting()
         _ = mqtt?.connect()
-        
         
         // iBeacon Searching
         locationManager = CLLocationManager()
@@ -170,6 +173,7 @@ class MainViewController: UIViewController {
         }
         
         currentVolumeLabel.text = "-"
+        
 //        // Set sound
 //        let vc = VolumeControl.sharedInstance
 //        /*
@@ -181,7 +185,6 @@ class MainViewController: UIViewController {
 //            self.currentVolumeLabel.text = String(format: "%.3f", vc.getCurrentVolume())
 //        }
     }
-
     /*
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -260,13 +263,13 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func volumeDownButton(_ sender: Any) {
-        let vc = VolumeControl.sharedInstance
+        //let vc = VolumeControl.sharedInstance
         vc.turnDown()
         currentVolumeLabel.text = String(format: "%.3f", vc.getCurrentVolume())
     }
     
     @IBAction func volumeUpButton(_ sender: Any) {
-        let vc = VolumeControl.sharedInstance
+        //let vc = VolumeControl.sharedInstance
         //vc.setVolume(volume: 0.50)
         vc.turnUp()
         currentVolumeLabel.text = String(format: "%.3f", vc.getCurrentVolume())
@@ -353,7 +356,6 @@ extension MainViewController {
 // This extension will handle all MQTT function
 extension MainViewController: CocoaMQTTDelegate {
     // Send phone number  to OutgoingCallViewController
-
     // MARK: MQTT Setting-
     func mqttSetting() {
         // Get MQTT Broker IP from PLIST File
@@ -386,25 +388,32 @@ extension MainViewController: CocoaMQTTDelegate {
         // high_risk_task bed_id
         // Incoming Task
         // "task bed_id"
-        if command[0] == "task" && command[1] == accountData.getSipUsername() {
-            print("Task Incoming waiting for nurse reply")
+        if command[0] == "low_risk_task" {
+            print("Low Task Incoming waiting for nurse reply")
             if audioPlayer == nil {
                 startPlayback()
             }
-            //            else {
-            //                finishPlayback()
-            //            }
         }
-        
+        if command[0] == "mid_risk_task" {
+            print("Mid Task Incoming waiting for nurse reply")
+            if audioPlayer == nil {
+                startPlayback()
+            }
+        }
+        if command[0] == "high_risk_task" {
+            print("High Task Incoming waiting for nurse reply")
+            if audioPlayer == nil {
+                startPlayback()
+            }
+        }
         // Stop alert
         // "task_alert_stop bed_id"
-        if command[0] == "task_alert_stop" && command[1] == accountData.getSipUsername() {
+        if command[0] == "task_alert_stop" {
             print("Task Stop Alert Message")
             if audioPlayer != nil {
                 finishPlayback()
             }
         }
-        
         // When Task Complete
         // task_complete task_id bed_id wearable_id patient_intention
         // Get task_Complete and check same bed id or not
@@ -422,11 +431,11 @@ extension MainViewController: CocoaMQTTDelegate {
         if ack == .accept {
             mqttReconnectButton.isHidden = true
 
-            let mqttTopic = accountData.getMQTTTopic()! // + "/" + accountData.getSipUsername()!
+            let mqttTopic = accountData.getMQTTTopic()! + "/" + accountData.getSipUsername()!
             // Set UI Label
             mqttSubscribeTopicLabel.text = mqttTopic
             mqtt.subscribe(mqttTopic, qos: CocoaMQTTQOS.qos1)
-            mqtt.subscribe("Test", qos: CocoaMQTTQOS.qos1)
+            //mqtt.subscribe("Test", qos: CocoaMQTTQOS.qos1)
             mqttStatusLabel.text = "Connected to " + accountData.getMQTTServerIp()!
         }
     }

@@ -9,7 +9,6 @@
 
 import UIKit
 import AVFoundation
-
 import FilesProvider
 
 class RecordPageViewController : UIViewController {
@@ -40,8 +39,9 @@ class RecordPageViewController : UIViewController {
         btnRecord.addTarget(self, action: #selector(recordButtonUp), for: [.touchUpInside, .touchUpOutside])
         
         //navigationController?.navigationBar.shadowImage = UIImage()
-        recordingSession = AVAudioSession.sharedInstance()
+       recordingSession = AVAudioSession.sharedInstance()
         do {
+            //try recordingSession.setCategory(.playAndRecord, mode: .default)
             //try recordingSession.setCategory(.playAndRecord, mode: .default)
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission { [unowned self] allowed in

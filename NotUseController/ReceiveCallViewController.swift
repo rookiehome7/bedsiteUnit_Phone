@@ -86,7 +86,7 @@ class ReceiveCallViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
         
-        
+        // Please stay in your bed 
 //        // Get CALL - Auto Answer
 //        let call = linphone_core_get_current_call(theLinphone.lc!)
 //        if call != nil {

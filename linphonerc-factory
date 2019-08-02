@@ -19,11 +19,23 @@ sip_random_port=0
 store_ha1_passwd=0
 
 [sound]
-dtmf_player_amp=0.007
-echocancellation=1
-eq_gains=50:2:50 100:2:50
+eq_active = 1
+eq_gains= 50:10:300 1000:0.1:10000
 eq_location=mic
 ringer_dev_id=AQ: Audio Queue Device
+
+play_lev=100
+rec_lev=100
+mic_gain_db = 2
+playback_gain_db = 12
+dtmf_player_amp = 0.1
+dc_removal = 1
+
+echocancellation = 1
+agc = 0
+echolimiter = 1
+
+
 
 [video]
 display_filter_auto_rotate=0
