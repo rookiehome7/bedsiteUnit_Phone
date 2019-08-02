@@ -31,7 +31,6 @@ class AdvancedSettingViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let accountData = LocalUserData()
-        
         mqttIpAddress.text = accountData.getMQTTServerIp()
         mqttPort.text = accountData.getMQTTServerPort()
         mqttTopic.text = accountData.getMQTTTopic()
@@ -65,8 +64,15 @@ class AdvancedSettingViewController: UIViewController {
         UserDefaults.standard.set(beaconMajor.text, forKey: "beaconmajor")
         UserDefaults.standard.set(beaconMinor.text, forKey: "beaconminor")
         // Restart with new setting Linphone Service
-        self.linphoneManager = LinphoneManager()
-        linphoneManager?.restartService()
+        
+//      self.linphoneManager = LinphoneManager()
+//      linphoneManager?.restartService()
+      
+        theLinphone.manager = LinphoneManager()
+        theLinphone.manager?.restartService()
+        
+        theMQTT.manager = MQTTManager()
+        theMQTT.manager?.restartMQTTService()
         dismiss(animated: true, completion: nil)
     }
     

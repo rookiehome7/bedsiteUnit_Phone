@@ -18,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         theLinphone.manager = LinphoneManager()
         // Start Linphone after setting page
         //theLinphone.manager?.startLinphone()
-
+        theMQTT.manager = MQTTManager()
+        theMQTT.manager?.startMQTT()
+    
         return true
     }
 

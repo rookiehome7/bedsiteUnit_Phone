@@ -19,7 +19,6 @@ class RecordIntentionViewController: UIViewController {
         
         btnNoRecord.setTitle(LocalizationSystem.sharedInstance.localizedStringForKey(key: "btn_use_default", comment: ""), for: .normal)
         btnNoRecord.titleLabel?.adjustsFontSizeToFitWidth=true
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

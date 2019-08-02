@@ -1,0 +1,237 @@
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "02b-Wl-OrK"; */
+"02b-Wl-OrK.normalTitle" = "Accept";
+
+/* Class = "UILabel"; text = "mqttStatus"; ObjectID = "10m-7M-mk6"; */
+"10m-7M-mk6.text" = "mqttStatus";
+
+/* Class = "UILabel"; text = "    MQTT"; ObjectID = "1t2-7w-4b8"; */
+"1t2-7w-4b8.text" = "    MQTT";
+
+/* Class = "UIButton"; normalTitle = "தமிழ்"; ObjectID = "24J-KJ-mQS"; */
+"24J-KJ-mQS.normalTitle" = "தமிழ்";
+
+/* Class = "UILabel"; text = "Re-record"; ObjectID = "267-Rd-vfY"; */
+"267-Rd-vfY.text" = "Re-record";
+
+/* Class = "UILabel"; text = "IP Address"; ObjectID = "3O0-vb-RP3"; */
+"3O0-vb-RP3.text" = "IP Address";
+
+/* Class = "UILabel"; text = "IP Address"; ObjectID = "6Zm-Sn-spl"; */
+"6Zm-Sn-spl.text" = "IP Address";
+
+/* Class = "UILabel"; text = "Thank You For Your Patience"; ObjectID = "6kh-b9-CGy"; */
+"6kh-b9-CGy.text" = "Thank You For Your Patience";
+
+/* Class = "UILabel"; text = " unknown"; ObjectID = "88T-Tv-LjO"; */
+"88T-Tv-LjO.text" = " unknown";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "8Zi-F3-4YK"; */
+"8Zi-F3-4YK.normalTitle" = "-";
+
+/* Class = "UILabel"; text = "Message:"; ObjectID = "8iH-xJ-Nex"; */
+"8iH-xJ-Nex.text" = "Message:";
+
+/* Class = "UILabel"; text = "RSSI:"; ObjectID = "9JO-yn-usL"; */
+"9JO-yn-usL.text" = "RSSI:";
+
+/* Class = "UILabel"; text = "Topic:"; ObjectID = "Ahq-lz-HIT"; */
+"Ahq-lz-HIT.text" = "Topic:";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "DED-8C-Igk"; */
+"DED-8C-Igk.text" = "Language";
+
+/* Class = "UILabel"; text = "Stop"; ObjectID = "EsX-WY-5bM"; */
+"EsX-WY-5bM.text" = "Stop";
+
+/* Class = "UILabel"; text = "ipaddress"; ObjectID = "FQb-pc-n79"; */
+"FQb-pc-n79.text" = "ipaddress";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "FRO-ZB-5Jz"; */
+"FRO-ZB-5Jz.text" = "Username";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "FbX-1d-AaN"; */
+"FbX-1d-AaN.normalTitle" = "+";
+
+/* Class = "UIBarButtonItem"; title = "general"; ObjectID = "FwZ-gD-P0x"; */
+"FwZ-gD-P0x.title" = "general";
+
+/* Class = "UILabel"; text = "Searching:"; ObjectID = "G34-bg-5xw"; */
+"G34-bg-5xw.text" = "Searching:";
+
+/* Class = "UILabel"; text = "MQTT"; ObjectID = "HkV-ZA-4nC"; */
+"HkV-ZA-4nC.text" = "MQTT";
+
+/* Class = "UIButton"; normalTitle = "English"; ObjectID = "J06-Tx-k3O"; */
+"J06-Tx-k3O.normalTitle" = "English";
+
+/* Class = "UILabel"; text = "Hold To Record"; ObjectID = "JOt-T2-wXm"; */
+"JOt-T2-wXm.text" = "Hold To Record";
+
+/* Class = "UILabel"; text = "Number:"; ObjectID = "JnA-zG-ZIs"; */
+"JnA-zG-ZIs.text" = "Number:";
+
+/* Class = "UILabel"; text = "Status:"; ObjectID = "LV3-Bu-Y35"; */
+"LV3-Bu-Y35.text" = "Status:";
+
+/* Class = "UILabel"; text = "Setting Complete"; ObjectID = "PH2-jI-ZK0"; */
+"PH2-jI-ZK0.text" = "Setting Complete";
+
+/* Class = "UILabel"; text = "Stop"; ObjectID = "Pd8-Mq-xVd"; */
+"Pd8-Mq-xVd.text" = "Stop";
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "QrN-VG-poi"; */
+"QrN-VG-poi.title" = "Save";
+
+/* Class = "UILabel"; text = "Proximity:"; ObjectID = "Tnh-Hh-eo6"; */
+"Tnh-Hh-eo6.text" = "Proximity:";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Tza-Av-4wq"; */
+"Tza-Av-4wq.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "    Beacon"; ObjectID = "VVk-JN-OLf"; */
+"VVk-JN-OLf.text" = "    Beacon";
+
+/* Class = "UILabel"; text = "Far"; ObjectID = "VjT-VT-OxV"; */
+"VjT-VT-OxV.text" = "Far";
+
+/* Class = "UILabel"; text = "   Volume"; ObjectID = "Vtt-sz-xtt"; */
+"Vtt-sz-xtt.text" = "   Volume";
+
+/* Class = "UILabel"; text = "Port"; ObjectID = "Wrt-i0-IGU"; */
+"Wrt-i0-IGU.text" = "Port";
+
+/* Class = "UIBarButtonItem"; title = "Setting"; ObjectID = "X41-zf-9FR"; */
+"X41-zf-9FR.title" = "Setting";
+
+/* Class = "UILabel"; text = "Please Select"; ObjectID = "XnY-m2-0fO"; */
+"XnY-m2-0fO.text" = "Please Select";
+
+/* Class = "UIButton"; normalTitle = "Malayu"; ObjectID = "Yko-zL-4ci"; */
+"Yko-zL-4ci.normalTitle" = "Malayu";
+
+/* Class = "UINavigationItem"; title = "Advanced Setting"; ObjectID = "Yny-ks-wNQ"; */
+"Yny-ks-wNQ.title" = "Advanced Setting";
+
+/* Class = "UIButton"; normalTitle = "简体中文"; ObjectID = "cPE-ey-xnx"; */
+"cPE-ey-xnx.normalTitle" = "简体中文";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "dOs-Rc-VEs"; */
+"dOs-Rc-VEs.text" = "Phone Number";
+
+/* Class = "UILabel"; text = "sipStatus"; ObjectID = "dUx-jB-XrT"; */
+"dUx-jB-XrT.text" = "sipStatus";
+
+/* Class = "UILabel"; text = "Status:"; ObjectID = "dhQ-Sl-LXc"; */
+"dhQ-Sl-LXc.text" = "Status:";
+
+/* Class = "UILabel"; text = "Immidiate"; ObjectID = "e0R-rs-zjT"; */
+"e0R-rs-zjT.text" = "Immidiate";
+
+/* Class = "UILabel"; text = "Use Default Reminder"; ObjectID = "e5b-6W-MpK"; */
+"e5b-6W-MpK.text" = "Use Default Reminder";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "eDd-j5-wfs"; */
+"eDd-j5-wfs.text" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Call"; ObjectID = "eIz-zW-1eA"; */
+"eIz-zW-1eA.normalTitle" = "Call";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "eOL-Kq-eIQ"; */
+"eOL-Kq-eIQ.text" = "Username";
+
+/* Class = "UILabel"; text = "Broadcast:"; ObjectID = "epF-iZ-CAj"; */
+"epF-iZ-CAj.text" = "Broadcast:";
+
+/* Class = "UILabel"; text = "Near"; ObjectID = "f3p-kB-keQ"; */
+"f3p-kB-keQ.text" = "Near";
+
+/* Class = "UILabel"; text = "value"; ObjectID = "f8X-j3-JSB"; */
+"f8X-j3-JSB.text" = "value";
+
+/* Class = "UILabel"; text = "Port"; ObjectID = "gbN-3u-aVv"; */
+"gbN-3u-aVv.text" = "Port";
+
+/* Class = "UILabel"; text = "UUID"; ObjectID = "guQ-uQ-aoK"; */
+"guQ-uQ-aoK.text" = "UUID";
+
+/* Class = "UILabel"; text = "Server:"; ObjectID = "jSR-XC-pDc"; */
+"jSR-XC-pDc.text" = "Server:";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jcR-on-UiH"; */
+"jcR-on-UiH.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Call Status"; ObjectID = "k1P-mb-KPc"; */
+"k1P-mb-KPc.text" = "Call Status";
+
+/* Class = "UIButton"; normalTitle = "Reconnect"; ObjectID = "lCn-U0-Pef"; */
+"lCn-U0-Pef.normalTitle" = "Reconnect";
+
+/* Class = "UILabel"; text = "Topic"; ObjectID = "lQG-YH-4jD"; */
+"lQG-YH-4jD.text" = "Topic";
+
+/* Class = "UILabel"; text = "number"; ObjectID = "lZg-98-obQ"; */
+"lZg-98-obQ.text" = "number";
+
+/* Class = "UILabel"; text = "Beacon"; ObjectID = "mcQ-H5-fix"; */
+"mcQ-H5-fix.text" = "Beacon";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "mqz-aO-N5M"; */
+"mqz-aO-N5M.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "SIP Phone"; ObjectID = "nt1-EM-4tT"; */
+"nt1-EM-4tT.text" = "SIP Phone";
+
+/* Class = "UILabel"; text = "Major"; ObjectID = "o5w-b9-kTj"; */
+"o5w-b9-kTj.text" = "Major";
+
+/* Class = "UILabel"; text = "mqttMessageReceive"; ObjectID = "oh9-jU-YLZ"; */
+"oh9-jU-YLZ.text" = "mqttMessageReceive";
+
+/* Class = "UIButton"; normalTitle = "Patient Checkin"; ObjectID = "p9J-Gu-Wc0"; */
+"p9J-Gu-Wc0.normalTitle" = "Patient Checkin";
+
+/* Class = "UILabel"; text = "mqttSubscribeTopic"; ObjectID = "pIn-gf-MU4"; */
+"pIn-gf-MU4.text" = "mqttSubscribeTopic";
+
+/* Class = "UIButton"; normalTitle = "Play Sound"; ObjectID = "q5k-GG-vmi"; */
+"q5k-GG-vmi.normalTitle" = "Play Sound";
+
+/* Class = "UILabel"; text = "Confirm"; ObjectID = "qi0-lz-ETl"; */
+"qi0-lz-ETl.text" = "Confirm";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "r1z-Jf-gii"; */
+"r1z-Jf-gii.text" = "Password";
+
+/* Class = "UILabel"; text = "value"; ObjectID = "rvM-A6-Nen"; */
+"rvM-A6-Nen.text" = "value";
+
+/* Class = "UIButton"; normalTitle = "End"; ObjectID = "tXL-Kf-fYa"; */
+"tXL-Kf-fYa.normalTitle" = "End";
+
+/* Class = "UILabel"; text = "customize"; ObjectID = "tcn-oq-kmV"; */
+"tcn-oq-kmV.text" = "customize";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "vaB-O0-tFm"; */
+"vaB-O0-tFm.title" = "Cancel";
+
+/* Class = "UILabel"; text = "    SIP"; ObjectID = "voj-3v-8Zz"; */
+"voj-3v-8Zz.text" = "    SIP";
+
+/* Class = "UIViewController"; title = "Advanced Setting View Controller"; ObjectID = "vrI-HQ-bGN"; */
+"vrI-HQ-bGN.title" = "Advanced Setting View Controller";
+
+/* Class = "UILabel"; text = "Customize Reminder"; ObjectID = "xM5-hM-94l"; */
+"xM5-hM-94l.text" = "Customize Reminder";
+
+/* Class = "UILabel"; text = "Volume:"; ObjectID = "xQe-1L-tfJ"; */
+"xQe-1L-tfJ.text" = "Volume:";
+
+/* Class = "UILabel"; text = "Confirm"; ObjectID = "xaa-Vw-kwv"; */
+"xaa-Vw-kwv.text" = "Confirm";
+
+/* Class = "UINavigationItem"; title = "BedsiteUnitPhone"; ObjectID = "zIf-lV-X7D"; */
+"zIf-lV-X7D.title" = "BedsiteUnitPhone";
+
+/* Class = "UILabel"; text = "Minor"; ObjectID = "zxd-nx-cM5"; */
+"zxd-nx-cM5.text" = "Minor";

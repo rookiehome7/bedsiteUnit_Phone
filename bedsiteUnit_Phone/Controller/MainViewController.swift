@@ -15,6 +15,7 @@ import CoreBluetooth
 
 struct MainViewData{
     static var controller: MainViewController?
+    static var display: Bool = false
 }
 
 struct MainViewVT{
@@ -50,8 +51,6 @@ var mainViewCallStateChanged: LinphoneCoreCallStateChangedCb = {
         if MainViewData.controller?.audioPlayer != nil {
             MainViewData.controller?.finishPlayback()
         }
-        
-        
         MainViewData.controller?.startSearchingBeacon()
         MainViewData.controller?.startBroadcastBeacon()
         
@@ -135,6 +134,8 @@ class MainViewController: UIViewController {
     var beaconPeripheralData: NSDictionary!
     var peripheralManager: CBPeripheralManager!
     
+
+    
     let vc = VolumeControl.sharedInstance
     
     override func viewDidLoad() {
@@ -146,12 +147,9 @@ class MainViewController: UIViewController {
         theLinphone.manager?.startLinphone()
         
         answerButton.isHidden = true
-        
-        // Add listener
-//        MainViewVT.lct.call_state_changed = mainViewCallStateChanged
-//        linphone_core_add_listener(theLinphone.lc!,  &MainViewVT.lct)
-        mqttSetting()
-        _ = mqtt?.connect()
+       
+//        mqttSetting()
+//        _ = mqtt?.connect()
         
         // iBeacon Searching
         locationManager = CLLocationManager()
@@ -226,7 +224,6 @@ class MainViewController: UIViewController {
         
     }
     func callMode_NotActive(){
-        
         incomingCallLabel.text = "phonenumber"
         
         // Show Call Button
@@ -245,11 +242,18 @@ class MainViewController: UIViewController {
         //Add Call Status Listener
         MainViewVT.lct.call_state_changed = mainViewCallStateChanged
         linphone_core_add_listener(theLinphone.lc!,  &MainViewVT.lct)
+        
+        mqttSubscribeTopicLabel.text = accountData.getMQTTTopic()
+        mqttStatusLabel.text = "Connected to " + accountData.getMQTTServerIp()!
+        
+         MainViewData.display = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         //Remove Call Status Listener
         linphone_core_remove_listener(theLinphone.lc!, &MainViewVT.lct)
+        
+         MainViewData.display = false
     }
 
     
@@ -351,163 +355,6 @@ extension MainViewController {
     
 }
 
-
-// MARK: Cocoa MQTT - View Controller Extension Part
-// This extension will handle all MQTT function
-extension MainViewController: CocoaMQTTDelegate {
-    // Send phone number  to OutgoingCallViewController
-    // MARK: MQTT Setting-
-    func mqttSetting() {
-        // Get MQTT Broker IP from PLIST File
-        let brokerIP = accountData.getMQTTServerIp()!
-        let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
-        mqtt = CocoaMQTT(clientID: clientID, host: brokerIP, port: 1883)
-        mqtt!.username = ""
-        mqtt!.password = ""
-        mqtt!.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
-        mqtt!.keepAlive = 60
-        mqtt!.delegate = self
-    }
-
-    // MARK: MQTT Command
-    // When Message Received
-    func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
-        TRACE("message: \(message.string.description), id: \(id)")
-        mqttMessageLabel.isHidden = false
-        mqttMessageLabel.text = message.string?.description
-        
-        // MQTT MESSAGE HANDLE PART
-        let command = message.string!.components(separatedBy: " ")
-        //        if command[0] == "call" {
-        //            makeCall(phoneNumber: command[1])
-        //        }
-        
-        // 3 Type of task
-        // low_risk_task bed_id
-        // mid_risk_task bed_id
-        // high_risk_task bed_id
-        // Incoming Task
-        // "task bed_id"
-        if command[0] == "low_risk_task" {
-            print("Low Task Incoming waiting for nurse reply")
-            if audioPlayer == nil {
-                startPlayback()
-            }
-        }
-        if command[0] == "mid_risk_task" {
-            print("Mid Task Incoming waiting for nurse reply")
-            if audioPlayer == nil {
-                startPlayback()
-            }
-        }
-        if command[0] == "high_risk_task" {
-            print("High Task Incoming waiting for nurse reply")
-            if audioPlayer == nil {
-                startPlayback()
-            }
-        }
-        // Stop alert
-        // "task_alert_stop bed_id"
-        if command[0] == "task_alert_stop" {
-            print("Task Stop Alert Message")
-            if audioPlayer != nil {
-                finishPlayback()
-            }
-        }
-        // When Task Complete
-        // task_complete task_id bed_id wearable_id patient_intention
-        // Get task_Complete and check same bed id or not
-        if command[0] == "task_complete" && command[2] == accountData.getSipUsername() {
-            print("Task Complete" + command[1] + ". By Nurse:" + command[3] )
-            // Do some thing when task complete  like terminate call? but when nurse terminate phone call in this device will terminate immediately
-            
-        }
-        
-    }
-    
-    // When MQTT Server Connect
-    func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
-        TRACE("ack: \(ack)")
-        if ack == .accept {
-            mqttReconnectButton.isHidden = true
-
-            let mqttTopic = accountData.getMQTTTopic()! + "/" + accountData.getSipUsername()!
-            // Set UI Label
-            mqttSubscribeTopicLabel.text = mqttTopic
-            mqtt.subscribe(mqttTopic, qos: CocoaMQTTQOS.qos1)
-            //mqtt.subscribe("Test", qos: CocoaMQTTQOS.qos1)
-            mqttStatusLabel.text = "Connected to " + accountData.getMQTTServerIp()!
-        }
-    }
-    
-    // When MQTT Server Disconnect
-    func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
-        TRACE("\(err.debugDescription)")
-        mqttStatusLabel.text = "Disconnect"
-        // Try to disconnect every 5 seconds when MQTT server Disconnect
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-//            _ = mqtt.connect()
-//        }
-    }
-    
-    // Another Function
-    func mqtt(_ mqtt: CocoaMQTT, didReceive trust: SecTrust, completionHandler: @escaping (Bool) -> Void) {
-        TRACE("trust: \(trust)")
-        completionHandler(true)
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didStateChangeTo state: CocoaMQTTConnState) {
-        TRACE("new state: \(state)")
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
-        TRACE("message: \(message.string.description), id: \(id)")
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
-        TRACE("id: \(id)")
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
-        TRACE("topics: \(topics)")
-    }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
-        TRACE("topic: \(topic)")
-    }
-    
-    func mqttDidPing(_ mqtt: CocoaMQTT) {
-        TRACE()
-    }
-    
-    func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
-        TRACE()
-    }
-    
-    func TRACE(_ message: String = "", fun: String = #function) {
-        let names = fun.components(separatedBy: ":")
-        var prettyName: String
-        if names.count == 2 {
-            prettyName = names[0]
-        } else {
-            prettyName = names[1]
-        }
-        if fun == "mqttDidDisconnect(_:withError:)" {
-            prettyName = "didDisconect"
-        }
-        print("[TRACE] [\(prettyName)]: \(message)")
-    }
-}
-
-extension Optional {
-    // Unwarp optional value for printing log only
-    var description: String {
-        if let warped = self {
-            return "\(warped)"
-        }
-        return ""
-    }
-}
 
 extension MainViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -636,21 +483,7 @@ extension MainViewController: CLLocationManagerDelegate, CBPeripheralManagerDele
                 beaconProximityLabel.text = "Error"
                 beaconRSSILabel.text = "Error"
             }
-            //if ( incomingPhoneNumber == "\(beacon.minor)"){
-            // Example how to set the volume
-            //                if (beaconProximity == "Immediate"){
-            //                    let vc = VolumeControl.sharedInstance
-            //                    vc.setVolume(volume: 0.1)
-            //                }
-            //                if (beaconProximity == "Near"){
-            //                    let vc = VolumeControl.sharedInstance
-            //                    vc.setVolume(volume: 0.50)
-            //                }
-            //                if (beaconProximity == "Far"){
-            //                    let vc = VolumeControl.sharedInstance
-            //                    vc.setVolume(volume: 1.0)
-            //                }
-            //}
+
         }
     }
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
@@ -670,3 +503,152 @@ extension MainViewController: CLLocationManagerDelegate, CBPeripheralManagerDele
         }
     }
 }
+
+
+// MARK: Cocoa MQTT - View Controller Extension Part
+// This extension will handle all MQTT function
+//extension MainViewController: CocoaMQTTDelegate {
+//    // Send phone number  to OutgoingCallViewController
+//    // MARK: MQTT Setting-
+//    func mqttSetting() {
+//        // Get MQTT Broker IP from PLIST File
+//        let brokerIP = accountData.getMQTTServerIp()!
+//        let clientID = "Bedside-" + String(ProcessInfo().processIdentifier)
+//        mqtt = CocoaMQTT(clientID: clientID, host: brokerIP, port: 1883)
+//        mqtt!.username = accountData.getMQTTUsername()
+//        mqtt!.password = accountData.getMQTTPassword()
+//        mqtt!.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
+//        mqtt!.keepAlive = 60
+//        mqtt!.delegate = self
+//    }
+//
+//    // MARK: MQTT Command
+//    // When Message Received
+//    func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
+//        TRACE("message: \(message.string.description), id: \(id)")
+//        mqttMessageLabel.isHidden = false
+//        mqttMessageLabel.text = message.string?.description
+//
+//        // MQTT MESSAGE HANDLE PART
+//        let command = message.string!.components(separatedBy: " ")
+//        //        if command[0] == "call" {
+//        //            makeCall(phoneNumber: command[1])
+//        //        }
+//
+//        // 3 Type of task
+//        // low_risk_task bed_id
+//        // mid_risk_task bed_id
+//        // high_risk_task bed_id
+//        // Incoming Task
+//        // "task bed_id"
+//        if command[0] == "low_risk_task" {
+//            print("Low Task Incoming waiting for nurse reply")
+//            if audioPlayer == nil {
+//                startPlayback()
+//            }
+//        }
+//        if command[0] == "mid_risk_task" {
+//            print("Mid Task Incoming waiting for nurse reply")
+//            if audioPlayer == nil {
+//                startPlayback()
+//            }
+//        }
+//        if command[0] == "high_risk_task" {
+//            print("High Task Incoming waiting for nurse reply")
+//            if audioPlayer == nil {
+//                startPlayback()
+//            }
+//        }
+//        // Stop alert
+//        // "task_alert_stop bed_id"
+//        if command[0] == "task_alert_stop" {
+//            print("Task Stop Alert Message")
+//            if audioPlayer != nil {
+//                finishPlayback()
+//            }
+//        }
+//        // When Task Complete
+//        // task_complete task_id bed_id wearable_id patient_intention
+//        // Get task_Complete and check same bed id or not
+//        if command[0] == "task_complete" && command[2] == accountData.getSipUsername() {
+//            print("Task Complete" + command[1] + ". By Nurse:" + command[3] )
+//            // Do some thing when task complete  like terminate call? but when nurse terminate phone call in this device will terminate immediately
+//
+//        }
+//
+//    }
+//
+//    // When MQTT Server Connect
+//    func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
+//        TRACE("ack: \(ack)")
+//        if ack == .accept {
+//            mqttReconnectButton.isHidden = true
+//
+//            let mqttTopic = accountData.getMQTTTopic()! + "/" + accountData.getSipUsername()!
+//            // Set UI Label
+//            mqttSubscribeTopicLabel.text = mqttTopic
+//            mqtt.subscribe(mqttTopic, qos: CocoaMQTTQOS.qos1)
+//            //mqtt.subscribe("Test", qos: CocoaMQTTQOS.qos1)
+//            mqttStatusLabel.text = "Connected to " + accountData.getMQTTServerIp()!
+//        }
+//    }
+//
+//    // When MQTT Server Disconnect
+//    func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
+//        TRACE("\(err.debugDescription)")
+//        mqttStatusLabel.text = "Disconnect"
+//        // Try to disconnect every 5 seconds when MQTT server Disconnect
+//        //        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+//        //            _ = mqtt.connect()
+//        //        }
+//    }
+//
+//    // Another Function
+//    func mqtt(_ mqtt: CocoaMQTT, didReceive trust: SecTrust, completionHandler: @escaping (Bool) -> Void) {
+//        TRACE("trust: \(trust)")
+//        completionHandler(true)
+//    }
+//
+//    func mqtt(_ mqtt: CocoaMQTT, didStateChangeTo state: CocoaMQTTConnState) {
+//        TRACE("new state: \(state)")
+//    }
+//
+//    func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
+//        TRACE("message: \(message.string.description), id: \(id)")
+//    }
+//
+//    func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
+//        TRACE("id: \(id)")
+//    }
+//
+//    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
+//        TRACE("topics: \(topics)")
+//    }
+//
+//    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
+//        TRACE("topic: \(topic)")
+//    }
+//
+//    func mqttDidPing(_ mqtt: CocoaMQTT) {
+//        TRACE()
+//    }
+//
+//    func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
+//        TRACE()
+//    }
+//
+//    func TRACE(_ message: String = "", fun: String = #function) {
+//        let names = fun.components(separatedBy: ":")
+//        var prettyName: String
+//        if names.count == 2 {
+//            prettyName = names[0]
+//        } else {
+//            prettyName = names[1]
+//        }
+//        if fun == "mqttDidDisconnect(_:withError:)" {
+//            prettyName = "didDisconect"
+//        }
+//        print("[TRACE] [\(prettyName)]: \(message)")
+//    }
+//}
+

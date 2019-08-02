@@ -80,6 +80,8 @@
 		A9FACB131D0A7B3700E3C8A5 /* oldphone-mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB051D0A7B3700E3C8A5 /* oldphone-mono.wav */; };
 		A9FACB141D0A7B3700E3C8A5 /* soft_as_snow.mkv in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB061D0A7B3700E3C8A5 /* soft_as_snow.mkv */; };
 		A9FACB151D0A7B3700E3C8A5 /* toy-mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = A9FACB071D0A7B3700E3C8A5 /* toy-mono.wav */; };
+		E00AA94122F494E400E612D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AA94022F494E400E612D3 /* LoginViewController.swift */; };
+		E00AA94522F497CE00E612D3 /* MQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AA94422F497CE00E612D3 /* MQTTManager.swift */; };
 		E012AC1D22EAA127003B30C0 /* 0452.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E012AC1C22EAA0B2003B30C0 /* 0452.m4a */; };
 		E020945722E9D99D00B69B9D /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020945622E9D99D00B69B9D /* Pulsing.swift */; };
 		E020945922E9FB7F00B69B9D /* AdvancedSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020945822E9FB7F00B69B9D /* AdvancedSettingViewController.swift */; };
@@ -211,6 +213,9 @@
 		A9FACB061D0A7B3700E3C8A5 /* soft_as_snow.mkv */ = {isa = PBXFileReference; lastKnownFileType = file; path = soft_as_snow.mkv; sourceTree = "<group>"; };
 		A9FACB071D0A7B3700E3C8A5 /* toy-mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "toy-mono.wav"; sourceTree = "<group>"; };
 		B1754C8E11DB660D95F1B164 /* Pods_bedsiteUnit_Phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bedsiteUnit_Phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E00AA94022F494E400E612D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = bedsiteUnit_Phone/LoginViewController.swift; sourceTree = "<group>"; };
+		E00AA94322F4962900E612D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		E00AA94422F497CE00E612D3 /* MQTTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTManager.swift; sourceTree = "<group>"; };
 		E012AC1C22EAA0B2003B30C0 /* 0452.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0452.m4a; sourceTree = "<group>"; };
 		E020945622E9D99D00B69B9D /* Pulsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
 		E020945822E9FB7F00B69B9D /* AdvancedSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvancedSettingViewController.swift; path = bedsiteUnit_Phone/Controller/AdvancedSettingViewController.swift; sourceTree = "<group>"; };
@@ -443,13 +448,14 @@
 			children = (
 				E0A1C65E22F13CC700F3AD63 /* NotUseController */,
 				A99663641D06F877003B5EEE /* AppDelegate.swift */,
-				E0A1C65C22F08B3D00F3AD63 /* MainViewController.swift */,
-				E020945822E9FB7F00B69B9D /* AdvancedSettingViewController.swift */,
+				E00AA94022F494E400E612D3 /* LoginViewController.swift */,
 				E0D5241F22E880BE001E8270 /* LocalizationViewController.swift */,
 				E0D5242522E880E8001E8270 /* RecordIntentionViewController.swift */,
 				E0D5242722E88101001E8270 /* RecordPageViewController.swift */,
 				E0D5242D22E88141001E8270 /* DefaultMessageViewController.swift */,
 				E0D5242F22E88157001E8270 /* CompletePromptViewController.swift */,
+				E0A1C65C22F08B3D00F3AD63 /* MainViewController.swift */,
+				E020945822E9FB7F00B69B9D /* AdvancedSettingViewController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -458,6 +464,7 @@
 		A9FAC4671D07D6F200E3C8A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A99663681D06F877003B5EEE /* Main.storyboard */,
 				A996636D1D06F877003B5EEE /* LaunchScreen.storyboard */,
 			);
 			name = View;
@@ -558,6 +565,7 @@
 				E08F917A22CB07DD007506F3 /* LocalUserData.swift */,
 				E08F917E22CB0B72007506F3 /* LinphoneUtil.swift */,
 				F42E3A6D22C4739800DAA1CC /* LinphoneManager.swift */,
+				E00AA94422F497CE00E612D3 /* MQTTManager.swift */,
 				E0D5244822E89BCC001E8270 /* SoundManager.swift */,
 				E09BDC4D22E6C30D0046C428 /* VolumeControlClass.swift */,
 				E020945622E9D99D00B69B9D /* Pulsing.swift */,
@@ -570,7 +578,6 @@
 			isa = PBXGroup;
 			children = (
 				E0D5241D22E87EE7001E8270 /* ViewController.swift */,
-				A99663681D06F877003B5EEE /* Main.storyboard */,
 				E040017122CB21390090D12A /* OutgoingCallViewController.swift */,
 				E08F918022CB0CA2007506F3 /* ReceiveCallViewController.swift */,
 			);
@@ -759,6 +766,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E00AA94122F494E400E612D3 /* LoginViewController.swift in Sources */,
 				E08F917F22CB0B72007506F3 /* LinphoneUtil.swift in Sources */,
 				E040017222CB21390090D12A /* OutgoingCallViewController.swift in Sources */,
 				F42E3A7222C4746E00DAA1CC /* AppDelegate.swift in Sources */,
@@ -767,6 +775,7 @@
 				E0D5242122E880BE001E8270 /* LocalizationViewController.swift in Sources */,
 				E0D5242622E880E9001E8270 /* RecordIntentionViewController.swift in Sources */,
 				E0A1C65D22F08B3D00F3AD63 /* MainViewController.swift in Sources */,
+				E00AA94522F497CE00E612D3 /* MQTTManager.swift in Sources */,
 				E020945722E9D99D00B69B9D /* Pulsing.swift in Sources */,
 				E08F917B22CB07DD007506F3 /* LocalUserData.swift in Sources */,
 				E0D5244922E89BCC001E8270 /* SoundManager.swift in Sources */,
@@ -792,6 +801,7 @@
 				E0D5244322E8835A001E8270 /* zh-Hans */,
 				E0D5244522E8835D001E8270 /* ta-SG */,
 				E0D5244722E8835D001E8270 /* ms */,
+				E00AA94322F4962900E612D3 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
