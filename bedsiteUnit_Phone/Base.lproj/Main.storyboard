@@ -576,7 +576,7 @@
         <!--Record Intention View Controller-->
         <scene sceneID="EfU-XT-Unu">
             <objects>
-                <viewController id="zB1-ZC-TAf" customClass="RecordIntentionViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordIntentionViewController" id="zB1-ZC-TAf" customClass="RecordIntentionViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iu8-tK-YW0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -879,7 +879,7 @@
         <!--Login View Controller-->
         <scene sceneID="Ie4-rL-4v0">
             <objects>
-                <viewController id="KbC-o5-GMJ" customClass="LoginViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="KbC-o5-GMJ" customClass="LoginViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pii-r3-cGG"/>
                         <viewControllerLayoutGuide type="bottom" id="Exe-cp-Wz0"/>
@@ -918,7 +918,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Sus-UO-vOS">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2iw-eN-Bfa" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RecordIntentionNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="2iw-eN-Bfa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QmX-UP-VXL">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>

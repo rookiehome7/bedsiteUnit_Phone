@@ -109,9 +109,14 @@ class LinphoneManager {
     // Set callback function for Register & Call State Change
     // Set Ringtone Sound
      func initLinphone(){
+        // Documentation : Configure file
+        // https://www.linphone.org/docs/liblinphone/group__misc.html
+        // Documentation: Set Volume Speaker Microphone
+        // https://www.linphone.org/docs/liblinphone/group__call__misc.html
+        
         // Enable debug log to stdout
         linphone_core_set_log_file(nil)
-        linphone_core_set_log_level(ORTP_DEBUG)
+        //linphone_core_set_log_level(ORTP_DEBUG)
         // Load config
         let configFilename = documentFile("linphonerc")
         let factoryConfigFilename = bundleFile("linphonerc-factory")
@@ -119,7 +124,8 @@ class LinphoneManager {
         let configFilenamePtr: UnsafePointer<Int8> = configFilename.cString(using: String.Encoding.utf8.rawValue)!
         let factoryConfigFilenamePtr: UnsafePointer<Int8> = factoryConfigFilename.cString(using: String.Encoding.utf8.rawValue)!
         let lpConfig = lp_config_new_with_factory(configFilenamePtr, factoryConfigFilenamePtr)
-        
+        // linphone_config_new_with_factory()
+
         // Set Callback Function
         theLinphone.lct = LinphoneCoreVTable()
         theLinphone.lct!.registration_state_changed = registrationStateChanged

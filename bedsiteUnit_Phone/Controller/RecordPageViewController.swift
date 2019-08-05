@@ -39,23 +39,23 @@ class RecordPageViewController : UIViewController {
         btnRecord.addTarget(self, action: #selector(recordButtonUp), for: [.touchUpInside, .touchUpOutside])
         
         //navigationController?.navigationBar.shadowImage = UIImage()
-       recordingSession = AVAudioSession.sharedInstance()
-        do {
-            //try recordingSession.setCategory(.playAndRecord, mode: .default)
-            //try recordingSession.setCategory(.playAndRecord, mode: .default)
-            try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission { [unowned self] allowed in
-                DispatchQueue.main.async {
-                    if allowed {
-                        self.recordLayout()
-                    } else {
-                        // failed to record
-                    }
-                }
-            }
-        } catch {
-            // failed to record!
-        }
+//       recordingSession = AVAudioSession.sharedInstance()
+//        do {
+//            //try recordingSession.setCategory(.playAndRecord, mode: .default)
+//            //try recordingSession.setCategory(.playAndRecord, mode: .default)
+//            try recordingSession.setActive(true)
+//            recordingSession.requestRecordPermission { [unowned self] allowed in
+//                DispatchQueue.main.async {
+//                    if allowed {
+//                        self.recordLayout()
+//                    } else {
+//                        // failed to record
+//                    }
+//                }
+//            }
+//        } catch {
+//            // failed to record!
+//        }
     }
     // MARK: User Interface
     func btnFitShape(button: UIButton){

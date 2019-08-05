@@ -104,11 +104,44 @@ class MQTTManager : CocoaMQTTDelegate {
                 print("Task Complete" + command[1] + ". By Nurse:" + command[3] )
                 // Do some thing when task complete  like terminate call? but when nurse terminate phone call in this device will terminate immediately
             }
+            
+            if command[0] == "getmicgain"{
+                MainViewData.controller?.getMicGainValue()
+            }
+            if command[0] == "getspeakergain"{
+                MainViewData.controller?.getSpeakerGainValue()
+            }
+            
+
         }
-
         
         
-
+        // Go to Patient_In State
+        if (command[0] == "patient_check_in" )
+        {
+            //RecordIntentionNavigationController
+            if var controller = UIApplication.shared.keyWindow?.rootViewController{
+                while let presentedViewController = controller.presentedViewController {
+                    controller = presentedViewController
+                }
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "RecordIntentionNavigationController")
+                controller.present(vc, animated: true, completion: nil)
+            }
+        }
+            
+        // Go to Prior_Check_In State
+        else if command[0] == "patient_check_out"{
+            if var controller = UIApplication.shared.keyWindow?.rootViewController{
+                while let presentedViewController = controller.presentedViewController {
+                    controller = presentedViewController
+                }
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+                controller.present(vc, animated: true, completion: nil)
+            }
+        }
+        
     }
     
     // When MQTT Server Connect
@@ -120,6 +153,7 @@ class MQTTManager : CocoaMQTTDelegate {
             mqtt.subscribe(mqttTopic, qos: CocoaMQTTQOS.qos1)
             //mqtt.subscribe("Test", qos: CocoaMQTTQOS.qos1)
             MainViewData.controller?.mqttStatusLabel.text = "Connected to " + accountData.getMQTTServerIp()!
+            MainViewData.controller?.mqttReconnectButton.isHidden = true
         }
     }
     

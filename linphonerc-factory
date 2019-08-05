@@ -24,10 +24,10 @@ eq_gains= 50:10:300 1000:0.1:10000
 eq_location=mic
 ringer_dev_id=AQ: Audio Queue Device
 
-play_lev=100
-rec_lev=100
-mic_gain_db = 2
-playback_gain_db = 12
+#play_lev=100
+#rec_lev=100
+#mic_gain_db = 2
+#playback_gain_db = 12
 dtmf_player_amp = 0.1
 dc_removal = 1
 
