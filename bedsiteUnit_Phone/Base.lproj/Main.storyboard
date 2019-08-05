@@ -476,10 +476,10 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="505"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11b-Wt-oQB">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="168.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cAg-GW-8x0">
-                                                <rect key="frame" x="68" y="9.5" width="184.5" height="82"/>
+                                                <rect key="frame" x="68" y="43" width="184.5" height="82"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XnY-m2-0fO">
                                                         <rect key="frame" x="0.0" y="0.0" width="184.5" height="35.5"/>
@@ -503,29 +503,29 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J06-Tx-k3O">
-                                        <rect key="frame" x="0.0" y="101" width="320" height="101"/>
+                                        <rect key="frame" x="0.0" y="168.5" width="320" height="168"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                         <state key="normal" title="English">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="btnEnglish:" destination="Ait-Hf-FP4" eventType="touchUpInside" id="ss8-44-DXb"/>
-                                            <segue destination="lD8-Cl-LVa" kind="show" id="SjT-p5-12q"/>
+                                            <segue destination="lD8-Cl-LVa" kind="show" identifier="English" id="SjT-p5-12q"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPE-ey-xnx">
-                                        <rect key="frame" x="0.0" y="202" width="320" height="101"/>
+                                        <rect key="frame" x="0.0" y="336.5" width="320" height="168.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                         <state key="normal" title="简体中文">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="btnChinese:" destination="Ait-Hf-FP4" eventType="touchUpInside" id="1ct-ho-hEP"/>
-                                            <segue destination="lD8-Cl-LVa" kind="show" id="VOO-NV-hDr"/>
+                                            <segue destination="lD8-Cl-LVa" kind="show" identifier="Chinese" id="VOO-NV-hDr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yko-zL-4ci">
-                                        <rect key="frame" x="0.0" y="303" width="320" height="101"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yko-zL-4ci">
+                                        <rect key="frame" x="0.0" y="505" width="320" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                         <state key="normal" title="Malayu">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -535,8 +535,8 @@
                                             <segue destination="lD8-Cl-LVa" kind="show" id="rYH-LO-bU9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24J-KJ-mQS">
-                                        <rect key="frame" x="0.0" y="404" width="320" height="101"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24J-KJ-mQS">
+                                        <rect key="frame" x="0.0" y="505" width="320" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                         <state key="normal" title="தமிழ்">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -702,7 +702,7 @@
         <!--Default Message View Controller-->
         <scene sceneID="yKd-fP-5Z3">
             <objects>
-                <viewController id="lD8-Cl-LVa" customClass="defaultMessageViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="defaultMessageViewController" id="lD8-Cl-LVa" customClass="defaultMessageViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iFP-t1-9oV"/>
                         <viewControllerLayoutGuide type="bottom" id="HaU-Ie-uIH"/>
@@ -1626,8 +1626,8 @@
         <image name="setting" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="q27-vn-T0w"/>
-        <segue reference="SjT-p5-12q"/>
-        <segue reference="BYa-7o-4S3"/>
+        <segue reference="83B-Po-TV6"/>
+        <segue reference="VOO-NV-hDr"/>
+        <segue reference="o8X-Aw-Zrw"/>
     </inferredMetricsTieBreakers>
 </document>

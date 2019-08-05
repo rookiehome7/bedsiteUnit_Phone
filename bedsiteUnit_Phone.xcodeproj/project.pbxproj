@@ -448,13 +448,13 @@
 			children = (
 				E0A1C65E22F13CC700F3AD63 /* NotUseController */,
 				A99663641D06F877003B5EEE /* AppDelegate.swift */,
+				E0A1C65C22F08B3D00F3AD63 /* MainViewController.swift */,
 				E00AA94022F494E400E612D3 /* LoginViewController.swift */,
 				E0D5241F22E880BE001E8270 /* LocalizationViewController.swift */,
+				E0D5242D22E88141001E8270 /* DefaultMessageViewController.swift */,
 				E0D5242522E880E8001E8270 /* RecordIntentionViewController.swift */,
 				E0D5242722E88101001E8270 /* RecordPageViewController.swift */,
-				E0D5242D22E88141001E8270 /* DefaultMessageViewController.swift */,
 				E0D5242F22E88157001E8270 /* CompletePromptViewController.swift */,
-				E0A1C65C22F08B3D00F3AD63 /* MainViewController.swift */,
 				E020945822E9FB7F00B69B9D /* AdvancedSettingViewController.swift */,
 			);
 			name = Controller;

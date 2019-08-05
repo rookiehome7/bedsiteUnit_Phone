@@ -17,16 +17,18 @@ class defaultMessageViewController : UIViewController{
     @IBOutlet weak var btnConfirm: UIButton!
     
     var audioPlayer: AVAudioPlayer!
+    var language: String?
     
     let soundManager = SoundManager() // Get function for manage sound file
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        // Set Default Language Sound
+        soundManager.setLanguageDefaultSound(language: language!)
+        
         // Do any additional setup after loading the view.
         btnPlay.layer.cornerRadius = btnPlay.frame.size.width / 2;
         btnConfirm.setTitle(LocalizationSystem.sharedInstance.localizedStringForKey(key: "label_confirm", comment: ""), for: .normal)
-
     }
     
     // MARK: - Button

@@ -14,8 +14,8 @@ func getDocumentsDirectory() -> URL {
 }
 
 class SoundManager: FileProviderDelegate
-{
-    var defaultSoundFilename = "en_pleasestayonthebed.m4a"
+{    
+    var defaultSoundFilename = "" 
     var recordingSoundFilename = "recording.m4a"
     var waitingSoundFilename = "waitingsound.m4a"
     
@@ -25,6 +25,17 @@ class SoundManager: FileProviderDelegate
         documentsProvider.delegate = self as FileProviderDelegate
     }
 
+    func setLanguageDefaultSound(language : String){
+        if (language == "CN"){
+        defaultSoundFilename = "cn_pleasestayonthebed.m4a"
+        }
+        else {
+        defaultSoundFilename = "en_pleasestayonthebed.m4a"
+        }
+        
+    }
+    
+    
     func getDefaultSoundURL() -> URL {
         let split = defaultSoundFilename.components(separatedBy: ".")
         //Another way

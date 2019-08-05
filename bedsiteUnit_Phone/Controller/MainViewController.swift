@@ -46,7 +46,7 @@ var mainViewCallStateChanged: LinphoneCoreCallStateChangedCb = {
         MainViewData.controller?.answerButton.isHidden = true
         MainViewData.controller?.callMode_Active()
         if MainViewData.controller?.audioPlayer != nil {
-            MainViewData.controller?.finishPlayback()
+            MainViewData.controller?.stopAlertSound()
         }
         MainViewData.controller?.startSearchingBeacon()
         MainViewData.controller?.startBroadcastBeacon()
@@ -130,9 +130,7 @@ class MainViewController: UIViewController {
     var beaconPeripheralData: NSDictionary!
     var peripheralManager: CBPeripheralManager!
     
-
-    
-    let vc = VolumeControl.sharedInstance
+//    let vc = VolumeControl.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,7 +141,7 @@ class MainViewController: UIViewController {
         theLinphone.manager?.startLinphone()
         
         answerButton.isHidden = true
-
+        mqttReconnectButton.isHidden = true
         
         // iBeacon Searching
         locationManager = CLLocationManager()
@@ -219,7 +217,6 @@ class MainViewController: UIViewController {
     }
     func callMode_NotActive(){
         incomingCallLabel.text = "phonenumber"
-        
         // Show Call Button
         phoneNumberTextField.isHidden = false
         callButton.isHidden = false
@@ -246,7 +243,6 @@ class MainViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         //Remove Call Status Listener
         linphone_core_remove_listener(theLinphone.lc!, &MainViewVT.lct)
-        
          MainViewData.display = false
     }
 
@@ -262,15 +258,15 @@ class MainViewController: UIViewController {
     
     @IBAction func volumeDownButton(_ sender: Any) {
         //let vc = VolumeControl.sharedInstance
-        vc.turnDown()
-        currentVolumeLabel.text = String(format: "%.3f", vc.getCurrentVolume())
+//        vc.turnDown()
+//        currentVolumeLabel.text = String(format: "%.3f", vc.getCurrentVolume())
     }
     
     @IBAction func volumeUpButton(_ sender: Any) {
         //let vc = VolumeControl.sharedInstance
         //vc.setVolume(volume: 0.50)
-        vc.turnUp()
-        currentVolumeLabel.text = String(format: "%.3f", vc.getCurrentVolume())
+//        vc.turnUp()
+//        currentVolumeLabel.text = String(format: "%.3f", vc.getCurrentVolume())
         
     }
     
@@ -290,10 +286,10 @@ class MainViewController: UIViewController {
     
     @IBAction func playSoundButton(_ sender: Any) {
         if audioPlayer == nil {
-            startPlayback()
+            startAlertSound()
         }
         else {
-            finishPlayback()
+            stopAlertSound()
         }
     }
     
@@ -340,7 +336,7 @@ extension MainViewController {
 
 // MARK : Sound Extension
 extension MainViewController {
-    func startPlayback() {
+    func startAlertSound() {
         let audioFilename = getDocumentsDirectory().appendingPathComponent("waitingsound.m4a")
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)
@@ -354,23 +350,22 @@ extension MainViewController {
             // unable to play recording!
         }
     }
-    
-    func finishPlayback() {
+    func stopAlertSound() {
         audioPlayer = nil
         warningSoundButton.setTitle("Playback", for: .normal)
     }
-    
 }
 
 
 extension MainViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        finishPlayback()
+        stopAlertSound()
     }
 }
 
 // MARK: iBeacon - View Controller Extension Part
 extension MainViewController: CLLocationManagerDelegate, CBPeripheralManagerDelegate {
+    
     // MARK: iBeacon Broadcast Signal
     func startBroadcastBeacon() {
         beaconBroadcastStatusLabel.text = "Start"
@@ -381,8 +376,6 @@ extension MainViewController: CLLocationManagerDelegate, CBPeripheralManagerDele
         let uuid = UUID(uuidString: accountData.getBeaconUUID()!)!
         let localBeaconMajor: CLBeaconMajorValue = UInt16(accountData.getBeaconMajor()!)!
         let localBeaconMinor: CLBeaconMinorValue = UInt16(accountData.getBeaconMinor()!)!
-        //let localBeaconMajor: CLBeaconMajorValue = 123
-        //let localBeaconMinor: CLBeaconMinorValue = 789
         let identifier = "Put your identifier here"
         
         broadcastBeacon = CLBeaconRegion(proximityUUID: uuid, major: localBeaconMajor, minor: localBeaconMinor, identifier: identifier)

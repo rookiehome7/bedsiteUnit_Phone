@@ -47,7 +47,8 @@ class MQTTManager : CocoaMQTTDelegate {
         // Get MQTT Broker IP from PLIST File
         let brokerIP = accountData.getMQTTServerIp()!
         let clientID = "Bedside-" + String(ProcessInfo().processIdentifier)
-        mqtt = CocoaMQTT(clientID: clientID, host: brokerIP, port: 1883)
+        let brokerPort = UInt16(accountData.getMQTTServerPort()!)
+        mqtt = CocoaMQTT(clientID: clientID, host: brokerIP, port: brokerPort!)
         mqtt!.username = accountData.getMQTTUsername()
         mqtt!.password = accountData.getMQTTPassword()
         mqtt!.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
@@ -62,44 +63,38 @@ class MQTTManager : CocoaMQTTDelegate {
         // MQTT MESSAGE HANDLE PART
         let command = message.string!.components(separatedBy: " ")
         MainViewData.controller?.mqttMessageLabel.text = message.string?.description
-        // 3 Type of task
-        // low_risk_task bed_id
-        // mid_risk_task bed_id
-        // high_risk_task bed_id
+
         // Incoming Task
-        // "task bed_id"
-        
+        // "task"
         if (MainViewData.display == true) { // To check mainview appear or not.
             if command[0] == "low_risk_task" {
                 print("Low Task Incoming waiting for nurse reply")
                 if MainViewData.controller?.audioPlayer == nil {
-                    MainViewData.controller?.startPlayback()
+                    MainViewData.controller?.startAlertSound()
                 }
             }
             if command[0] == "mid_risk_task" {
                 print("Mid Task Incoming waiting for nurse reply")
                 if MainViewData.controller?.audioPlayer == nil {
-                    MainViewData.controller?.startPlayback()
+                    MainViewData.controller?.startAlertSound()
                 }
             }
             if command[0] == "high_risk_task" {
                 print("High Task Incoming waiting for nurse reply")
                 if MainViewData.controller?.audioPlayer == nil {
-                    MainViewData.controller?.startPlayback()
+                    MainViewData.controller?.startAlertSound()
                 }
             }
-            
             // Stop alert
             // "task_alert_stop bed_id"
             if command[0] == "task_alert_stop" {
                 print("Task Stop Alert Message")
                 if MainViewData.controller?.audioPlayer != nil {
-                    MainViewData.controller?.finishPlayback()
+                    MainViewData.controller?.stopAlertSound()
                 }
             }
             // When Task Complete
             // task_complete task_id bed_id wearable_id patient_intention
-            // Get task_Complete and check same bed id or not
             if command[0] == "task_complete" && command[2] == accountData.getSipUsername() {
                 print("Task Complete" + command[1] + ". By Nurse:" + command[3] )
                 // Do some thing when task complete  like terminate call? but when nurse terminate phone call in this device will terminate immediately
@@ -111,8 +106,6 @@ class MQTTManager : CocoaMQTTDelegate {
             if command[0] == "getspeakergain"{
                 MainViewData.controller?.getSpeakerGainValue()
             }
-            
-
         }
         
         
@@ -141,7 +134,6 @@ class MQTTManager : CocoaMQTTDelegate {
                 controller.present(vc, animated: true, completion: nil)
             }
         }
-        
     }
     
     // When MQTT Server Connect
@@ -160,6 +152,7 @@ class MQTTManager : CocoaMQTTDelegate {
     // When MQTT Server Disconnect
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
         TRACE("\(err.debugDescription)")
+        MainViewData.controller?.mqttReconnectButton.isHidden = false
         MainViewData.controller?.mqttStatusLabel.text = "Disconnect"
         // Try to disconnect every 5 seconds when MQTT server Disconnect
         //        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {

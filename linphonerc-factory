@@ -1,14 +1,6 @@
 [app]
-#contact_display_username_only=1
-#contact_filter_on_default_domain=1
-#debug_popup_magic=**00**
-debug_popup_email=linphone-iphone@belledonne-communications.com
 send_logs_include_linphonerc_and_chathistory=0
-#use_phone_number=0
 
-[assistant]
-password_length=-1
-username_length=-1
 
 [misc]
 #by default it is set to 30 by liblinphone
@@ -19,23 +11,15 @@ sip_random_port=0
 store_ha1_passwd=0
 
 [sound]
-eq_active = 1
-eq_gains= 50:10:300 1000:0.1:10000
+eq_active = 0
+eq_gains=50:2:300 4000:0.01:10000
 eq_location=mic
-ringer_dev_id=AQ: Audio Queue Device
 
-#play_lev=100
-#rec_lev=100
-#mic_gain_db = 2
-#playback_gain_db = 12
-dtmf_player_amp = 0.1
-dc_removal = 1
+playback_gain_db = 6
+mic_gain_db = 2
 
 echocancellation = 1
-agc = 0
-echolimiter = 1
+dtmf_player_amp=0.007
 
+ringer_dev_id=AQ: Audio Queue Device
 
-
-[video]
-display_filter_auto_rotate=0
