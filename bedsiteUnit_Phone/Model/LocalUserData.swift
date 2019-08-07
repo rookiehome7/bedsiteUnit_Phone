@@ -79,18 +79,3 @@ class LocalUserData {
         return UserDefaults.standard.string(forKey: "beaconminor") ?? ""
     }
 }
-
-//    mqttIpAddress
-//    mqttPort
-//    mqttSubscribeTopic
-//    mqttUsername
-//    mqttPassword
-//
-//    sipIpAddress
-//    sipPort
-//    sipUsername
-//    sipPassword
-//
-//    beaconUUID
-//    beaconMajor
-//    beaconMinor

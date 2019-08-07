@@ -25,7 +25,7 @@ class AdvancedSettingViewController: UIViewController {
     @IBOutlet weak var beaconMinor: UITextField!
     
     var linphoneManager: LinphoneManager?
-    var viewController : ViewController?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

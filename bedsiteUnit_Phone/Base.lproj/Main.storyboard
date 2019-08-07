@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,8 +14,8 @@
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="q1P-k9-jKK" customClass="MainViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3sn-HP-E2n"/>
-                        <viewControllerLayoutGuide type="bottom" id="Niv-IL-2wo"/>
+                        <viewControllerLayoutGuide type="top" id="wA3-cU-Inn"/>
+                        <viewControllerLayoutGuide type="bottom" id="zSN-Mr-dSj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gmw-hj-gRK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -411,12 +410,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nvF-Sx-YIE" firstAttribute="top" secondItem="3sn-HP-E2n" secondAttribute="bottom" constant="20" id="3xa-ho-o1b"/>
+                            <constraint firstItem="nvF-Sx-YIE" firstAttribute="top" secondItem="wA3-cU-Inn" secondAttribute="bottom" constant="20" id="3xa-ho-o1b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vuV-Ac-dHC" secondAttribute="trailing" id="7pz-mf-1cP"/>
                             <constraint firstItem="RDg-3s-nzq" firstAttribute="leading" secondItem="gmw-hj-gRK" secondAttribute="leadingMargin" id="9oz-40-nrE"/>
                             <constraint firstItem="q5k-GG-vmi" firstAttribute="centerX" secondItem="gmw-hj-gRK" secondAttribute="centerX" id="AG3-eR-95j"/>
                             <constraint firstItem="nvF-Sx-YIE" firstAttribute="leading" secondItem="gmw-hj-gRK" secondAttribute="leadingMargin" id="Chi-JF-FtA"/>
-                            <constraint firstItem="Niv-IL-2wo" firstAttribute="top" secondItem="RDg-3s-nzq" secondAttribute="bottom" constant="20" id="MRb-OA-dYC"/>
+                            <constraint firstItem="zSN-Mr-dSj" firstAttribute="top" secondItem="RDg-3s-nzq" secondAttribute="bottom" constant="20" id="MRb-OA-dYC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RDg-3s-nzq" secondAttribute="trailing" id="UFr-2g-SSJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0ES-4N-4Fx" secondAttribute="trailing" id="X5c-PA-mKu"/>
                             <constraint firstItem="vuV-Ac-dHC" firstAttribute="top" secondItem="nvF-Sx-YIE" secondAttribute="bottom" constant="5" id="fWZ-4h-mWA"/>
@@ -462,12 +461,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEX-sH-Sfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4524" y="310"/>
+            <point key="canvasLocation" x="3919" y="327"/>
         </scene>
         <!--Localization View Controller-->
         <scene sceneID="fGu-og-ECC">
             <objects>
                 <viewController id="Ait-Hf-FP4" customClass="LocalizationViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jfr-jX-qWE"/>
+                        <viewControllerLayoutGuide type="bottom" id="czw-dK-N8g"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HHy-lh-YaL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -509,7 +512,6 @@
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnEnglish:" destination="Ait-Hf-FP4" eventType="touchUpInside" id="ss8-44-DXb"/>
                                             <segue destination="lD8-Cl-LVa" kind="show" identifier="English" id="SjT-p5-12q"/>
                                         </connections>
                                     </button>
@@ -520,7 +522,6 @@
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnChinese:" destination="Ait-Hf-FP4" eventType="touchUpInside" id="1ct-ho-hEP"/>
                                             <segue destination="lD8-Cl-LVa" kind="show" identifier="Chinese" id="VOO-NV-hDr"/>
                                         </connections>
                                     </button>
@@ -531,7 +532,6 @@
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnMalay:" destination="Ait-Hf-FP4" eventType="touchUpInside" id="eNb-Gj-CaD"/>
                                             <segue destination="lD8-Cl-LVa" kind="show" id="rYH-LO-bU9"/>
                                         </connections>
                                     </button>
@@ -542,7 +542,6 @@
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnTamil:" destination="Ait-Hf-FP4" eventType="touchUpInside" id="uOD-WF-yh4"/>
                                             <segue destination="lD8-Cl-LVa" kind="show" id="TpU-VH-WHD"/>
                                         </connections>
                                     </button>
@@ -552,12 +551,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tb8-qF-mMt" firstAttribute="centerX" secondItem="HHy-lh-YaL" secondAttribute="centerX" id="21f-bh-F9f"/>
-                            <constraint firstItem="tb8-qF-mMt" firstAttribute="trailing" secondItem="2Zc-6B-HEC" secondAttribute="trailing" id="CaJ-Hd-u3V"/>
-                            <constraint firstItem="tb8-qF-mMt" firstAttribute="top" secondItem="2Zc-6B-HEC" secondAttribute="top" id="Ht2-Os-spP"/>
+                            <constraint firstItem="tb8-qF-mMt" firstAttribute="trailing" secondItem="HHy-lh-YaL" secondAttribute="trailing" id="CaJ-Hd-u3V"/>
+                            <constraint firstItem="tb8-qF-mMt" firstAttribute="top" secondItem="Jfr-jX-qWE" secondAttribute="bottom" id="Ht2-Os-spP"/>
                             <constraint firstAttribute="bottomMargin" secondItem="tb8-qF-mMt" secondAttribute="bottom" constant="-1" id="QUi-BJ-gR8"/>
-                            <constraint firstItem="tb8-qF-mMt" firstAttribute="leading" secondItem="2Zc-6B-HEC" secondAttribute="leading" id="ots-on-47M"/>
+                            <constraint firstItem="tb8-qF-mMt" firstAttribute="leading" secondItem="HHy-lh-YaL" secondAttribute="leading" id="ots-on-47M"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2Zc-6B-HEC"/>
                     </view>
                     <navigationItem key="navigationItem" id="BHx-Xp-Pnx">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="0Al-j0-8QG">
@@ -577,6 +575,10 @@
         <scene sceneID="EfU-XT-Unu">
             <objects>
                 <viewController storyboardIdentifier="RecordIntentionViewController" id="zB1-ZC-TAf" customClass="RecordIntentionViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qlF-yI-Mlh"/>
+                        <viewControllerLayoutGuide type="bottom" id="oI2-31-9MI"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iu8-tK-YW0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -641,9 +643,8 @@
                             <constraint firstItem="e5b-6W-MpK" firstAttribute="centerX" secondItem="iu8-tK-YW0" secondAttribute="centerX" id="VBJ-dV-i1j"/>
                             <constraint firstItem="xM5-hM-94l" firstAttribute="top" secondItem="LyA-PP-pPN" secondAttribute="bottom" constant="13" id="VYI-Jk-2C9"/>
                             <constraint firstItem="xM5-hM-94l" firstAttribute="centerX" secondItem="iu8-tK-YW0" secondAttribute="centerX" id="oGa-2n-Y7e"/>
-                            <constraint firstItem="LyA-PP-pPN" firstAttribute="top" secondItem="JHU-LO-s4c" secondAttribute="top" constant="30" id="s0M-AQ-5YH"/>
+                            <constraint firstItem="LyA-PP-pPN" firstAttribute="top" secondItem="qlF-yI-Mlh" secondAttribute="bottom" constant="30" id="s0M-AQ-5YH"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="JHU-LO-s4c"/>
                     </view>
                     <navigationItem key="navigationItem" id="PG1-Af-zve"/>
                     <connections>
@@ -653,12 +654,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWm-jN-4Xe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992" y="-1309"/>
+            <point key="canvasLocation" x="1898" y="-1320"/>
         </scene>
         <!--Complete Prompt View Controller-->
         <scene sceneID="4VZ-Gr-g4L">
             <objects>
                 <viewController id="fdW-Im-abQ" customClass="CompletePromptViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tpe-6H-9ij"/>
+                        <viewControllerLayoutGuide type="bottom" id="F9b-fw-UDT"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ioh-gN-p0T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -688,7 +693,6 @@
                             <constraint firstItem="dnY-6u-Gzj" firstAttribute="centerX" secondItem="ioh-gN-p0T" secondAttribute="centerX" id="uqg-Ls-rpv"/>
                             <constraint firstItem="6kh-b9-CGy" firstAttribute="top" secondItem="PH2-jI-ZK0" secondAttribute="bottom" constant="9" id="wFH-Dr-ymR"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="eUG-Ac-HTk"/>
                     </view>
                     <connections>
                         <outlet property="lblComplete" destination="PH2-jI-ZK0" id="nYB-bO-WeJ"/>
@@ -697,15 +701,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bh0-nT-j18" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="310"/>
+            <point key="canvasLocation" x="2312" y="327"/>
         </scene>
         <!--Default Message View Controller-->
         <scene sceneID="yKd-fP-5Z3">
             <objects>
                 <viewController storyboardIdentifier="defaultMessageViewController" id="lD8-Cl-LVa" customClass="defaultMessageViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="iFP-t1-9oV"/>
-                        <viewControllerLayoutGuide type="bottom" id="HaU-Ie-uIH"/>
+                        <viewControllerLayoutGuide type="top" id="FbY-Td-lQB"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZSX-gY-GHo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1mQ-B8-tpn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -762,13 +766,13 @@
                         <constraints>
                             <constraint firstItem="tcn-oq-kmV" firstAttribute="centerX" secondItem="Tza-Av-4wq" secondAttribute="centerX" id="2Od-dG-tqc"/>
                             <constraint firstItem="mqz-aO-N5M" firstAttribute="centerX" secondItem="1mQ-B8-tpn" secondAttribute="centerX" id="3du-3N-BcU"/>
-                            <constraint firstItem="HaU-Ie-uIH" firstAttribute="top" secondItem="jcR-on-UiH" secondAttribute="bottom" constant="61" id="52d-Nd-CRh"/>
+                            <constraint firstItem="ZSX-gY-GHo" firstAttribute="top" secondItem="jcR-on-UiH" secondAttribute="bottom" constant="61" id="52d-Nd-CRh"/>
                             <constraint firstItem="tcn-oq-kmV" firstAttribute="top" secondItem="Tza-Av-4wq" secondAttribute="bottom" constant="7" id="9fB-Dz-Xd4"/>
                             <constraint firstItem="qi0-lz-ETl" firstAttribute="centerX" secondItem="jcR-on-UiH" secondAttribute="centerX" id="Bdt-Wr-M1F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jcR-on-UiH" secondAttribute="trailing" constant="21" id="F0p-mJ-4LH"/>
                             <constraint firstItem="mqz-aO-N5M" firstAttribute="centerX" secondItem="1mQ-B8-tpn" secondAttribute="centerX" id="MkR-bH-QKb"/>
                             <constraint firstItem="mqz-aO-N5M" firstAttribute="centerY" secondItem="1mQ-B8-tpn" secondAttribute="centerY" id="mPK-bX-3YV"/>
-                            <constraint firstItem="HaU-Ie-uIH" firstAttribute="top" secondItem="Tza-Av-4wq" secondAttribute="bottom" constant="61" id="o6U-OH-0Qe"/>
+                            <constraint firstItem="ZSX-gY-GHo" firstAttribute="top" secondItem="Tza-Av-4wq" secondAttribute="bottom" constant="61" id="o6U-OH-0Qe"/>
                             <constraint firstItem="qi0-lz-ETl" firstAttribute="top" secondItem="jcR-on-UiH" secondAttribute="bottom" constant="7" id="qT3-5i-LpK"/>
                             <constraint firstItem="Tza-Av-4wq" firstAttribute="leading" secondItem="1mQ-B8-tpn" secondAttribute="leading" constant="37" id="rBo-I7-zGN"/>
                         </constraints>
@@ -787,8 +791,8 @@
             <objects>
                 <viewController id="GJ4-pn-tY3" customClass="RecordPageViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="i92-7n-owL"/>
-                        <viewControllerLayoutGuide type="bottom" id="1fx-24-W0y"/>
+                        <viewControllerLayoutGuide type="top" id="oeq-kC-fCa"/>
+                        <viewControllerLayoutGuide type="bottom" id="bCX-Em-r7l"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ls4-Wy-1zb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -802,6 +806,10 @@
                                     <constraint firstAttribute="width" constant="211" id="x4U-Cj-7XK"/>
                                 </constraints>
                                 <state key="normal" image="micDark"/>
+                                <connections>
+                                    <action selector="recordButtonPressDown:" destination="GJ4-pn-tY3" eventType="touchDown" id="kTF-P4-f6R"/>
+                                    <action selector="recordButtonPressUp:" destination="GJ4-pn-tY3" eventType="touchUpInside" id="4rx-ZY-Q7U"/>
+                                </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bta-pD-6nu" userLabel="btnPlay">
                                 <rect key="frame" x="54.5" y="148.5" width="211" height="211"/>
@@ -881,8 +889,8 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="KbC-o5-GMJ" customClass="LoginViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pii-r3-cGG"/>
-                        <viewControllerLayoutGuide type="bottom" id="Exe-cp-Wz0"/>
+                        <viewControllerLayoutGuide type="top" id="bmi-AM-RVF"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Lq-Zc-oaI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FgT-Xl-WzJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -913,7 +921,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="en3-XZ-vte" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-819" y="-1311"/>
+            <point key="canvasLocation" x="86" y="-1323"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Sus-UO-vOS">
@@ -932,15 +940,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37A-7H-nJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="88" y="-1310"/>
+            <point key="canvasLocation" x="992" y="-1321"/>
         </scene>
         <!--Advanced Setting View Controller-->
         <scene sceneID="OIy-j0-j8t">
             <objects>
                 <viewController title="Advanced Setting View Controller" id="vrI-HQ-bGN" customClass="AdvancedSettingViewController" customModule="bedsiteUnit_Phone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="b2t-f2-BUK"/>
-                        <viewControllerLayoutGuide type="bottom" id="6D4-6m-2Qz"/>
+                        <viewControllerLayoutGuide type="top" id="84w-Wd-93f"/>
+                        <viewControllerLayoutGuide type="bottom" id="CqK-vQ-NhD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Aaz-fe-ivV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="900"/>
@@ -1541,7 +1549,7 @@
                             <constraint firstAttribute="trailing" secondItem="uh1-Nk-hqP" secondAttribute="trailing" id="02V-Jm-JWu"/>
                             <constraint firstItem="uh1-Nk-hqP" firstAttribute="leading" secondItem="Aaz-fe-ivV" secondAttribute="leading" id="Ryy-1V-vYb"/>
                             <constraint firstItem="uh1-Nk-hqP" firstAttribute="top" secondItem="Aaz-fe-ivV" secondAttribute="top" id="bly-IJ-VSi"/>
-                            <constraint firstItem="6D4-6m-2Qz" firstAttribute="top" secondItem="uh1-Nk-hqP" secondAttribute="bottom" id="hM2-6E-YKW"/>
+                            <constraint firstItem="CqK-vQ-NhD" firstAttribute="top" secondItem="uh1-Nk-hqP" secondAttribute="bottom" id="hM2-6E-YKW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Advanced Setting" id="Yny-ks-wNQ">
@@ -1575,7 +1583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwN-AQ-Q1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6369" y="485"/>
+            <point key="canvasLocation" x="5449" y="503"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RDZ-Wn-09K">
@@ -1593,7 +1601,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOB-N2-YHO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5477" y="310"/>
+            <point key="canvasLocation" x="4693" y="327"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GaJ-QV-OKu">
@@ -1611,7 +1619,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OtF-EZ-A8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3594" y="310"/>
+            <point key="canvasLocation" x="3122" y="327"/>
         </scene>
     </scenes>
     <resources>
@@ -1626,7 +1634,7 @@
         <image name="setting" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="83B-Po-TV6"/>
+        <segue reference="q27-vn-T0w"/>
         <segue reference="VOO-NV-hDr"/>
         <segue reference="o8X-Aw-Zrw"/>
     </inferredMetricsTieBreakers>

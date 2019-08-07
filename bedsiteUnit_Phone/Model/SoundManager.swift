@@ -56,7 +56,7 @@ class SoundManager: FileProviderDelegate
 //        return path
 //    }
     
-    func getWaitngSoundName() -> String {
+    func getWaitingSoundName() -> String {
         return waitingSoundFilename
     }
     

@@ -35,8 +35,9 @@ class RecordPageViewController : UIViewController {
         super.viewDidLoad()
         recordLayout()
         btnFitShape(button: btnRecord)
-        btnRecord.addTarget(self, action: #selector(recordButtonDown), for: .touchDown)
-        btnRecord.addTarget(self, action: #selector(recordButtonUp), for: [.touchUpInside, .touchUpOutside])
+        
+        // Application bug when record first time then make record and stop
+        initFirstRecord()
         
         //navigationController?.navigationBar.shadowImage = UIImage()
 //       recordingSession = AVAudioSession.sharedInstance()
@@ -82,17 +83,21 @@ class RecordPageViewController : UIViewController {
         lblRerecord.isHidden = false
     }
     
+    func initFirstRecord(){
+        // Application bug when record first time then make record and stop
+        startRecording()
+        finishRecording(success: true)
+        recordLayout()
+        
+    }
+    
     @objc func addPulse(){
         let pulse = Pulsing(numberOfPulses: 1, radius: 250, position: btnRecord.center)
         pulse.animationDuration = 0.8
         pulse.backgroundColor = UIColor.init(red: 9/255, green: 201/255, blue: 194/255, alpha: 1).cgColor
         self.view.layer.insertSublayer(pulse, below: btnRecord.layer)
     }
-    
-    func loadRecordingUI() {
-//        recordButton.isHidden = false
-//        recordButton.setTitle("Tap to Record", for: .normal)
-    }
+
     
 //    // MARK: Action Button
 //    @IBAction func recordButtonPressed(_ sender: UIButton) {
@@ -111,17 +116,32 @@ class RecordPageViewController : UIViewController {
         }
     }
     
-    @objc func recordButtonDown(_ sender: UIButton) {
+    
+    @IBAction func recordButtonPressDown(_ sender: Any) {
         startRecording()
         addPulse()
         timer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(addPulse), userInfo: nil, repeats: true)
+        
     }
-    
-    @objc func recordButtonUp(_ sender: UIButton) {
+    @IBAction func recordButtonPressUp(_ sender: Any) {
         finishRecording(success: true)
         timer?.invalidate()
         // bplaybackLayout()
+        
     }
+    
+    
+//    @objc func recordButtonDown(_ sender: UIButton) {
+//        startRecording()
+//        addPulse()
+//        timer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(addPulse), userInfo: nil, repeats: true)
+//    }
+//
+//    @objc func recordButtonUp(_ sender: UIButton) {
+//        finishRecording(success: true)
+//        timer?.invalidate()
+//        // bplaybackLayout()
+//    }
     
     @IBAction func reRecordButton(_ sender: Any) {
         recordLayout()

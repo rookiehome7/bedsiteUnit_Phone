@@ -55,7 +55,6 @@ var mainViewCallStateChanged: LinphoneCoreCallStateChangedCb = {
         NSLog("mainViewCallStateChanged: LinphoneCallError")
         MainViewData.controller?.callStatusLabel.text = "Error"
         MainViewData.controller?.terminateCall()
-        MainViewData.controller?.callMode_NotActive()
         MainViewData.controller?.stopSearchingBeacon()
         MainViewData.controller?.stopBroadcastBeacon()
         
@@ -63,7 +62,6 @@ var mainViewCallStateChanged: LinphoneCoreCallStateChangedCb = {
         NSLog("mainViewCallStateChanged: LinphoneCallEnd")
         MainViewData.controller?.callStatusLabel.text = "End"
         MainViewData.controller?.terminateCall()
-        MainViewData.controller?.callMode_NotActive()
         MainViewData.controller?.stopSearchingBeacon()
         MainViewData.controller?.stopBroadcastBeacon()
         
@@ -72,7 +70,6 @@ var mainViewCallStateChanged: LinphoneCoreCallStateChangedCb = {
         NSLog("mainViewCallStateChanged: LinphoneCallReleased")
         MainViewData.controller?.callStatusLabel.text = "Released"
         MainViewData.controller?.terminateCall()
-        MainViewData.controller?.callMode_NotActive()
         MainViewData.controller?.stopSearchingBeacon()
         MainViewData.controller?.stopBroadcastBeacon()
         
@@ -175,15 +172,7 @@ class MainViewController: UIViewController {
 //            self.currentVolumeLabel.text = String(format: "%.3f", vc.getCurrentVolume())
 //        }
     }
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+
     // MARK: UserInterface
     func updateUI(){
         print("UpdateUI")
@@ -316,6 +305,8 @@ extension MainViewController {
             let result = linphone_core_terminate_call(theLinphone.lc!, call)
             NSLog("Terminated call result(receive): \(result)")
         }
+        // Set UI
+        callMode_NotActive()
     }
     
     func getMicGainValue(){
@@ -335,7 +326,7 @@ extension MainViewController {
 
 
 // MARK : Sound Extension
-extension MainViewController {
+extension MainViewController: AVAudioPlayerDelegate {
     func startAlertSound() {
         let audioFilename = getDocumentsDirectory().appendingPathComponent("waitingsound.m4a")
         do {
@@ -354,14 +345,12 @@ extension MainViewController {
         audioPlayer = nil
         warningSoundButton.setTitle("Playback", for: .normal)
     }
-}
-
-
-extension MainViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         stopAlertSound()
     }
 }
+
+
 
 // MARK: iBeacon - View Controller Extension Part
 extension MainViewController: CLLocationManagerDelegate, CBPeripheralManagerDelegate {
