@@ -40,6 +40,18 @@ class MQTTManager : CocoaMQTTDelegate {
         startMQTT()
     }
     
+    // MARK : MQTT Publish message Function
+    func online_PublishMessage(bedsideID : String){
+        let string = "online"
+        mqtt?.publish("BEDSIDE/" + bedsideID , withString: string )
+    }
+    
+    func offline_PublishMessage(bedsideID : String){
+        let string = "offline"
+        mqtt?.publish("BEDSIDE/" + bedsideID , withString: string )
+    }
+
+    
 
     // Send phone number  to OutgoingCallViewController
     // MARK: MQTT Setting-
